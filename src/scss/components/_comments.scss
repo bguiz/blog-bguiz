@@ -1,0 +1,193 @@
+.staticman-comments-render {
+  .wrap {
+    width: 80%;
+    margin: 0 auto 1em auto;
+    position: relative;
+
+    &:first-child {
+      margin-top: 1em;
+    }
+
+    a:link,
+    a:visited {
+      color: var(--color-primary-glare);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:active,
+    a:focus {
+      text-decoration: underline;
+    }
+  }
+
+  .comment {
+    font-size: 1em;
+    position: relative;
+    margin-left: 2.5em;
+    border-radius: 0.75em 0.75em 0.75em 0.75em;
+    background-color: var(--color-selection-bg);
+    color: var(--color-selection-text);
+    line-height: 1.4em;
+    padding: 0.5em 0 2.5em 0;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      border: 0.5em solid transparent;
+      border-right: 10px solid var(--color-selection-bg);
+      margin: -0.5em 0 0 -0.925em;
+    }
+
+    .body,
+    .owner {
+      width: 90%;
+      margin: 0 1em 1em 1em;
+    }
+
+    .owner {
+      font-size: 0.8em;
+      font-style: italic;
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    width: 2em;
+    float: left;
+    border-radius: 10px;
+    margin-top: -1em;
+  }
+
+  .postscript {
+    width: 80%;
+    font-size: 0.8em;
+    margin: 0 0.5em -1em auto;
+
+    ::after {
+      content: '';
+      height: 0.5em;
+      display: block;
+      clear: both;
+    }
+
+    .date {
+      float: right;
+      margin-right: 0;
+      font-style: italic;
+    }
+  }
+}
+
+.staticman-comments-form {
+  max-width: 500px;
+  padding: 10px 20px;
+  margin: 10px auto;
+  padding: 20px;
+  background: var(--color-bg);
+  border-radius: 0.5em;
+  border: 0.2em solid var(--color-bg-glare);
+
+  fieldset{
+    border: none;
+  }
+
+  legend {
+    font-size: 1.4em;
+    margin-bottom: 0.3em;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.125em;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="time"],
+  input[type="url"],
+  textarea,
+  select {
+    border: none;
+    border-radius: 0.25em;
+    font-size: 1em;
+    margin: 0;
+    outline: 0;
+    padding: 0.5em;
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: var(--color-selection-bg);
+    color: var(--color-selection-text);
+    margin-bottom: 0.5em;
+  }
+
+  input[type="text"]:focus,
+  input[type="date"]:focus,
+  input[type="datetime"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="time"]:focus,
+  input[type="url"]:focus,
+  textarea:focus,
+  select:focus{
+    background: var(--color-selection-bg);
+  }
+
+  select{
+    -webkit-appearance: menulist-button;
+    height: 1.2em;
+  }
+
+  .bubble {
+    background: var(--color-theme-primary);
+    color: var(--color-light);
+    height: 1.6em;
+    min-height: 1.6em;
+    width: 1.6em;
+    min-width: 1.6em;
+    display: inline-block;
+    font-size: 1.2em;
+    margin-right: 0.125em;
+    line-height: 1.6em;
+    text-align: center;
+    border-radius: 0.8em 0.8em 0.8em 0px;
+  }
+
+  button
+  {
+    background: var(--color-theme-primary);
+    color: var(--color-light);
+    min-height: 1.6em;
+    min-width: 1.6em;
+    display: inline-block;
+    font-size: 1.2em;
+    margin-right: 0.125em;
+    line-height: 1.6em;
+    text-align: center;
+    border-radius: 0.8em 0.8em 0.8em 0px;
+    border: none;
+    padding: 0.5em;
+    position: relative;
+    display: block;
+  }
+
+  button:hover
+  {
+    background: var(--color-theme-primary-glare);
+  }
+
+  textarea {
+    resize: none;
+  }
+
+}

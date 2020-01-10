@@ -14,7 +14,18 @@
         {% endif %}
 
         <li class="nav__item">
-          <a href="{{ item.url }}"{{ relAttribute | safe }}{{ currentAttribute | safe }}>{{ item.text }}</a>
+          <a href="{{ item.url }}" class="" title="{{ item.desc }}"{{ relAttribute | safe }}{{ currentAttribute | safe }}>
+            {% if item.icon %}
+              <i class="demo-icon icon-{{ item.icon }}"></i>
+            {% endif %}
+            {% if item.text %}
+              <span>{{ item.text }}</span>
+            {% endif %}
+          </a>
+          {% if item.break %}
+            </ul>
+            <ul class="[ nav__list ] [ box-flex align-center md:space-before ]">
+          {% endif %}
         </li>
       {% endfor %}
     </ul>

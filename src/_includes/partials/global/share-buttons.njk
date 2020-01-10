@@ -1,0 +1,56 @@
+
+{% set shareUrl %}{{ site.url }}{{ page.url }}{% endset %}
+{% set shareText %}{{ title }}{% endset %}
+{% set shareTags %}{{ tags | hashTagify }}{% endset %}
+{% set shareTextWithTags %}{{ shareText }} {{ shareTags }}{% endset %}
+{% set shareVia = (site.authorHandle or site.authorName) %}
+<div class="[ nav ] [ box-flex align-center ] share-buttons">
+
+  <a
+    class="share-button twitter"
+    target="_blank"
+    title="Share on Twitter"
+    href="https://twitter.com/share?url={{ shareUrl }}&text={{ shareTextWithTags }}via={{ shareVia }}">
+    <i class="demo-icon icon-twitter"></i>
+  </a>
+
+  <a
+    class="share-button facebook"
+    target="_blank"
+    title="Share on Facebook"
+    href="https://www.facebook.com/sharer/sharer.php?u={{ shareUrl }}">
+    <i class="demo-icon icon-facebook"></i>
+  </a>
+
+  <a
+    class="share-button reddit"
+    target="_blank"
+    title="Share on Reddit"
+    href="https://reddit.com/submit?url={{ shareUrl }}&title={{ shareText }}">
+    <i class="demo-icon icon-reddit"></i>
+  </a>
+
+  <a
+    class="share-button hackernews"
+    target="_blank"
+    title="Share on Hacker News"
+    href="https://news.ycombinator.com/submitlink?u={{ shareUrl }}&t={{ sharText }}">
+    <i class="demo-icon icon-hackernews"></i>
+  </a>
+
+  <a
+    class="share-button linkedin"
+    target="_blank"
+    title="Share on LinkedIn"
+    href="https://www.linkedin.com/shareArticle?url={{ shareUrl }}&title={{ shareText }}&summary=&source={{ shareUrl }}">
+    <i class="demo-icon icon-linkedin"></i>
+  </a>
+
+  <a
+    class="share-button email"
+    target="_blank"
+    title="Share on Email"
+    href="mailto:?subject={{ shareText }}&body={{ shareUrl }}">
+    <i class="demo-icon icon-email"></i>
+  </a>
+</div>
