@@ -1,0 +1,43 @@
+<form
+  class="staticman-comments-form"
+  method="POST"
+  action="https://api.staticman.net/v3/entry/github/{{ site.staticmanGithubFormPath }}"
+>
+  <input name="options[slug]" type="hidden" value="{{ page | slugForStaticman }}">
+  <input name="options[redirect]" type="hidden" value="{{ site.url }}{{ page.url }}">
+  <input name="options[origin]" type="hidden" value="{{ site.url }}">
+  <fieldset>
+    <input type="text" name="fields[name]" placeholder="Name &hellip;">
+    <input type="email" name="fields[email]" placeholder="Email &hellip;">
+  </fieldset>
+  <fieldset>
+    <textarea name="fields[message]" placeholder="Message &hellip;" rows="4"></textarea>
+  </fieldset>
+  <fieldset>
+    <button type="submit">Comment</button>
+  </fieldset>
+</form>
+
+<div
+  class="staticman-comments-render">
+  {% set comments = collections.comments | staticmanCollection(page) %}
+  {% if comments.length %}
+    <span class="staticman-comments-count">Comments: {{ comments.length }}</span>
+    <ul class="staticman-comments-list">
+    {% for comment in comments %}
+      <li class="staticman-comment-item">
+        <div class="wrap">
+          <img src="https://robohash.org/{{ comment.hash }}?set=1&gravatar=hashed&size=128x128" alt="{{ comment.hash }}" />
+          <div class="comment">
+            <div class="owner">{{ comment.name }}</div>
+            <div class="body">{{ comment.body | safe }}</div>
+            <div class="postscript">
+              <div class="date" data-date="{{ comment.date }}">{{ comment.date | dateFilter }}</div>
+            </div>
+          </div>
+        </div>
+      </li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+</div>

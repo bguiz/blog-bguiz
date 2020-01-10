@@ -9,6 +9,52 @@
     url('/fonts/lora-v13-latin-700.woff') format('woff');
 }
 
+@font-face {
+  font-family: 'blog-bguiz-icon-font';
+  src: url('/fonts/blog-bguiz-icon-font.eot?67813096');
+  src: url('/fonts/blog-bguiz-icon-font.eot?67813096#iefix') format('embedded-opentype'),
+    url('/fonts/blog-bguiz-icon-font.woff?67813096') format('woff'),
+    url('/fonts/blog-bguiz-icon-font.ttf?67813096') format('truetype'),
+    url('/fonts/blog-bguiz-icon-font.svg?67813096#blog-bguiz-icon-font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.demo-icon {
+  font-family: "blog-bguiz-icon-font";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes */
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+
+  /* You can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
 body {
   // Strip the unit off the size ratio to generate a line height
   $line-height: get-size(600);

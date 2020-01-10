@@ -28,3 +28,16 @@
     }
   }
 }
+
+.nav__item {
+  padding: .1rem 0;
+}
+.nav__item a {
+  text-decoration: none;
+}
+.nav__item a:hover span{
+  text-decoration: underline;
+}
+.header .nav .nav__list {
+  margin-bottom: -1.6rem;
+}
