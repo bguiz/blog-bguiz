@@ -1,0 +1,44 @@
+----
+title: search
+date: '2020-10-24T18:19+08:00'
+description: 'Search all content in this site'
+tags: ['search']
+permalink: '/search/',
+----
+{% extends 'layouts/base.njk' %}
+{% set pageType = 'Search' %}
+
+{% block head %}
+<script src="sjs.js" type="text/javascript"></script>
+<script src="search.js" type="text/javascript"></script>
+{% endblock %}
+
+{# Intro content #}
+{% set introHeading = 'Search' %}
+{% set introSummary %}
+{% endset %}
+
+{% block content %}
+  <main id="main-content" tabindex="-1">
+    <article class="[ post ] [ h-entry ]">
+      {% include "partials/components/intro.njk" %}
+      <div class="[ post__body ] [ inner-wrapper ] [ leading-loose pad-top-900 {{ 'pad-bottom-900' if not site.enableThirdPartyComments }} text-500 ] [ sf-flow ] [ e-content ]">
+        <div id="search-container">
+          <div>
+            <input type="text" id="search-input" placeholder="search...">
+          </div>
+          <div>
+            <ul id="search-results-container"></ul>
+          </div>
+        </div>
+      </div>
+      <footer class="[ post__footer ] [ pad-top-500 pad-bottom-500 ]">
+        <div class="inner-wrapper">
+          {% if (not shareDisable) %}
+            {% include "partials/global/share-buttons.njk" %}
+          {% endif %}
+        </div>
+      </footer>
+    </article>
+  </main>
+{% endblock %}

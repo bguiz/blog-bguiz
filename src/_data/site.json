@@ -1,13 +1,18 @@
 {
-  "showThemeCredit": true,
-  "name": "Hylia Starter Kit",
-  "shortDesc": "Hylia is a lightweight Eleventy starter kit to help you to create your own blog or personal website.",
-  "url": "https://hylia.website",
-  "authorEmail": "me@andy-bell.design",
-  "authorHandle": "@hankchizljaw",
-  "authorName": "Andy Bell",
+  "showThemeCredit": false,
+  "name": "Brendan Graetz",
+  "shortDesc": "The blog that Brendan writes",
+  "url": "https://blog-bguiz-staging.netlify.com",
+  "authorEmail": "null@bguiz.com",
+  "authorHandle": "@bguiz",
+  "authorName": "Brendan Graetz",
   "enableThirdPartyComments": false,
-  "maxPostsPerPage": 5,
-  "paymentPointer": "$coil.xrptipbot.com/c1f8f05d-8d8c-4f37-b1ad-25677ae129da",
-  "faviconPath": "/images/favicon.png"
+  "maxPostsPerPage": 7,
+  "paymentPointer": "",
+  "faviconPath": "/images/favicon.png",
+  "codeFundPropertyId": 679,
+  "googleAnalyticsId": "UA-37884921-1",
+  "quickSearchEnabled": true,
+  "staticmanCommentsEnabled": true,
+  "staticmanGithubFormPath": "bguiz/blog-bguiz/master/comments"
 }

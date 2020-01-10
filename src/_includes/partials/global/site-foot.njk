@@ -5,7 +5,10 @@
         <div>
           <article class="[ site-foot__details ] [ sf-flow measure-compact ]">
             <h2 class="font-base text-600">{{ site.name }}</h2>
-            {{ site.shortDesc | markdownFilter | safe }}
+            <p>{{ site.shortDesc | markdownFilter | safe }}</p>
+            {% if site.quickSearchEnabled %}
+              {% include "partials/global/quick-search.njk" %}
+            {% endif %}
           </article>
         </div>
       {% endif %}
@@ -19,5 +22,6 @@
         Powered by the <a href="https://hylia.website" rel="external">Hylia Eleventy Starter Kit v{{ pkg.version }}</a>.
       </p>
     {% endif %}
+    {% include "partials/global/code-fund.njk" %}
   </div>
 </footer>

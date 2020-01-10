@@ -5,10 +5,15 @@
 {% set introHeading = title %}
 {% set introSummary %}
 <p class="[ intro__meta ] [ text-500 leading-tight ]">
-  {% if date %}
-    <time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | dateFilter }}</time>
+  {% if socialImage %}
+    <img class="post__intro__image" src="{{ socialImage }}" alt="{{ title }}" />
   {% endif %}
-  <span>— {{ helpers.getReadingTime(content) }} minute read</span>
+  <span class="post__intro__stats">
+    {% if date %}
+      <time datetime="{{ date | w3DateFilter }}" class="dt-published">{{ date | dateFilter }}</time>
+    {% endif %}
+    <span>— {{ helpers.getReadingTime(content) }} minute read</span>
+  </span>
 </p>
 {% endset %}
 
@@ -25,19 +30,27 @@
           {% include "partials/global/third-party-comments.njk" %}
         </aside>
       {% endif %}
-      {% if tags %}
+      {% if site.staticmanCommentsEnabled %}
+        <hr />
+        <aside class="staticman-comments [ post__body ] [ inner-wrapper ] [ pad-bottom-900 text-500 ]">
+          {% include "partials/global/comments-staticman.njk" %}
+        </aside>
+      {% endif %}
+      {% if site.enableThirdPartyComments %}
+        <hr />
+        <aside class="[ post__body ] [ inner-wrapper ] [ pad-bottom-900 text-500 ]">
+          {% include "partials/global/third-party-comments.njk" %}
+        </aside>
+      {% endif %}
+      {% if tags or (not shareDisable) %}
         <footer class="[ post__footer ] [ pad-top-500 pad-bottom-500 ]">
           <div class="inner-wrapper">
-            <div class="[ nav ] [ box-flex align-center ]">
-              <h2 class="font-base text-600 weight-mid">Filed under</h2>
-              <ul class="[ nav__list ] [ box-flex align-center pad-left-400 ] [ p-category ]">
-                {% for item in tags %}
-                  <li class="nav__item">
-                    <a href="/tags/{{ item }}">{{ item }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
+            {% if tags %}
+              {% include "partials/global/tags.njk" %}
+            {% endif %}
+            {% if (not shareDisable) %}
+              {% include "partials/global/share-buttons.njk" %}
+            {% endif %}
           </div>
         </footer>
       {% endif %}
