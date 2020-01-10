@@ -1,19 +1,77 @@
 {
   "items": [
     {
-      "text": "Home",
-      "url": "/",
-      "external": false
+      "id": "posts",
+      "text": "Posts",
+      "url": "/posts",
+      "external": false,
+      "desc": "All Posts",
+      "icon": "posts"
     },
     {
-      "text": "GitHub",
-      "url": "https://github.com/hankchizljaw/hylia",
-      "external": true
+      "id": "articles",
+      "text": "Articles",
+      "url": "/articles",
+      "external": false,
+      "desc": "All Articles",
+      "icon": "articles"
     },
     {
-      "text": "Twitter",
-      "url": "https://twitter.com/hankchizljaw",
-      "external": true
+      "id": "presentations",
+      "text": "Presentations",
+      "url": "/presentations",
+      "external": false,
+      "desc": "All Presentations",
+      "icon": "presentations"
+    },
+    {
+      "id": "books",
+      "text": "Books",
+      "url": "/books",
+      "external": false,
+      "desc": "All Books",
+      "icon": "books",
+      "break": true
+    },
+    {
+      "id": "github",
+      "text": "",
+      "url": "https://github.com/bguiz",
+      "external": true,
+      "desc": "Brendan Graetz on github",
+      "icon": "github"
+    },
+    {
+      "id": "twitter",
+      "text": "",
+      "url": "https://twitter.com/bguiz",
+      "external": true,
+      "desc": "Brendan Graetz on Twitter",
+      "icon": "twitter"
+    },
+    {
+      "id": "linkedin",
+      "text": "",
+      "url": "http://linkedin.com/in/brendangraetz/",
+      "external": true,
+      "desc": "Brendan Graetz on LinkedIn",
+      "icon": "linkedin"
+    },
+    {
+      "id": "stackoverflow",
+      "text": "",
+      "url": "http://stackoverflow.com/users/194982/bguiz",
+      "external": true,
+      "desc": "Brendan Graetz on stackoverflow",
+      "icon": "stackoverflow"
+    },
+    {
+      "id": "reddit",
+      "text": "",
+      "url": "http://reddit.com/u/bguiz",
+      "external": true,
+      "desc": "Brendan Graetz on Reddit",
+      "icon": "reddit"
     }
   ]
 }
