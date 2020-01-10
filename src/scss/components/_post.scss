@@ -3,7 +3,7 @@
     --flow-space: #{get-size(800)};
 
     /**
-     * Generic HTML styles 
+     * Generic HTML styles
      */
     h2 + *,
     h3 + * {
@@ -136,6 +136,16 @@
     a {
       background: var(--color-bg);
       padding: 0.4rem 0.6rem;
+    }
+  }
+
+  &__intro {
+    &__image {
+      padding: 0.5rem 0 1rem 0;
+    }
+
+    &__stats {
+      display: block;
     }
   }
 }

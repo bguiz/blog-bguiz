@@ -1,0 +1,38 @@
+.share-buttons {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.share-button {
+  display: inline-block;
+  color: #ffffff;
+  border: none;
+  padding: 0.1em 0.6em;
+  outline: none;
+  text-align: center;
+  font-size: 0.9em;
+  margin: 0 0.2em;
+  text-decoration: none;
+
+  &.twitter { background: #55acee; }
+  &.facebook { background: #3B5998; }
+  &.reddit { background: #ff5700; }
+  &.hackernews { background: #ff6600; }
+  &.linkedin    { background: #4875B4; }
+  &.email { background: #444444; }
+
+  &:focus {
+    opacity: 0.8;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    color: #e2e2e2;
+  }
+}

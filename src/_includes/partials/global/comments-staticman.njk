@@ -1,0 +1,12 @@
+<form
+  class="staticman-comments-form"
+  method="POST"
+  action="https://api.staticman.net/v3/entry/github/{{ site.staticmanGithubFormPath }}">
+  <input name="options[slug]" type="hidden" value="{{ page | slugForStaticman }}">
+  <input name="options[redirect]" type="hidden" value="{{ site.url }}{{ page.url }}">
+  <input name="options[origin]" type="hidden" value="{{ site.url }}">
+  <label><input name="fields[name]" type="text" placeholder="name"></label>
+  <label><input name="fields[email]" type="email" placeholder="email"></label>
+  <label><textarea name="fields[message]"></textarea></label>
+  <button type="submit">Comment</button>
+</form>
