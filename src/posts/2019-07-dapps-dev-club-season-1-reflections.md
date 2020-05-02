@@ -1,5 +1,4 @@
 ---
-
 title: DApps Dev Club Season 1 reflections
 date: '2019-07-16T22:45:00+08:00'
 tags: [dappsdevclub, events, reflections]
