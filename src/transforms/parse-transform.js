@@ -4,7 +4,8 @@ const minify = require('../utils/minify.js');
 const slugify = require('slugify');
 
 module.exports = function(value, outputPath) {
-  if (outputPath.endsWith('.html')) {
+  if (typeof outputPath !== 'string' ||
+    outputPath.endsWith('.html')) {
     const DOM = new JSDOM(value, {
       resources: 'usable'
     });
