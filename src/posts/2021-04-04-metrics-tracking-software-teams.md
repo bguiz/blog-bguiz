@@ -7,61 +7,65 @@ description: >
   Locus of control, quantitative vs qualitative, and antagonist functions.
 ---
 
-There are a number of ways in which Software teams get measured on their productivity, output, and deliverables, and they come from a wide variety of schools of thought - ranging from management consulting or MBA type thinking (see OKRs, OGSMs, et cetera) through to Agile or Project Management type thinking (see Sprint Burndowns, et cetera). I’ve worked in various teams that have implemented these in some form or another, and in this post I hope to elucidate some of the key things that I’ve learned along the way; and probably spout an opinion or two along the way!
+There are a number of ways in which Software teams get measured on their productivity, output, and deliverables. These come from a wide variety of schools of thought - ranging from management consulting or MBA type thinking (see OKRs, OGSMs, et cetera) through to Agile or Project Management type thinking (see Sprint Burndowns, et cetera). I’ve worked in various teams that have implemented these in various forms. I hope to bring out some of the key things that I’ve learned along the way; with an opinion or two along the way!
 
-The fundamental tenet of all of these approaches lies in the belief that what gets measured gets worked on… Ideally!
+These approaches all assume that what gets measured gets worked on… Ideally!
 
-That’s all well and good, but when you get down to it and actually put the theory to practice, you almost immediately need to grapple with a myriad of decisions. Both macro-level decisions and micro-level decisions.
+When you actually put theory into practice, you almost immediately have to grapple with many decisions - both macro-level and micro-level.
 
-This post will focus on the former - the macro-level decisions. In particular, we’ll explore **locus of control**, **quantitative vs qualitative**, and **antagonist functions** as three key dimensions, in terms of the influence/ impact that they have upon decisions regarding metrics tracking for software teams.
+This post focuses on the macro-level decisions. In particular, we’ll explore **locus of control**, **quantitative vs qualitative**, and **antagonist functions**. I believe that these have an outsized influence/ impact upon decisions regarding metrics tracking for software teams.
 
 ## Locus of Control
 
 ![Locus of Control - What if I told you it was a false choice all along?](/images/posts/metrics-tracking-software-teams--locus-of-control.jpeg)
 
-When designing a metric for yourself or for your team, it is critical to be aware of the level of control you/ your team has upon that item.
+When designing a metric for yourself or for your team, it is critical to be aware of how much control you/ your team have over it.
 
-- Is it primarily determined by whether or not you/ your team are able to perform specific actions within a particular deadline?
-- Or alternatively, is it primarily determined by whether or not others within the organisation, or perhaps even others who are external to your organisation, perform specific actions within a specific deadline.
-- In the latter case, what level of influence are you/ your team able to assert upon them?
+- Is it primarily determined by whether or not your team is able to perform specific actions, within a particular deadline?
+- Otherwise, is it primarily determined by whether or not others within the organisation? Perhaps even others who are outside your organisation?
+- In the latter case, how much influence does  your team have?
 
-In practice the two alternatives are almost never binary, there will always be some amount of control you are able to exert upon the actions of others, and also some amount of dependence of you upon others in order to perform your own actions. I liken this to a sliding scale.
+In practice these two alternatives are usually not binary, more of a  a sliding scale.
 
 ### Suggestions regarding Locus of Control
 
-Identify which metrics fall into which category, and ensure a balanced spread between the different categories. Personally, when planning, I drop each metric into one of three buckets: `80%-20%`, `50%-50%`, and `20%-80%`, to reduce the complexity of decision making.
+Identify which metrics fall into which category, and ensure a balanced spread between them. To simplify decision making, I drop each metric into one of three buckets: `80%-20%`, `50%-50%`, and `20%-80%`.
 
 At a more abstract level, another thing that you can do is to make decisions about which metrics are good to take on, and which ones aren’t. In most cases there will be a need to have metrics of both varieties: Ones that are primarily within the locus of your control, and ones that aren’t. Keep track of how many of each you have so as to be aware of the mix you are setting yourself up for. The higher the **proportion** of metrics that are out of the locus of your control, the more **challenging** it will be to attain them.
 
-A corollary to this is also the level of seniority, when it comes to individual metrics - those with less experience should have a lower proportion of metrics that are out of their locus of control; and the inverse applies to those who are more experienced.
+Related to this: Seniority. When it comes to individual metrics, those with less experience should have a lower proportion of metrics that are out of their locus of control; and the opposite for those who are more experienced.
 
-> Sidebar: If you’re a software engineer, and working on a software engineering team, reflect upon how much tougher the work of someone in a sales function or in management is, in this dimension. These types of roles intrinsically default to being measured or evaluated upon things that are primarily out of their locus of control, and the ability to even choose metrics that aren’t  seem like a **"wait, that's even a thing?"** type of luxury to them.
+> Sidebar: If you are working in a software engineering team, reflect upon how much harder the work of someone in sales or management is. These types of roles intrinsically default to being measured on things that are out of their locus of control. The ability to even choose metrics that are not would seem like a luxury to them.
 
 ## Quantity vs Quality
 
 ![Quantity vs Quality](/images/posts/metrics-tracking-software-teams--quantitative-qualitative.jpeg)
 
-Metrics lend themselves really well to quantitative items or actions. Qualitative items or actions are notoriously hard to measure or track - after all. metrics imply the ability to definitively reduce or summarise items or actions into a numeric value… So when these items or actions are subjective by nature:
+Metrics lend themselves well to quantitative items. Qualitative items are notoriously hard to measure or track! This is because metrics need to be able to definitively reduce items into a numeric value…
+
+When these items are subjective by nature:
 
 - What is the methodology that should be used?
 - How sure can one be that said methodologies are consistent and equitable?
 
-This complicates any sort of metrics or tracking. Not everything can actually be reduced to a number. When we do this anyway, for some cases, we simply have to accept that it is hard to be certain of the objectivity of those numbers.
+This complicates the metrics, as not everything can easily be reduced to a number. When we try to do this anyway, in some cases, we have to accept that it is hard to be objective.
 
-> Sidebar: Software is very precise and logical, when it is executed. This leads to a common misconception that the act of creating software (software engineering), is also therefore precise and logical. Consequently, this leads to another **common misconception** that software engineering is easy to quantify or measure. While software itself may ultimately have those traits (up for debate), software engineering has many aspects to it that are more art than science - think about programming languages’ linguistics, design patterns, test strategies, et cetera; these are all highly subjective or opinion based areas, and extremely hard to put a number on. That doesn’t even mention the most oft-quoted example of [negative LOC metrics](https://www.folklore.org/StoryView.py?story=Negative_2000_Lines_Of_Code.txt)… which many a software engineer goes through, almost as a **right of passage**, in their careers.
+> Sidebar: Software is precise and logical, when it is executed. This leads to a common misconception that the act of creating software is also precise and logical. Consequently, this leads to another **common misconception** that software engineering is easy to quantify or measure. While software itself may ultimately have those traits (up for debate), software engineering has many aspects to it that are more art than science. Think about programming languages’ linguistics, design patterns, test strategies, et cetera; these are all highly subjective areas, and therefore hard to put a number on. Case in point: [negative lines of code metrics](https://www.folklore.org/StoryView.py?story=Negative_2000_Lines_Of_Code.txt). This is something that many software engineers go through in their careers, almost as a **right of passage**.
 
-Designing metrics for items or actions that are inherently qualitative is a tricky balancing act. Designing these metrics poorly can have adverse side effects - because remember what gets measured gets worked on. The unintended effect of this is that when you measure the wrong things, the **wrong things get worked on**. This flipside is something to keep an eye out for, and aggressively cull.
+Designing metrics for items that are inherently qualitative is a tricky balancing act. If what gets measured gets worked on, poor design has adverse side effects: When you measure the wrong things, the **wrong things get worked on**. Look out for this, and avoid it.
 
-For example, in the context of qualitative tasks with quantitative metrics, there will always exist a temptation to spend less time on important tasks, in order to be able to spend more time to get a larger number of less important tasks done. The existence of metrics, and when rewards are tied to said metrics, leads to optimisation efforts to maximise those metrics. That is usually a good thing; however when metrics are not **properly weighted** according to what is important, it results in creating a system of perverse incentives… something to be avoided!
+For example, there will always exist a temptation to spend less time on a small number of important tasks, in order to be able to spend more time on a large number of less important tasks. When rewards are tied to metrics, there will be optimisation efforts to maximise those metrics. That is **usually** a good thing; however when metrics are not **properly weighted** by importance, it results in a system of perverse incentives… something to avoid!
 
 ### Suggestions regarding Quantity vs Quality
 
-Various items or actions are either quantitative or qualitative by nature, and cannot be changed. What can be changed is the approach taken toward how these things are measured.
+Various items are either quantitative or qualitative by nature. This cannot be changed. What can be changed is the approach on these things are measured.
 
-- When something is quantitative by nature, the job is easy. Find the number(s) that most accurately capture the value or importance of that thing, and simply use those number(s).
-- When something is qualitative by nature, the job is more difficult. First, recognise that there is inherently not going to be a number that captures the value or importance of that thing. Second, think about what are the possible ways to analyse and estimate the quality of this particular thing. **Estimate**, not **measure**.
+- **Quantitative**: Easier. Find the number that most accurately indicates the value or importance of that thing, and simply use that number.
+- **Qualitative**: More difficult.
+  - Recognise that there is inherently not going to be a single number that indicates the value of that thing.
+  - Analyse the possible ways to estimate the quality of this particular thing. **Estimate**, not **measure**.
 
-Here are some specific ideas/ suggestions around creating metrics to estimate qualitative items or actions.
+Here are some specific suggestions for creating metrics to estimate qualitative items.
 
 #### Tiered metrics
 
