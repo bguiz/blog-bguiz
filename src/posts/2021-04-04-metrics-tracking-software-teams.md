@@ -58,7 +58,7 @@ For example, there will always exist a temptation to spend less time on a small 
 
 ### Suggestions regarding Quantity vs Quality
 
-Various items are either quantitative or qualitative by nature. This cannot be changed. What can be changed is the approach on these things are measured.
+Various items are either quantitative or qualitative by nature. This cannot be changed. What can be changed is how they are measured.
 
 - **Quantitative**: Easier. Find the number that most accurately indicates the value or importance of that thing, and simply use that number.
 - **Qualitative**: More difficult.
@@ -69,107 +69,108 @@ Here are some specific suggestions for creating metrics to estimate qualitative 
 
 #### Tiered metrics
 
-Drawing inspiration from Agile methodologies, think of sprint planning with the product team. In particular think of task estimation, which usually involves poker cards, Fibonacci numbers, or T-shirt sizes. What all of these methods have in common are essentially categorising a particular task into buckets of how hard it is to complete - time commitment, risk of complications, et cetera - through a group consensus estimation.
+Think of task estimation done during sprint planning with a product team (from the Agile methodology). This usually involves poker cards, Fibonacci numbers, or T-shirt sizes. These techniques categorise a particular task on how hard it is to complete (time commitment, risk of complications, et cetera). It is **estimation** via group consensus.
 
-One approach to creating metrics for software engineering tasks would be, for example:
+For example, a tiered approach to creating metrics for tasks could be:
 
-- Number of “L” and “XL” tasks completed
-- Number of “XS”, “S”, and “M” tasks completed.
+- Number of “L” and “XL” tasks
+- Number of “XS”, “S”, and “M” tasks
 
-The above essentially plugs into the T-shirt sizes based task estimation that this hypothetical team is already doing as part of sprint planning, and then creates two separate metrics where the larger or more complex tasks get measured separately from the smaller or less complex tasks. This results in a two-tiered metric, with the intended effect of ensuring that the team is still incentivised to complete the more difficult tasks over the easier ones.
+The above plugs into the T-shirt size categories that a team is already estimating, and creates two metrics. The more complex tasks get measured **separately** from the less complex tasks. This results in a two-tiered metric. This ensures that the team is still incentivised to complete the more difficult tasks; and not only the easier ones.
 
 #### Weighted sum metrics
 
-This is a slightly more complex metric design than the tired system described above, but draws upon the same principle. The concept is the same, where tasks are categorised into buckets based on complexity. The difference is that this time each task is multiplied by a weight, prior to being added to the metric value; essentially a weighted sum.
+This is slightly more complex than the tiered system described above, but draws upon the same principle. Tasks are categorised into buckets based on complexity. The difference is that each task is multiplied by a “weight” prior to being added to the metric value:  Resulting in a weighted sum.
 
 For example:
 
 - “XS”, “S”, “M”, “L”, and “XL” are assigned 1, 2, 3, 5, and 7 points respectively.
-- When the team completes 3 “XS” tasks, 2 “M” tasks, and 1 “XL” task respectively, the weighted sum metric works out to be `(3*1)+(2*3)+(1*7)` which yields a value of 15
+- When the team completes 3 “XS” tasks, 2 “M” tasks, and 1 “XL” task respectively, the weighted sum works out to be `(3*1)+(2*3)+(1*7)` which yields a value of 15.
 
-This approach has some pros and cons over the tiered approach.
+Some pros and cons over the tiered approach:
 
-- Con: More complex to calculate, and harder to explain.
-- Pro: Enables a more fine-grained calibration.
-- Con: Requires that the definition of each category be defined up front.
-- Pro: Easier to fit into frameworks that limit the total number of metrics (e.g. in OKRs, where you’re limited to a maximum of 5 “KRs” per “O”).
+- Con: More complex to calculate, harder to explain
+- Pro: Enables more fine-grained calibration
+- Con: Requires upfront definition of categories
+- Pro: Easier to fit into frameworks which limit the total number of metrics (for example in OKRs, where it is common practice to have a maximum of 5 “KRs” per “O”).
 
-#### In the context of metrics cycles
+#### Considerations for metric cycles
 
-Whichever approach you choose, there are some important things to consider. It is unlikely for a team to get this approach correct on the first iteration. So share your team’s approach with other teams facing the same challenge with metrics design. The discussion may yield a common approach between multiple teams; or alternatively it might yield a divergent approach between multiple teams.
+It is unlikely for a team to get metric design correct on the first iteration. So share your team’s approach with other teams facing similar challenges. This may yield a common approach between multiple teams; or alternatively it might yield a divergent approach.
 
-Either way, you can use the opportunity at the end of each metrics measurement cycle (e.g. quarterly), as an opportunity for a retrospective - not only on the results themselves, but also design of the metrics themselves. If some teams chose divergent approaches, that lends itself well to retrospective hypotheses testing, or A/B testing, too!
+Either way, you can use the opportunity at the end of each metrics cycle (e.g. quarterly), as an opportunity for a retrospective - not only on the results, but also the design of the metrics themselves. If some teams choose divergent approaches, that lends itself well to hypothesis testing and A/B testing too!
 
 ## Antagonist Functions
 
-![Antagonist Functions - I'm gonna poke hole in your work. Me too, me too.](/images/posts/metrics-tracking-software-teams--antagonist-functions.jpeg)
+![Antagonist Functions - I'm gonna poke holes in your work. Me too, me too.](/images/posts/metrics-tracking-software-teams--antagonist-functions.jpeg)
 
-This dimension does not apply to a single team, but rather to the interplay between multiple teams within the same organisation. Specifically the interplay between teams who are “supposed to” head in opposite directions from each other.
+This dimension applies to the interactions between multiple teams within the same organisation. Specifically the between teams who are “supposed to” head in opposite directions from each other.
 
-> Sidebar: I have chosen the term “antagonist functions” to describe the above, as it conveys the most vivid imagery. The intent here is not to portray these teams or the term in a negative light, as will come clear soon.
+> Sidebar: I have chosen the term “antagonist functions” to describe the above, as it conveys the image most vividly. The intent is not to portray these teams (or the term in a negative light) as will become clear soon.
 
-For example, a product team may have metrics around the delivery of certain product features, whereas a security or QA team may have metrics around the spotting bugs in that same product.
+For example, a product team may have metrics around the delivery of certain product features; whereas a security or QA team may have metrics around the spotting bugs in that same product.
 
-This leads to a tension, where it would appear that one team’s success depends upon the other team’s failure. And that appearance might actually get nudged into becoming a reality if the metrics are not designed carefully to **avoid this zero-sum game** situation from playing out.
+This leads to a tension, where it would appear that one team’s success depends upon the other team’s failure. And that appearance may get nudged towards reality if the metrics are not designed carefully to **avoid a zero-sum game** situation.
 
-That being said, some level of this type of tension is natural, and in fact is a sign of a healthy organisation with different teams playing their part. The complete absence of this natural tension may even be indicative that something is wrong - for example, that there are too many yes-men present, or that there is some level of metric-gaming or metric-avoidance in play. In any case, when these tensions are present, remember that they are indeed **natural and expected**; and they aren’t something that should be avoided when thinking about metrics.
+That being said, some level of this tension is natural, and is a sign of a healthy organisation: Different teams playing their part. Somewhat counterintuitively, the complete absence of this may even be indicative that something is wrong - for example, that there are too many yes-men present, or that there is some level of metric-gaming or metric-avoidance in play.
+When these tensions are present, remember that they are **natural** and expected; and they aren’t something that should be avoided.
 
 ### Suggestions regarding Antagonist Functions
 
-Here are some specific ideas/ suggestions around the approach towards metrics involving antagonist functions.
+Here are some specific suggestions around the approach towards metrics involving antagonist functions.
 
 #### Cross-function embedding
 
-This one has less to do with metrics than it has to do with team structures. The idea is that instead of having separate teams that have separate or divergent goals, have team members with those separate or divergent goals be part of the same team.
+This has more to do with team structures than metrics. Instead of having separate teams with separate or divergent goals, have those particular team members be in the same team.
 
-For example the QA team could **embed** a test engineer within product teams. The underlying idea here is the human factor, when people work in the same team, they talk to each other more often, and (mostly) work out their differences more proactively.
+For example, the QA team could **embed** a test engineer within product teams. Leverage the human factor: When people work in the same team, they talk to each other more often, and (mostly) work out their differences proactively.
 
-The chief caveat here is that you are shifting the tensions related to antagonist functions from being inter-team to being intra-team. This means that the person who is the “embedded” one needs to be fairly senior or experienced, lest these tensions be solved by means of a “rollover” - in other words, the creation of a yes-man.
+The chief caveat here is that this shifts the tensions related to antagonist functions from being inter-team to being intra-team. This means that the “embedded” person needs to be fairly senior or experienced, lest these tensions be solved by means of a “rollover” - i.e. the creation of a yes-man.
 
-Other caveats are around resourcing constraints: Larger organisations have the luxury of larger headcounts and therefore the ability to do this, whereas in smaller organisations, usually the number of people is simply insufficient  to be able to spread across the number of different teams that are present, and therefore this is not a feasible solution.
+Other caveats are around resourcing constraints: Larger organisations have larger team sizes. Therefore they have the ability to do this. In smaller organisations, usually the team sizes are simply insufficient to be able to feasibly do embedding.
 
 #### Cross-function metrics
 
-Let’s say the starting point is that we have a product team and a QA team with a metric each like so:
+Using a hypothetical starting point, where we have a product team and a QA team with one metric each, like so:
 
 - **product team**: Develop 5 new features in product ABC
 - **QA team**: Find 5 bugs in product ABC
 
-One can immediately spot the tension that will erupt between these two teams when stated like this. In practice, the teams often think about their metrics in silos, and then these get assembled together at the organisation level at the beginning of a metric cycle. This is usually done in great haste, and hardly anyone spots these tensions.
+You can immediately spot the tension that will erupt between these two teams… when stated like this. In practice, the teams often think about their metrics in silos, and then these get assembled together at the organisation level at the beginning of a metric cycle. This is usually done in great haste, and thus tensions like this tend not to be spotted in time.
 
-To avoid that, perhaps teams such as QA, security, et cetera who know that they have a high likelihood of creating antagonist metrics, should preemptively speak with the other teams that are likely to be affected. The intent is to create some cross-function metrics.
+To avoid that, perhaps teams such as QA, security, et cetera who know that they have a high likelihood of creating “opposing” metrics, can preemptively speak with the other teams, and create some cross-function metrics.
 
-Continuing with the above example, the metrics could be rewritten as such:
+After a discussion, these teams may rewrite their metrics like so:
 
 - **product team**: Develop or fix 10 new features or bugs in product ABC
 - **QA team**: Find plus suggest fixes for 5 bugs in product ABC
 
-Rewriting those metrics is probably the easy part, the hard part is in identifying where these opposing metrics exist during the design phase.
+Rewriting those metrics is easy… the hard part is to identify those metrics during the design phase.
 
-> Sidebar: The above example metrics are, quite frankly, bad examples. I struggled to come up with better examples without getting too specific - will update if/ when inspiration strikes!
+> Sidebar: The above example metrics are, quite frankly, bad examples. I struggled to come up with better examples without getting too specific - will update when inspiration strikes!
 
-The other aspect to cross-function metric design that needs to be highlighted is that it relies on the ability for the two “opposing” teams to identify common ground. After all, both of these functions are working towards the same goals for the organisation, and therefore there should be some by definition. The act of designing and implementing metrics should not be taken as licence to forget or lose sight of that common ground. If this happens, the pursuit of attaining metrics by one team can end up as an obstruction or blocker in the view of the other team; and vice-versa. Instead, all the more this common ground needs to be kept top-of-mind.
+The above relies on the ability of the two “opposing” teams to identify **common ground**. After all, both teams are working towards the same organisational goals. The act of designing metrics should not be taken as licence to forget or lose sight of the common ground. Otherwise, one team’s pursuit of metrics can end up as an obstruction or blocker in the view of the other team; and vice-versa. Instead, keep the common ground top of mind.
 
 > Sidebar: Managed to write the above without using the word “synergy” even once. 😅😂
 
 ## General suggestions
 
-Above, we’ve covered locus of control, quantitative vs qualitative, and antagonist functions - the three dimensions affecting metrics, that I consider to have the most far-reaching impact for software teams; and the ones to consider first during metric design.
+We’ve covered locus of control, quantitative vs qualitative, and antagonist functions - the three dimensions which I consider to have the most far-reaching impact on software teams; and the ones to **consider first** during metric design.
 
-Apart from those, here’s a laundry list of the other aspects of metrics, that I consider to be relevant once getting those first three dimensions done properly. Note also that this list is more general - and not specific to the challenges faced by software teams.
+Here’s a laundry list of the other aspects of metrics, that I consider to also be relevant. Note that this list is not specific to software teams.
 
-- **Proportion of metrics-related work** - Allocate the percentage of work that goes towards metrics improvements - not all work being done is going to be focused on moving the needle. There will always be unanticipated work that is still important, and therefore needs to be done without moving the needle.
-- **Upfront actions planning** - List the actions that would need to be taken to accomplish each metric. If they are ambiguous or don’t seem right, maybe the metric needs to be rethought.
-- **Metric malleability or flexibility** - Define, upfront, exactly how each metric is going to be measured; what’s in, and what’s out.
-- **Metric continuity** - Metrics should not drastically change from one metric cycle to the next (e.g. one quarter to the next). Perhaps you tweak a metric here and there, or replace a metric here and there. Ideally, most metrics should stay the same, so that progression can be compared across multiple cycles. Exceptions to this apply when the organisation is implementing metrics for the first time, if the organisation has a change in its mission/ vision/ purpose, or when teams or functions are restructured.
-- **Quantum effect** - The act of observation changes the things being observed. This can be a good thing or a bad thing. So make sure that you are measuring the right thing, and the act of measurement or the design of the metric does not create any (unintended) systems of perverse incentives.
+- **Proportion of metrics-related work** - Allocate a percentage of work that goes towards metrics improvements - not all work being done is going to be focused on moving the needle. There will always be **unanticipated work** that is still important, and therefore still needs to be done.
+- **Upfront actions planning** - List the actions that would need to be taken to accomplish each metric. If they are ambiguous or don’t seem right, rethink the metric.
+- **Malleability or flexibility** - Define, upfront, exactly how each metric is going to be measured; what’s in, and what’s out.
+- **Continuity** - Metrics should not drastically change from one cycle to the next (e.g. quarterly). It is OK to tweak or replace a metric here and there. Ideally, most metrics should stay the same, so that progression can be compared across multiple cycles.
+  - Exceptions to this apply when implementing metrics for the first time, if the organisation shifts its goals, or when teams are restructured.
+- **Quantum effect** - The act of observation changes the things being observed. This can be a good or bad thing. So make sure that the act of measurement (and the design of the metric) does not create any unintended incentives.
 
 ## Conclusion
 
-What gets measured gets improved. But this does *not always* come true. Implementing metrics within a team does not automatically mean that the team will improve, the work still needs to be put in. The work still needs to be aligned with the metrics, which in turn need to be aligned with goals.
+What gets measured gets worked on… and hopefully improved. This does *not always* come true though. Implementing metrics within a team does not automatically guarantee an improvement - work still needs to be put in. This work needs to be aligned with the metrics, which in turn need to align with the goals.
 
-Of course, all this means that the **design of the metrics is crucial** to the success of a team, and consequently the organisation that it belongs to. This post articulates 3 key dimensions for metrics that are the most challenging for software teams, and details a few example solutions on how to tackle these. When considering these, please do employ your **gut feel and common sense** - it is quite likely that you will need to filter out some of this in your particular situation.
+Think longer term than the duration of the metrics cycle. For example, if the cycle is quarterly, think about how the metrics might pan out across the year; and keep your  sights set on **long-term aspects** of the organisation.
 
-In considering these, think longer term than the duration of the metrics measurement cycle. For example, if the cycle is quarterly, think about how the metrics might pan out across the year (or four cycles); with the intent of keeping sights set on **long-term aspects** of the organisation, such as vision/ mission/ purpose.
-
+The **design of the metrics is crucial** to success. This post provides some suggested solutions around 3 of the most challenging aspects of metrics tracking for software teams. Please employ your **gut feel and common sense** - your particular situation is going to be unique, so use what works.
 Thanks 🙏 to [Luis Fontes](http://thesecurityvault.com) for being a sounding board, and his illuminating discussions on this topic; which triggered/ led me to write about this!
