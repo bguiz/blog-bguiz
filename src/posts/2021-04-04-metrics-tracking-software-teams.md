@@ -7,25 +7,24 @@ description: >
   Locus of control, quantitative vs qualitative, and antagonist functions.
 ---
 
-There are a number of ways in which Software teams get measured on their productivity, output, and deliverables. These come from a wide variety of schools of thought - ranging from management consulting or MBA type thinking (see OKRs, OGSMs, et cetera) through to Agile or Project Management type thinking (see Sprint Burndowns, et cetera). I’ve worked in various teams that have implemented these in various forms. I hope to bring out some of the key things that I’ve learned along the way; with an opinion or two along the way!
+When it is time to start designing metrics for your team - KPIs, OKRs, OGSMs, Sprint Burndowns et cetera - it can be pretty challenging, with many different decisions to be made. 
 
-These approaches all assume that what gets measured gets worked on… Ideally!
+These approaches are based on the belief that what gets measured gets worked on.By incorporating metrics and by tracking them, the idea is that output and productivity will increase.
 
 When you actually put theory into practice, you almost immediately have to grapple with many decisions - both macro-level and micro-level.
 
-This post focuses on the macro-level decisions. In particular, we’ll explore **locus of control**, **quantitative vs qualitative**, and **antagonist functions**. I believe that these have an outsized influence/ impact upon decisions regarding metrics tracking for software teams.
-
+I’ve worked in teams that have implemented metrics and tracking in various forms - ranging from MBA-type to Project Management schools of thought - and have noticed that there are three particular macro-level decisions that have an outsized influence and impact on software teams:  **Locus of control**, **quantitative vs qualitative**, and **antagonist functions**.
 ## Locus of Control
+
+How much control does your team have over the outcome of a particular metric?
 
 ![Locus of Control - What if I told you it was a false choice all along?](/images/posts/metrics-tracking-software-teams--locus-of-control.jpeg)
 
-When designing a metric for yourself or for your team, it is critical to be aware of how much control you/ your team have over it.
+- Is the metric primarily determined by whether or not your team is able to perform specific actions, within a particular deadline?
+- Otherwise, is the metric primarily determined by whether or not others within the organisation? Perhaps even others who are outside your organisation?
+- In the latter case, how much influence does your team have?
 
-- Is it primarily determined by whether or not your team is able to perform specific actions, within a particular deadline?
-- Otherwise, is it primarily determined by whether or not others within the organisation? Perhaps even others who are outside your organisation?
-- In the latter case, how much influence does  your team have?
-
-In practice these two alternatives are usually not binary, more of a  a sliding scale.
+In practice these two alternatives are usually not binary, more of  a sliding scale.
 
 ### Suggestions regarding Locus of Control
 
@@ -39,16 +38,16 @@ Related to this: Seniority. When it comes to individual metrics, those with less
 
 ## Quantity vs Quality
 
+Quantitative metrics are intrinsically numeric; whereas qualitative metrics are more subjective by nature and thus hard to assign a numeric value to.
+
 ![Quantity vs Quality](/images/posts/metrics-tracking-software-teams--quantitative-qualitative.jpeg)
 
-Metrics lend themselves well to quantitative items. Qualitative items are notoriously hard to measure or track! This is because metrics need to be able to definitively reduce items into a numeric value…
-
-When these items are subjective by nature:
+When  items that need to be measured are subjective by nature:
 
 - What is the methodology that should be used?
 - How sure can one be that said methodologies are consistent and equitable?
 
-This complicates the metrics, as not everything can easily be reduced to a number. When we try to do this anyway, in some cases, we have to accept that it is hard to be objective.
+This complicates the metrics, as subjective items cannot  easily be reduced to a number. When we try to do this anyway, in some cases, we have to accept that it is hard to be objective.
 
 > Sidebar: Software is precise and logical, when it is executed. This leads to a common misconception that the act of creating software is also precise and logical. Consequently, this leads to another **common misconception** that software engineering is easy to quantify or measure. While software itself may ultimately have those traits (up for debate), software engineering has many aspects to it that are more art than science. Think about programming languages’ linguistics, design patterns, test strategies, et cetera; these are all highly subjective areas, and therefore hard to put a number on. Case in point: [negative lines of code metrics](https://www.folklore.org/StoryView.py?story=Negative_2000_Lines_Of_Code.txt). This is something that many software engineers go through in their careers, almost as a **right of passage**.
 
@@ -102,13 +101,16 @@ Either way, you can use the opportunity at the end of each metrics cycle (e.g. q
 
 ## Antagonist Functions
 
+Different people within an organisation perform different functions, and some of these functions can antagonise each other, based on the nature of the tasks each of these functions perform.
+
 ![Antagonist Functions - I'm gonna poke holes in your work. Me too, me too.](/images/posts/metrics-tracking-software-teams--antagonist-functions.jpeg)
 
 This dimension applies to the interactions between multiple teams within the same organisation. Specifically the between teams who are “supposed to” head in opposite directions from each other.
 
-> Sidebar: I have chosen the term “antagonist functions” to describe the above, as it conveys the image most vividly. The intent is not to portray these teams (or the term in a negative light) as will become clear soon.
-
 For example, a product team may have metrics around the delivery of certain product features; whereas a security or QA team may have metrics around the spotting bugs in that same product.
+
+
+> Sidebar: There is no intent to portray these teams or functions in a negative light..
 
 This leads to a tension, where it would appear that one team’s success depends upon the other team’s failure. And that appearance may get nudged towards reality if the metrics are not designed carefully to **avoid a zero-sum game** situation.
 
@@ -174,3 +176,4 @@ Think longer term than the duration of the metrics cycle. For example, if the cy
 
 The **design of the metrics is crucial** to success. This post provides some suggested solutions around 3 of the most challenging aspects of metrics tracking for software teams. Please employ your **gut feel and common sense** - your particular situation is going to be unique, so use what works.
 Thanks 🙏 to [Luis Fontes](http://thesecurityvault.com) for being a sounding board, and his illuminating discussions on this topic; which triggered/ led me to write about this!
+
