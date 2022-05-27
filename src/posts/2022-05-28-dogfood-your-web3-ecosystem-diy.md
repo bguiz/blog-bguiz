@@ -16,10 +16,10 @@ on your own, this is the post for you!
 Note that this post is a list of the activity cards;
 The solutions and spoilers have been saved for a subsequent post!
 
-![](dogfood-your-web3-ecosystem--planning-objective-card.png)
+![Original activities format](/images/posts/dogfood-your-web3-ecosystem--planning-objective-card.png)
 *The original design of the activities ☝️*
 
-![]dogfood-your-web3-ecosystem--irl-objective-card.png)
+![IRL activities card](/images/posts/dogfood-your-web3-ecosystem--irl-objective-card.png)
 *The physical cards for the activities used on the day ☝️*
 
 The rules are that these have to be completed sequentially -
@@ -130,8 +130,8 @@ to register a decentralised domain name.
 
 This objective is to use cryptocurrency as savings to earn an interest.
 
-![](dogfood-your-web3-ecosystem--partner-talks.png)
-*Partners on stage, talking about their products.*
+![Parteners on stage during the activities](/images/posts/dogfood-your-web3-ecosystem--partner-talks.png)
+*Partners on stage, talking about their products, as they are being used during the activities day.*
 
 ## OBJECTIVE #7
 
@@ -159,7 +159,7 @@ Adaptations:
 
 - These items may no longer be available, purchase any other item with approximately the same value instead.
 
-![](dogfood-your-web3-ecosystem--irl-purchase.png)
+![So it wasn't really digital after all](/images/posts/dogfood-your-web3-ecosystem--irl-purchase.png)
 *Mini-spoiler: The "digital edition" was a bit of a troll 😉,
 this activity was really about the purchase of a physical cap;
 and was revealed right at the end of the activities.*
