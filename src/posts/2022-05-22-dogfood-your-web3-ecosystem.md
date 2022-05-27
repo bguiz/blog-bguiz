@@ -72,7 +72,7 @@ With the preparations completed, next we needed to run the sessions. Did anythin
 
 That, and more coming soon; this is the first in a series of posts!
 
-- *This post* Dogfood Your Web3 Ecosystem: The thinking behind it, and preparation for it
-- *Coming soon* Try it yourself! - A list of all activities, no spoilers
+- *This post* [Dogfood Your Web3 Ecosystem](/2022/dogfood-your-web3-ecosystem/) - The thinking behind it, and preparation for it
+- [Try it yourself!](/2022/dogfood-your-web3-ecosystem-diy/) - A list of all activities, (almost) no spoilers
 - *Coming soon* Demos - How the activities were completed and evaluated, spoilers aplenty
 - *Coming soon* Takeaways - What we learnt from the entire process
