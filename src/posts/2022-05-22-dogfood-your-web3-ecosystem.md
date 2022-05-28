@@ -2,7 +2,7 @@
 title: 'Dogfood your Web3 Ecosystem'
 date: '2022-05-22T06:41:00+08:00'
 tags: [ux, web3]
-#socialImage: /images/posts/dogfood-your-web3-ecosystem-banner.png
+socialImage: /images/posts/dogfood-your-web3-ecosystem-banner.jpeg
 description: >
   Using your own product and the ecosystem around it... with a focus on web3.
 ---

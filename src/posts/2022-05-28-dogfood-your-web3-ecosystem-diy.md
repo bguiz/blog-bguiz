@@ -2,7 +2,7 @@
 title: 'Try it yourself! - Dogfood Your Web3 Ecosystem'
 date: '2022-05-28T06:22:00+08:00'
 tags: [ux, web3]
-#socialImage: /images/posts/dogfood-your-web3-ecosystem-banner.png
+socialImage: /images/posts/dogfood-your-web3-ecosystem-banner.jpeg
 description: >
   Try out the activities from the activities day yourself!
 ---
