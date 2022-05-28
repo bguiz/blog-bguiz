@@ -3,11 +3,11 @@ title: 'Metrics Tracking for Software Teams'
 date: '2021-04-04T11:19:00+08:00'
 tags: [team, software]
 socialImage: /images/posts/metrics-tracking-software-teams--vernier-calipers-laptop-code.jpeg
-description: >
+metaDesc: >
   Locus of control, quantitative vs qualitative, and antagonist functions.
 ---
 
-When it is time to start designing metrics for your team - KPIs, OKRs, OGSMs, Sprint Burndowns et cetera - it can be pretty challenging, with many different decisions to be made. 
+When it is time to start designing metrics for your team - KPIs, OKRs, OGSMs, Sprint Burndowns et cetera - it can be pretty challenging, with many different decisions to be made.
 
 These approaches are based on the belief that what gets measured gets worked on.By incorporating metrics and by tracking them, the idea is that output and productivity will increase.
 
