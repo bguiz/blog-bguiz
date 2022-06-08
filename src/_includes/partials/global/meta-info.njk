@@ -32,7 +32,7 @@
 {% if socialImage %}
   {% set socialImageUrl = site.url + socialImage %}
   {% set socialImageAlt = pageTitle + " - " + pageDesc %}
-  <meta property="og:image" content="{{ socialImageUrl }}" />
+  <meta property="og:image" itemprop="image" content="{{ socialImageUrl }}" />
   <meta name="twitter:image" content="{{ socialImageUrl }}" />
   <meta property="og:image:alt" content="{{ socialImageAlt }}" />
   <meta name="twitter:image:alt" content="{{ socialImageAlt }}" />
