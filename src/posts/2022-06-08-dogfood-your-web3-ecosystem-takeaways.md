@@ -33,7 +33,7 @@ We mitigated this by getting those with local SIMs to start their own WiFi hotsp
 
 There were also security concerns from connecting to a network - better to use a network which you control!
 
-The main takeaway from this is that relying on the default network at the venue isn't the best plan. In the next iteration we should bring our own router(s) and set up our own network capable of supporting the number of devices anticipated.
+The main takeaway from this is that relying on the default network at the venue isn't the best plan.  In the next iteration we have a better connection capable of handling the anticipated bandwidth required for the planned activities
 
 ## Skills-related
 

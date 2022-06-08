@@ -7,8 +7,6 @@ metaDesc: >
   Try out the activities from the activities day yourself!
 ---
 
-# Dogfood Your Ecosystem - Try it yourself!
-
 If you would like to follow along by doing the activities from the
 [RSK+RIF Activities Day](/2022/dogfood-your-web3-ecosystem/)
 on your own, this is the post for you!
@@ -186,9 +184,11 @@ This task is to recover funds after "losing" your wallet.
 
 So those are all the activities! If you do indeed try them out, be sure to drop your feedback and questions over at [rsk.co/slack](https://rsk.co/slack)
 
+----
+
 More coming soon; this is the second in a series of posts!
 
 - [Dogfood Your Web3 Ecosystem](/2022/dogfood-your-web3-ecosystem/) - The thinking behind it, and preparation for it
 - *This post* [Try it yourself!](/2022/dogfood-your-web3-ecosystem-diy/) - A list of all activities, (almost) no spoilers
 - *Coming soon* Demos - How the activities were completed and evaluated, spoilers aplenty
-- *Coming soon* Takeaways - What we learnt from the entire process
+- [Takeaways](/2022/dogfood-your-web3-ecosystem-takeaways/) - What we learnt from the entire process

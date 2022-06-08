@@ -7,9 +7,6 @@ metaDesc: >
   Using your own product and the ecosystem around it... with a focus on web3.
 ---
 
-
-# Dogfood Your Web3 Ecosystem
-
 Dogfooding is the process of using your own product.
 The process is about trial, but the good stuff is in what you learn from it...
 and use that to figure out how to improve the product.
@@ -70,9 +67,11 @@ Next we formed an "experts" group: Several handpicked people who were not going 
 
 With the preparations completed, next we needed to run the sessions. Did anything mess up on the day? Sure did - despite all the thinking and preparation that went into it!
 
+----
+
 That, and more coming soon; this is the first in a series of posts!
 
 - *This post* [Dogfood Your Web3 Ecosystem](/2022/dogfood-your-web3-ecosystem/) - The thinking behind it, and preparation for it
 - [Try it yourself!](/2022/dogfood-your-web3-ecosystem-diy/) - A list of all activities, (almost) no spoilers
 - *Coming soon* Demos - How the activities were completed and evaluated, spoilers aplenty
-- *Coming soon* Takeaways - What we learnt from the entire process
+- [Takeaways](/2022/dogfood-your-web3-ecosystem-takeaways/) - What we learnt from the entire process
