@@ -33,7 +33,7 @@ We mitigated this by getting those with local SIMs to start their own WiFi hotsp
 
 There were also security concerns from connecting to a network - better to use a network which you control!
 
-The main takeaway from this is that relying on the default network at the venue isn't the best plan.  In the next iteration we have a better connection capable of handling the anticipated bandwidth required for the planned activities
+The main takeaway from this is that relying on the default network at the venue isn't the best plan.  In the next iteration we will have a better connection capable of handling the anticipated bandwidth required for the planned activities
 
 ## Skills-related
 
@@ -96,7 +96,7 @@ We believe that the experiences we had during this activities day are largely mi
 
 ## Fin
 
-A big thanks to **everyone** who participated. Of course, major props to those who helped with the planning the activities and running the event on the day: [Mike Mendes](https://www.linkedin.com/in/michaelmendes7), [Bernardo Codesido](https://www.linkedin.com/in/bernardocodesido), [Filipe Moura](https://www.linkedin.com/in/filipemoura), [Maxi del Hoyo](https://www.linkedin.com/in/0xmdh), [Diego Masini](https://www.linkedin.com/in/diegomasini), and [Lionel Modi](https://www.linkedin.com/in/hlmodi/). Thanks to the partners in the RSK ecosystem whose DApps were part of the activities: [Money on Chain](https://rif.moneyonchain.com/), [Tropykus](https://app.tropykus.com/?lang=en), [Kripton Market](https://marketplace.kriptonmarket.com/), and [Sovryn](https://live.sovryn.app/).  And finally, to [Daniel Fogg](https://www.linkedin.com/in/danielfogg), for seeding the  idea around dogfooding.
+A big thanks to **everyone** who participated. Of course, major props to those who helped with the planning the activities and running the event on the day: [Mike Mendes](https://www.linkedin.com/in/michaelmendes7), [Bernardo Codesido](https://www.linkedin.com/in/bernardocodesido), [Filipe Moura](https://www.linkedin.com/in/filipemoura), [Maxi del Hoyo](https://www.linkedin.com/in/0xmdh), [Diego Masini](https://www.linkedin.com/in/diegomasini), and [Lionel Modi](https://www.linkedin.com/in/hlmodi/). Thanks to the partners in the RSK ecosystem whose DApps were part of the activities: [Money on Chain](https://rif.moneyonchain.com/), [Tropykus](https://app.tropykus.com/?lang=en), [Kripton Market](https://marketplace.kriptonmarket.com/), and [Sovryn](https://live.sovryn.app/).  And finally, to [Daniel Fogg](https://www.linkedin.com/in/danielfogg) and [Pei Chen](https://www.linkedin.com/in/pei-chen), for seeding the  idea around dogfooding.
 
 ----
 
