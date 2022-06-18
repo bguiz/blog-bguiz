@@ -8,17 +8,17 @@ metaDesc: >
 ---
 
 During, and after, the activities day, we collected a lot of feedback.
-While one intended outcome was to get everyone with some hands-on experience
+While one intended outcome was to get everyone some hands-on experience
 within the ecosystem that they were helping to build or support;
 another **very important** intended outcome was for us to learn
-about what works, what does not, and what can be **improved**.
+about what works, what does not work, and what could be **improved**.
 
 ![](/images/posts/dogfood-your-web3-ecosystem--user-realisation.png)
-> What I’ve started realising is that if we define everyday user as non-advanced crypto user,
-> we limit it to like 99.9 percent of the society 😄
+> What I’ve started realising is that if we define the everyday user as non-advanced crypto user,
+> we limit it to like 99.9 percent of society 😄
 > - [Natalia Baránková](https://www.linkedin.com/in/natybarankova/)
 
-By and far, the biggest takeaway from the dogfooding experience was that
+The key takeaway from the dogfooding experience was that
 the technology needs to be adapted to serve everybody,
 not just the tech savvy power users.
 
@@ -27,24 +27,56 @@ from DApps, gamification, networks, infrastructure, and skills.
 
 ## Network-related
 
-The most common complaint during the day - virtually every single participant had an issue with this - was Internet issues. This was of course nothing to do with the activities or the ecosystem... but nonetheless was a huge challenge for almost all participants. This was because we were all connected to the hotel's WiFi, and it simply couldn't handle the bandwidth needed.
+The most common complaint during the day -
+virtually every single participant had an issue with this -
+was Internet connectivity issues.
+This was of course nothing to do with the activities or the ecosystem...
+but nonetheless was a huge challenge for almost all participants.
+This was because we were all connected to the hotel's WiFi,
+and it simply couldn't handle the bandwidth needed.
 
-We mitigated this by getting those with local SIMs to start their own WiFi hotspots, and then have the other group members tether to it. We had partial success with this, because there weren't enough to go around for everyone.
+We mitigated this by getting those with local SIMs to start their own WiFi hotspots, and then have the other group members tether to it.
+We had partial success with this,
+because there weren't enough to go around for everyone.
 
-There were also security concerns from connecting to a network - better to use a network which you control!
+There were also security concerns from connecting to an untrusted network -
+better to use a network which you control!
 
-The main takeaway from this is that relying on the default network at the venue isn't the best plan.  In the next iteration we will have a better connection capable of handling the anticipated bandwidth required for the planned activities
+The learning point from this, is that relying on the default network
+at the venue isn't the best plan.
+In the next iteration we will have a better connection,
+capable of handling the anticipated bandwidth required for the planned activities.
+
+Nonetheless, this did prove to be a valuable experience for us, because not all users in our ecosystem have reliable Internet access.
+We were able to observe which parts were more resilient
+(and less resilient) under these circumstances.
 
 ## Skills-related
 
-When planning how to split the teams, we needed to make guesses about who knew their way around the tools and the ecosystem already, and who would need to pick up some skills on the spot. Turns out that only **around one in five** in the organisation already had the required skill levels. We expected a larger proportion, since by definition, every participant works in the blockchain industry. If we extrapolate  this to a global user base, the proportion is going to be even lower. This shows that a move to Everyday DeFi is a logical step to mass adoption, as most users will not be crypto native.
+When planning how to split the teams,
+we needed to make guesses about who knew their way around the tools and the ecosystem already,
+and who would need to pick up some skills on the spot.
+Turns out that only **around one in five** in the organisation
+already had the required skill levels.
+We expected a larger proportion,
+since by definition, every participant works in the blockchain industry.
+If we extrapolate  this to a global user base,
+the proportion is going to be even lower.
+This shows that a move towards serving everyday users
+is a logical step to mass adoption,
+as most users will not be crypto native.
 
 Some specific skill gaps that we identified included:
 - Unable to check transaction status using block explorer
 - Not planning ahead - need to retain a small amount of RBTC to pay for gas fees in anticipated transactions
 - Configuring a custom network in a wallet was challenging
 
-On the flip side, there were a few who were really advanced, and were able to identify and perform the easter egg tasks with uncanny ability. Something else that we predicted, and were happy about, was that one or two people from each group, with the higher skill levels, completed their tasks quite easily, and then proceeded to help the rest of the group complete their tasks.
+On the flip side, there were a few who were really advanced,
+and were able to identify and perform the easter egg tasks with uncanny ability.
+Something else that we predicted, and were happy about,
+was that one or two people from each group, with the higher skill levels,
+completed their tasks quite easily,
+and then proceeded to help the rest of the group complete their tasks.
 
 ## Gamification-related
 
@@ -54,9 +86,43 @@ There was a leader board projected onto the main screen, and this helped to fost
 
 The competitive atmosphere also made it more compelling. Most of the other sessions consisted of presentations, and people would leave immediately when the break started, and dawdle in slowly after the break was over. In this session, however, most seemed glued to their seats, leaving later after the break started, and returning earlier as well. We felt that this was genuine enthusiasm taking hold!
 
-There were several instances of **rage-quits** observed during the day as well. Some gave up because of the Internet issues. Some gave up because a DApp didn't behave "as it was supposed to". Some gave up because they made genuine errors. The experts (the ones who were running and evaluating the groups) were sometimes able to cajole those who gave up to get back into the game. In other cases, the frustration levels were so high that they refused. The good thing is that the latter group was less than a handful of people - most were successful!
+There were several instances of **rage-quits** observed during the day as well.
+Some gave up because of the Internet issues.
+Some gave up because a DApp didn't behave "as it was supposed to".
+Some gave up because they made genuine errors.
+The experts (the ones who were running and evaluating the groups)
+were sometimes able to cajole those who gave up to get back into the game.
+In other cases, the frustration levels were so high that they refused.
+The good thing is that the latter group was less than a handful of people -
+most were successful!
 
-My personal reflection of the above is that even though today’s web3 ecosystem **is too technical**, or otherwise hard to use, some **perseverance, paired with help** from someone who’s experienced, is able to get them over the line. This was possible (and encouraged) in the way that this activities day was structured. However, this is likely out of reach for the average user, representing a **significant barrier to entry**.
+My personal reflection of the above is that even though
+today’s web3 ecosystem **is too technical**, or otherwise hard to use,
+some **perseverance, paired with help** from someone who’s experienced,
+is able to get them over the line.
+This was possible (and encouraged)
+in the way that this activities day was structured.
+However, this is likely out of reach for the average user.
+
+One learning point from this reflection is that
+products need to be built with usability in mind.
+The vast majority of DApps out there simply are not.
+Simply doing this could almost be a
+USP (unique selling proposition) in this space,
+by removing a significant barrier to entry.
+
+Another thing to note is that when dogfooding,
+the participants are never wrong or stupid.
+The participants are **not** to blame;
+the system that they are attempting to use
+is really what should be blamed.
+What about the underlying infrastructure,
+or the specific DApps that they were using,
+was causing them to get confused, to make mistakes, or to get frustrated?
+There is quite a lot that we learnt about where the system
+failed to meet the expectations of the users,
+and those are detailed in the "infrastructure-related"
+and "DApp-related" sections below.
 
 ## Infrastructure-related
 
@@ -66,7 +132,7 @@ However, there were failures - in the eyes of the users - in the technical infra
 The most commonly encountered issue- by a huge margin - was the rate limits imposed by the RSK public nodes. Since most of us were on the same network, the public node would have rate limited the entire group as if it were one user; based on the traffic originating from a single IP address. Rate limiting is a valid technique used by devops/ security to protect infrastructure against denial-of-service attack vectors. So this is a hard balancing act. Some proposed ideas around this that require investigation were: Another means of detecting unique users for the purposes of rate limiting? A decentralised form of public RPC nodes?
 
 There were several other very valuable comments too:
-- Need an easier way to configure web wallets to add the RSK network.
+- Provide an easier way to configure web wallets to add the RSK network.
 - In the block explorer, a brand new account shows as "Not Found"; so provide steps to validate or verify that the account is operable
 - Transactions on the blockchain are slow, a lot of time was spent waiting while thinking that something had maybe failed; the biggest frustration here was that DApps were much slower than using web2 apps
 
@@ -96,7 +162,24 @@ We believe that the experiences we had during this activities day are largely mi
 
 ## Fin
 
-A big thanks to **everyone** who participated. Of course, major props to those who helped with the planning the activities and running the event on the day: [Mike Mendes](https://www.linkedin.com/in/michaelmendes7), [Bernardo Codesido](https://www.linkedin.com/in/bernardocodesido), [Filipe Moura](https://www.linkedin.com/in/filipemoura), [Maxi del Hoyo](https://www.linkedin.com/in/0xmdh), [Diego Masini](https://www.linkedin.com/in/diegomasini), and [Lionel Modi](https://www.linkedin.com/in/hlmodi/). Thanks to the partners in the RSK ecosystem whose DApps were part of the activities: [Money on Chain](https://rif.moneyonchain.com/), [Tropykus](https://app.tropykus.com/?lang=en), [Kripton Market](https://marketplace.kriptonmarket.com/), and [Sovryn](https://live.sovryn.app/).  And finally, to [Daniel Fogg](https://www.linkedin.com/in/danielfogg) and [Pei Chen](https://www.linkedin.com/in/pei-chen), for seeding the  idea around dogfooding.
+A big thanks to **everyone** who participated. Of course, major props to those who helped with the planning the activities and running the event on the day:
+[Mike Mendes](https://www.linkedin.com/in/michaelmendes7),
+[Bernardo Codesido](https://www.linkedin.com/in/bernardocodesido),
+[Filipe Moura](https://www.linkedin.com/in/filipemoura),
+[Maxi del Hoyo](https://www.linkedin.com/in/0xmdh),
+[Diego Masini](https://www.linkedin.com/in/diegomasini), and
+[Lionel Modi](https://www.linkedin.com/in/hlmodi/).
+Thanks to the partners in the RSK ecosystem whose DApps were part of the activities:
+[Money on Chain](https://rif.moneyonchain.com/),
+[Tropykus](https://app.tropykus.com/?lang=en),
+[Kripton Market](https://marketplace.kriptonmarket.com/), and
+[Sovryn](https://live.sovryn.app/).
+Thanks to [Daniel Fogg](https://www.linkedin.com/in/danielfogg)
+and [Pei Chen](https://www.linkedin.com/in/pei-chen),
+for seeding the idea around dogfooding.
+Thanks to [Caylie Panuccio](https://www.linkedin.com/in/cayliepanuccio)
+and [Mike Mendes](https://www.linkedin.com/in/michaelmendes7)
+for reviewing these posts.
 
 ----
 
