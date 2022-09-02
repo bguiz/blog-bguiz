@@ -4,10 +4,11 @@ date: '2022-06-08T06:22:00+08:00'
 tags: [ux, web3]
 socialImage: /images/posts/dogfood-your-web3-ecosystem-banner.jpeg
 metaDesc: >
-  The main takeaways from the the activities
+  The main takeaways from the activities
 ---
 
-During, and after, the activities day, we collected a lot of feedback.
+During and after the activities day,
+we collected a lot of feedback.
 While one intended outcome was to get everyone some hands-on experience
 within the ecosystem that they were helping to build or support;
 another **very important** intended outcome was for us to learn
