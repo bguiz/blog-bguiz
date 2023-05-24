@@ -55,7 +55,7 @@ module.exports = function(config) {
   config.addPassthroughCopy('src/presentations/**/*.svg');
   config.addPassthroughCopy('node_modules/nunjucks/browser/nunjucks-slim.js');
   config.addPassthroughCopy({
-    'static/3rd-party': '3rd-party',
+      'static/3rd-party': '3rd-party',
   });
   config.addPassthroughCopy({
     'node_modules/reveal.js/js': '3rd-party/revealjs/js',
