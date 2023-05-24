@@ -55,6 +55,9 @@ module.exports = function(config) {
   config.addPassthroughCopy('src/presentations/**/*.svg');
   config.addPassthroughCopy('node_modules/nunjucks/browser/nunjucks-slim.js');
   config.addPassthroughCopy({
+    'static/3rd-party': '3rd-party',
+  });
+  config.addPassthroughCopy({
     'node_modules/reveal.js/js': '3rd-party/revealjs/js',
   });
   config.addPassthroughCopy({
@@ -68,9 +71,6 @@ module.exports = function(config) {
   });
   config.addPassthroughCopy({
     'node_modules/reveal.js/plugin': '3rd-party/revealjs/plugin',
-  });
-  config.addPassthroughCopy({
-    'static/3rd-party': '3rd-party',
   });
 
   const now = new Date();

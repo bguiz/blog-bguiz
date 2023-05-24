@@ -2,3 +2,6 @@
   command = "npm run production"
   publish = "dist"
   ignore = "node ./util/netlify-ignore-build.js"
+
+[build.environment]
+  NODE_VERSION = "18.15.0"
