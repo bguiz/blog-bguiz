@@ -1,0 +1,3265 @@
+---
+title: Ethereum Virtual Machine on Hedera
+layout: 'layouts/presentation-oas-revealjs.njk'
+date: '2023-05-19T18:30+08:00'
+description: Understanding EVM on Hedera through the lens of HIPs
+tags: [hedera, evm, solidity]
+socialImage: /images/posts/caffeinated-jester.jpeg
+---
+<div class="reveal">
+    <div class="slides">
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+## Understanding Hedera through EVM-related HIPs
+
+Brendan Graetz, 2023
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>(introduce)</li>
+<li>DApps Dev Club 2018</li>
+<li>Rootstock 2018-2023</li>
+<li>Hedera 2023-present</li>
+<li>throwback to Chainstack in 2018</li>
+<li>read my infrequent writings - details in slide footer</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Intro
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- "Code trumps docs" — Juliano Rizzo (Coinspect)
+- Huge **chasm** to cross → effort/ times
+- RFCs/IPs → nice in-between
+- Examine the history easily → decision log
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><p>speaker notes for intro slide</p>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Before we start
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hashgraph" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Hashgraph → Consensus algorithm
+- Hedera → The "blockchain" network
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`github.com/hashgraph`](https://github.com/hashgraph)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Before we start, let&#39;s quickly address the names - Hashgraph or Hedera?</li>
+<li>The concept started by the co-founders was something called hashgraph; which is essentially a DAG-based transaction ordering and finality confirmation consensus algorithm</li>
+<li>This hashgraph consensus algorithm had no application attached to it at the time, I remember way back in 2018, Mance gave a talk, at which he distributed a <code>swirlds.jar</code> file</li>
+<li>This file contained several POC applications demonstrating potential use cases for it. For example one of them was a database JDBC driver, and another one was a multiplayer snake game.</li>
+<li>Later on, came Hedera, which is the blockchain-like application using Hashgraph as its consensus mechanism, of course</li>
+<li>This is why, for example, Hedera&#39;s github org name is &quot;Hashgraph&quot;</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Overview /1 
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+Early days
+- Layer-2 Smart Contract Network
+- Migrate Smart Contract Service EVM to Hyperledger Besu EVM
+
+EVM Compatibility - Fundamentals
+- Smart Contract Service Gas Based Throttling 🛠️
+- Expand alias support in CryptoCreate & CryptoTransfer Transactions 🛠️
+- Account Virtual Addresses
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, so here&#39;s an overview of what we&#39;ll cover today</li>
+<li>We&#39;ll talk about 10 different Hedera Improvement Proposals, or HIPs, which I think illuminate the Hedera network&#39;s journey towards EVM compatibility</li>
+<li>I know that slides are boring, and y&#39;all would rather see some code...</li>
+<li>so on this slide, I&#39;ve put a  🛠️ hammer-and-spanner emoji next to some of the HIPs; and that means that we can do a live demo for those ones.</li>
+<li>No way to cover all in the time we have ... part 2</li>
+<li>So we&#39;ve got 2 HIPs under &quot;Early days&quot;, 3 HIPs under &quot;EVM compatibility - fundamentals&quot; ... and</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Overview /2 
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+EVM Compatibility - Architecture
+- Wrapping Ethereum Transaction Bytes in a Hedera Transaction 🛠️
+- JSON-RPC Relay  🛠️
+- Introduction Of Blocks
+
+Pre-compiles for services
+- Exchange rate system contract  🛠️
+- Add UtilPrngTransaction  🛠️
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>3 HIPs under &quot;EVM Compatibility - Architecture&quot;, 2 HIPs under &quot;Pre-compiles for services&quot; ... and</li>
+<li>Let&#39;s begin!</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Early days
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+Attempting to integrate EVM capabilities
+
+- [HIP-11:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-11.md) Layer-2 Smart Contract Network
+- [HIP-26:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-26.md) Migrate Smart Contract Service EVM to Hyperledger Besu EVM
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>In the early days, there were some false starts with the EVM</li>
+<li>I&#39;ll be glossing over this section quickly, as there isn&#39;t much to see here - mostly about historical context</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-11:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-11.md) Layer-2 Smart Contract Network
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-11" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- L2 network on the existing L1 network
+- L1: Original Hedera
+- L2: EVM-compatible
+- This was **not** the path taken
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-11`](https://hips.hedera.com/hip/hip-11)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>The first take on adding EVM-compatibility</li>
+<li>Was <em>not</em> to make the network itself EVM-compatible</li>
+<li>Instead it was about creating a layer 2 network on the existing layer 1 network, and have the layer 2 be dedicated to EVM-compatible smart contracts</li>
+<li>Ultimately Hedera went down the path of adding EVM compatibility to the main layer 1 network itself, so it didn&#39;t go down this path</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-26:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-26.md) Migrate Smart Contract Service EVM to Hyperledger Besu EVM
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-26" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Current EVM impl started here
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-26`](https://hips.hedera.com/hip/hip-26)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>After previous attempts to add EVM to the network - which never went public - decided to plonk in the implementation from Besu</li>
+<li>This was the genesis of the (current) EVM implementation that you see on Hedera today</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+EVM Compatibility - Fundamentals
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+Finding parallels between way it works currently, and the EVM way of working
+
+- [HIP-583:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-583.md) Expand alias support in CryptoCreate & CryptoTransfer Transactions
+- [HIP-631:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-631.md) Account Virtual Addresses
+- [HIP-185:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-185.md) Smart Contract Service Gas Based Throttling
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>This was about finding equivalents and similarities between Hedera and Ethereum or EVM</li>
+<li>And then about defining what the appropriate translations between the 2 systems were.</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-583:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-583.md) Expand alias support in CryptoCreate & CryptoTransfer Transactions
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-583" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- *Hedera Account ID* ↔ *Ethereum Address String*
+- *Hedera Account Num Alias* ↔ *Ethereum Address String*
+- *Hedera Key Alias* ↔ *Ethereum Address String*
+- *EVM Address Alias* ↔ *Ethereum Address String*
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-583`](https://hips.hedera.com/hip/hip-583) 
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>This is where conversions between <em>Hedera Account ID</em>, <em>Hedera Account Num Alias</em>, <em>Hedera Key Alias</em>, <em>EVM Address Alias</em> ↔ <em>Ethereum Address String</em> are defined</li>
+<li>This is where <em>long-zero address</em> term is first used</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+DEMO
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/master/convert-hedera-native-address-to-evm-address" alt="" style="object-fit: scale-down">
+
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://stackoverflow.com/q/76182970/194982" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+Conversions:
+
+`0.0.12345` --> `0x0000000000000000000000000000000000003039`
+
+`17.2049.12345` --> `0x0000001100000000000008010000000000003039`
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hedera-code-snippets/convert-hedera-native-address-to-evm-address`](https://github.com/hedera-dev/hedera-code-snippets/blob/master/convert-hedera-native-address-to-evm-address)
+- [How to convert a Hedera native address into an EVM address? (Stackoverflow)](https://stackoverflow.com/q/76182970/194982)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, let&#39;s demonstrate this in action</li>
+<li>We&#39;ll convert one of those pairs, from a hedera address where the format is
+shard-dot-realm-dot-num to an EVM address</li>
+<li>... DEMO ...</li>
+<li>We were able to see how one address maps to another</li>
+<li>You can check out the answer on stackoverflow</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-631:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-631.md) Account Virtual Addresses
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-631" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Relationship between Hedera-native accounts and EVM accounts
+- This also references the *long-zero address* term
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-631`](https://hips.hedera.com/hip/hip-631)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>This describes in greater depth the relationship between Hedera native accounts, and the more newly added EVM addresses</li>
+<li>This also references the <em>long-zero address</em> term</li>
+<li>Provides further clarity, and implementation detail, to the previous HIP</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-185:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-185.md) Smart Contract Service Gas Based Throttling
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-185" alt="" style="object-fit: scale-down">
+
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-584" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Transaction count limit + gas limit
+- Penalty: Set max gas to more than 125% of actual gas used
+- Impl: Refund of unused gas is limited to 20% of the max gas sent
+- Prevents over-reservation for transactions
+- Gas estimation: Impl coming soon (HIP-584)
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-185`](https://hips.hedera.com/hip/hip-185)
+- [`hips.hedera.com/hip/hip-584`](https://hips.hedera.com/hip/hip-584)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Gas is used in the EVM to make users of the network pay an approximation of the compute costs for the transactions that they want the network to process</li>
+<li>This is essential because otherwise the network will get flooded</li>
+<li>I like to think of it as rate limiting by auction</li>
+<li>Hedera needed the same concept as well, for similar reasons</li>
+<li>It largely copied EVM&#39;s transaction flow where the user pays a max gas amount, and then gets refunded whatever is unused</li>
+<li>But because this max gas amount is effectively the auction bid, it skews the auction process itself, and this is common in Ethereum</li>
+<li>Hedera removes this by setting a cap, in percentage terms, of how much that refund can be</li>
+<li>This is penalises overly high max gas being set of transactions submitted to the transaction pool</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+DEMO!
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/master/excess-gas-partial-refunds" alt="" style="object-fit: scale-down">
+
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://stackoverflow.com/q/76250641/194982" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+On Ethereum:
+- `gasUsed = gasConsumed`
+- Full refund, always
+
+On Hedera:
+- `gasUsed = max(gasConsumed, gasLimit * 0.8)`
+- Partial refund, when `gasLimit` too high
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hedera-code-snippets/excess-gas-partial-refunds`](https://github.com/hedera-dev/hedera-code-snippets/blob/master/excess-gas-partial-refunds)-   [  
+  Large discrepancy in `gasUsed` values in near-identical transactions on Hedera - why? (Stackoverflow)](https://stackoverflow.com/q/76250641/194982)
+-   [Why does `eth_estimateGas` on Hedera return an unexpectedly high value? (Stackoverflow)](https://stackoverflow.com/q/76251324/194982)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, let&#39;s demonstrate this using the same smart contract on both Hedera and Ethereum</li>
+<li>... DEMO ...</li>
+<li>On Hedera we received a partial refund, whereas on Ethereum we received a full refund</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+EVM Compatibility - Architecture
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+Re-architecting to keep original network functional, while refactoring it to include EVM components
+
+- [HIP-410:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-410.md) Wrapping Ethereum Transaction Bytes in a Hedera Transaction
+- [HIP-482:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-482.md) JSON-RPC Relay
+- [HIP-415:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-415.md) Introduction Of Blocks
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>This next set is to do with architecture</li>
+<li>There are also some fundamental differences that cannot be ignored</li>
+<li>Ethereum is public and permissionless;</li>
+<li>... whereas Hedera is public and permissioned -&gt; you have to be on a governing council in order to participate in consensus</li>
+<li>Ethereum is a blockchain, where consensus is achieved on blocks (each of which is a group of transactions);</li>
+<li>... whereas Hedera is a non-blockchain DLT, where consensus is achieve on individual transactions (using the Hashgraph algorithm)</li>
+<li>In Ethereum, you have the concept of full nodes, and the concept of light nodes;</li>
+<li>... whereas Hedera does not quite have that, but it can be approximated</li>
+<li>Let&#39;s see how this all fits together architecturally!</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-410:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-410.md) Wrapping Ethereum Transaction Bytes in a Hedera Transaction /1
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-410" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- gRPC HAPI as the comms protocol - not JSON-RPC
+- so: adda a new gRPC HAPI transaction type - wrap JSON-RPC
+- Foundation for all EVM-compatible software to interact with Hedera's EVM
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-410`](https://hips.hedera.com/hip/hip-410)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Hedera nodes natively use gRPC Hedera API (HAPI)  as the communication protocol for their exposed interface - not JSON-RPC</li>
+<li>Hedera adds a new gRPC HAPI transaction to its own nodes to wrap JSON-RPC messages; so both are supported now</li>
+<li>This is a foundation for all EVM-compatible things (wallets, libraries, DApps, etc) to start working on Hedera, and interacting with its EVM</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-410:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-410.md) Wrapping Ethereum Transaction Bytes in a Hedera Transaction /2
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-410" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Smallest unit: Tinybar = 10HBAR.
+- New "virtual" unit introduced: Weibars = 10HBAR
+- Weibars are auto rounded-down (floor)
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-410`](https://hips.hedera.com/hip/hip-410)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>The smallest unit of HBAR is tinybar, which is 10HBAR.</li>
+<li>For solc &amp; EVM compatibility, a new &quot;virtual&quot; unit called weibars was introduced, which is 10HBAR</li>
+<li>Units of HBAR that are smaller than tinybar (which can occur due to weibar) are automatically dropped (floor) in transactions</li>
+<li>HBAR is the native coin on Hedera, and therefore what gas is denominated in</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+DEMO!
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/master/smallest-hbar-units-smart-contracts" alt="" style="object-fit: scale-down">
+
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://stackoverflow.com/a/76178646/194982" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Deploy contract and invoke `checkBalance`
+- Observe if "full unit" is `10^18` vs `10^8`
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hedera-code-snippets/smallest-hbar-units-smart-contracts`](https://github.com/hedera-dev/hedera-code-snippets/blob/master/smallest-hbar-units-smart-contracts)
+-   [What is the "full unit" of the native coin (HBAR) on Hedera? (Stackoverflow)](https://stackoverflow.com/a/76178646/194982)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, let&#39;s demonstrate this in action, by sending the native coin to a smart contract, on both Hedera and Ethereum</li>
+<li>... DEMO ...</li>
+<li>We were able to see how the smallest unit of HBAR within the EVM was 10^-8, instead of 10- We were also able to see how the smallest unit of HBAR outside of the EVM (in JSON-RPC) was 10^-18, and done for compatibility with existing wallets/ tools/ libraries</li>
+<li>You can check out the answer on Stackoverflow for details on this</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-482:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-482.md) JSON-RPC Relay
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-482" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+-  `hedera-services`  consensus nodes
+- `hedera-mirror-node` archival nodes
+- `hedera-json-rpc-relay` JSON-RPC interface
+  - HAPI (gRPC)
+  - Custom Mirror API (HTTP, REST-style)
+  - JSON-RPC (HTTP and WS)
+- RPC is compatible with geth (a subset)
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-482`](https://hips.hedera.com/hip/hip-482)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Hedera achieves consensus on transaction via the consensus nodes, which are implemented within the <code>hedera-services</code> repo, and communicates exclusively using HAPIs, which use gRPC as the underlying protocol</li>
+<li>Hedera also has mirror nodes, which are implemented in the <code>hedera-mirror-node</code> repo, which communicate with the hedera consensus nodes. It exposes its own custom API, which uses HTTP (with REST conventions) as the underlying protocol</li>
+<li>Hedera consensus nodes do not store transactions beyond that which is needed to achieve final consensus on them, and thus they do not contain full transaction history. Hedera mirror nodes, on the other hand do. Therefore hedera consensus nodes + hedera mirror nodes in combination roughly equate to a &quot;full node&quot; (to use geth/ Ethereum lingo)</li>
+<li>However, in order for any client-side EVM-compatible things (wallets, libraries, DApps, etc) to communicate with a Hedera &quot;full node&quot;, it needs to support JSON-RPC, which neither the Hedera Consensus nodes nor the Hedera Mirror nodes do</li>
+<li>The RPC relay, implemented in the <code>hedera-json-rpc-relay</code> repo, solves this by relaying requests (proxying plus translating) between the client-side things and the Hedera Consensus nodes plus the Hedera mirror nodes. It is able to communicate in all 3 protocols: HAPI (gRPC), custom Mirror API (HTTP, REST-style), and JSON-RPC (HTTP and WS)</li>
+<li>The RPC Relay supports the same JSON-RPC requests as geth. A specified subset of them, rather than all of them.</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+DEMO!
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets/tree/master/run-hedera-json-rpc-relay-testnet" alt="" style="object-fit: scale-down">
+
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://stackoverflow.com/a/76088856/194982" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Run an RPC Relay server
+- Request `net_version`,  `eth_blockNumber`, and `eth_getBalance`
+- Note balance on RPC is `10^18` instead of `10^8`
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hedera-code-snippets/run-hedera-json-rpc-relay-testnet`](https://github.com/hedera-dev/hedera-code-snippets/tree/master/run-hedera-json-rpc-relay-testnet)
+- [`stackoverflow.com/a/76088856/194982`](https://stackoverflow.com/a/76088856/194982)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, let&#39;s demonstrate this in action, by running the RPC Relay, and then issuing an RPC request to it</li>
+<li>... DEMO ...</li>
+<li>We were able to see how to run a the Hedera JSON RPC Relay server on localhost, and able to issue it with a an RPC request, and get its response</li>
+<li>A key point here is that the externally exposed interface is nearly identical to what you would get when interacting with geth; even though the internal implementation is completely different</li>
+<li>We were also able to see how the smallest unit of HBAR outside of the EVM (in JSON-RPC) was 10^-18, and done for compatibility with existing wallets/ tools/ libraries ; contrast this with the smallest unit that we saw earlier within the EVM</li>
+<li>You can check out the answer on Stackoverflow for details on this</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-415:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-415.md) Introduction Of Blocks
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-415" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- In Hedera consensus on transactions, not blocks
+- Hashgraph consensus: Directed acyclic graph
+  - Nodes: Transactions
+  - Vertices: Gossip about known previous transactions 
+- Blockchain consensus: Singly linked list
+  - Nodes: Blocks (of transactions)
+  - Links: Block hash of previous block
+- Natively, no blocks --> Virtual blocks
+- Mirror nodes ingest transactions in groups --> Record files
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-415`](https://hips.hedera.com/hip/hip-415)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Hedera Consensus nodes do <em>not</em> achieve consensus on blocks of transactions, in the way that Ethereum and Bitcoin do.</li>
+<li>Instead Consensus node achieve consensus directly on individual transactions themselves.</li>
+<li>This is because it uses a fundamentally different consensus algorithm (Hashgraph), which is based on a directed acyclic graph of transactions, instead of a singly linked list of blocks (which contain the transactions).</li>
+<li>As such, Hedera natively does not have the concept of blocks</li>
+<li>However, the concept of blocks is necessary with the introduction of EVM compatibility, as block number is accessible both within smart contracts and from RPC requests as part of the network state.</li>
+<li>As Hedera mirror nodes ingest and store transactions from the Hedera consensus nodes, as a matter implementation, they do so using &quot;record files&quot;, which occur approximately for every 2 seconds worth of transactions.</li>
+<li>All transactions occurring in the same record file (based on their timestamps) are considered to be part of the same block.</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+DEMO!
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/master/obtain-block-number-from-timestamp" alt="" style="object-fit: scale-down">
+
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-415" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Convert current timestamp to block number
+- Query that block over JSON-RPC
+- Note that transactions list is empty: Only EVM transactions are shown
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hedera-code-snippets/obtain-block-number-from-timestamp`](https://github.com/hedera-dev/hedera-code-snippets/blob/master/obtain-block-number-from-timestamp)
+- [How can I obtain a block number programmatically on Hedera? (Stackoverflow)](https://stackoverflow.com/q/76217594/194982)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, let&#39;s demonstrate this in action, by sending a Mirror API request to obtain the block number corresponding to a particular timestamp, then by sending an RPC request to get the transactions from that block </li>
+<li>... DEMO ...</li>
+<li>We were able to see how to make a Mirror API request (effectively the Hedera equivalent of an archival node) to get a block numbr</li>
+<li>We were than able to make an RPC request to get transactions from that block</li>
+<li>A key point here, similar to one made previously, is that the externally exposed interface for the RPC is nearly identical to what you would get when interacting with geth; even though the internal implementation is completely different</li>
+<li>You can check out the answer on Stackoverflow for details on this</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Pre-compiles for services
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+System contracts are introduced to provide an interface to existing Hedera services
+
+- [HIP-475:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-475.md) Exchange rate system contract
+- [HIP-351:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-351.md) Add UtilPrngTransaction
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>System contracts are implemented using pre-compiles</li>
+<li>These essentially behave like a smart contract, except that their logic is implemented and executed within the consensus nodes</li>
+<li>This allows smart contracts deployed within Hedera&#39;s EVM to access other existing Hedera services</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-475:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-475.md) Exchange rate system contract
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-475" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Hedera services are priced in USD terms; not gas units
+- When a smart contract invoked services, fees need to be paid in gas
+- Impact on: Price volatility?  Unidirectional exchanges? Econs!!!
+- Important: **Not** a "live" rate
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-475`](https://hips.hedera.com/hip/hip-475)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>This is an example of a pre-compile, AKA system contract</li>
+<li>The cost of various hedera services are priced in USD terms (not gas units)</li>
+<li>When these services are called from a smart contract, the equivalent amount needs to be deducted in gas.</li>
+<li>What impact does this have on volatility of the underlying cryptocurrency, given frequent exchanges by another means? What is the impact that the exchange is always in one direction? I&#39;m not an expert in economics, so I&#39;ll leave that to ponder on.</li>
+<li>It is very important to stress that this should not be considered as a &quot;live&quot; rate - do not use it like you would a price oracle</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+DEMO!
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/master/convert-usd-hbar-system-contract" alt="" style="object-fit: scale-down">
+
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://stackoverflow.com/q/72984870/194982" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Deploy smart contract that interacts with system contract
+- Invoke the `convert` function
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hedera-code-snippets/convert-usd-hbar-system-contract`](https://github.com/hedera-dev/hedera-code-snippets/blob/master/convert-usd-hbar-system-contract)
+- [How to get an exchange rate between USD and HBAR for use in Hedera application or smart contract? (Stackoverflow)](https://stackoverflow.com/q/72984870/194982)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, let&#39;s demonstrate this in action, by using a smart contract to invoke this system contract, and convert a certain amount of USD to HBAR</li>
+<li>... DEMO ...</li>
+<li>We were able to see how to use a system contract - it is just like interacting with any other smart contract!</li>
+<li>We were also able to see how the result it produced was close enough to the actual exchange rate ... but definitely not equal to it!</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+[HIP-351:](https://github.com/hashgraph/hedera-improvement-proposal/blob/master/HIP/hip-351.md) Add UtilPrngTransaction
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-351" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- PRNG
+- 3rd party can verify in RNG truly occurred on Hedera
+- BYO CSPRNG (can use this as an input)
+- Fixed USD cost ($0.001) --> Exchange rate system contract --> Gas units
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hips.hedera.com/hip/hip-351`](https://hips.hedera.com/hip/hip-351)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Another example of a pre-compile, AKA system contract</li>
+<li>This one implements pseudo-random number generation without the need for oracles</li>
+<li>3rd party can post-facto verify in RNG truly occurred on Hedera via the mirror nodes</li>
+<li>NOTE that this is not to be considered a cryptographically secure pseudo-random number generator, that is something you&#39;d still need to add your own implementation for</li>
+<li>Gas cost is calculated based on fixed USD cost, in this case a 1/10th of 1 cent, and converted using the exchange rate system contract we used earlier, into gas units</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+DEMO!
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/master/prng-system-contract" alt="" style="object-fit: scale-down">
+
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://stackoverflow.com/q/71102609/194982" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Deploy smart contract that interacts with system contract
+- Invoke the `getPseudorandomNumber` function
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`hedera-code-snippets/prng-system-contract`](https://github.com/hedera-dev/hedera-code-snippets/blob/master/prng-system-contract)
+- [Generating a random number from smart contract using Hedera Hashgraph (Stackoverflow)](https://stackoverflow.com/q/71102609/194982)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, let&#39;s demonstrate this in action, by using a smart contract to invoke this system contract, and generate a random number</li>
+<li>... DEMO ...</li>
+<li>We were able to see how to use a system contract again - just like interacting with any other smart contract!</li>
+<li>We were also able to verify whether the source of this number was indeed a Hedera consensus node</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Outro
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+- Hard-mode when:
+  - Not *technically* a blockchain
+  - Existing account system w/ different public key system
+  - Different set of comms protocols,
+  - Gas fees that require an exchange rate
+- Add EVM compatibility → Can be a multi-year effort
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>e.g. DAG</li>
+<li>e.g. ED22519</li>
+<li>e.g. gRPC + custom REST APIs</li>
+<li>e.g. USD prices</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Give it a spin!
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://docs.hedera.com" alt="" style="object-fit: scale-down">
+
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+## `docs.hedera.com`
+
+Tips:
+- Most existing EVM-compatible dev workflows work out of the box
+- Run your own RPC relay on `localhost`
+-  To get Testnet coins, use `portal.hedera.com`
+- Use the `hedera` tag on Stackoverflow
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`docs.hedera.com`](https://docs.hedera.com)
+-  [`github.com/hedera-dev/hedera-code-snippets`](https://github.com/hedera-dev/hedera-code-snippets)
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Get started using the Hedera docs at <code>docs.hedera.com</code></li>
+<li>Most of your existing tools like truffle, hardhat; and libraries, like web3.js, ethers.js should work out of the box</li>
+<li>Avoid the public RPC endpoint, called Hashio - run your own RPC relay so that you avoid rate limits, and get faster responses</li>
+<li>There is no direct equivalent of a faucet currently, you have to create a non-EVM account on <code>portal.hedera.com</code>, and that gets auto funded, then subsequently transfer to your EVM account</li>
+<li>If you get stuck, reach out to me (details in slide footer), or use the <code>hedera</code> tag on Stackoverflow - you&#39;re very likely to get a response from me there as well!</li>
+</ul>
+</aside></script></section>
+        <section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<style>
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
+</style>
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<!--- TODO title -->
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<img src="https://hips.hedera.com/assets/hedera_logo.png" alt="hedera logo" ></img>
+</div>
+
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<!--- TODO right -->
+</div>
+
+
+
+
+</div>
+
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+<div class="block">
+
+<!--- TODO left -->
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+<!--- TODO source -->
+</div>
+
+
+
+</div>
+
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>TODO speaker notes</li>
+</ul>
+<p>--&gt;</p>
+</aside></script></section>
+    </div>
+</div>
