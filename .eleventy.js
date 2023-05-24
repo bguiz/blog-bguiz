@@ -69,6 +69,9 @@ module.exports = function(config) {
   config.addPassthroughCopy({
     'node_modules/reveal.js/plugin': '3rd-party/revealjs/plugin',
   });
+  config.addPassthroughCopy({
+    'static/3rd-party': '3rd-party',
+  });
 
   const now = new Date();
 
@@ -119,10 +122,14 @@ module.exports = function(config) {
   config.setBrowserSyncConfig({
     callbacks: {
       ready: function(err, browserSync) {
-        const content_404 = fs.readFileSync('dist/404.html');
+        let content_404;
 
         browserSync.addMiddleware("*", (req, res) => {
           // Provides the 404 content without redirect.
+          if (!content_404) {
+            content_404 = fs.readFileSync('dist/404.html');
+          }
+          res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
           res.write(content_404);
           res.end();
         });
