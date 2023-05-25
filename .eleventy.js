@@ -10,6 +10,7 @@ const customPermalinkFilter = require('./src/filters/custom-permalink-filter.js'
 const hashTagifyFilter = require('./src/filters/hash-tagify-filter.js');
 const slugForStaticmanFilter = require('./src/filters/slug-for-staticman-filter.js');
 const staticmanCollectionFilter = require('./src/filters/staticman-collection-filter.js');
+const urlAbsoluteOrRelativeFilter = require('./src/filters/url-absolute-or-relative-filter.js');
 
 // Import transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
@@ -27,6 +28,7 @@ module.exports = function(config) {
   config.addFilter('hashTagify', hashTagifyFilter);
   config.addFilter('slugForStaticman', slugForStaticmanFilter);
   config.addFilter('staticmanCollection', staticmanCollectionFilter);
+  config.addFilter('urlAbsoluteOrRelative', urlAbsoluteOrRelativeFilter);
 
   // Layout aliases
   config.addLayoutAlias('home', 'layouts/home.njk');
