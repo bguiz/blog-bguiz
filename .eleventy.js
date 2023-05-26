@@ -1,6 +1,8 @@
+const fs = require("fs");
+
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const fs = require("fs");
+const eleventyUpgradeHelper = require("@11ty/eleventy-upgrade-help");
 
 // Import filters
 const dateFilter = require('./src/filters/date-filter.js');
@@ -119,6 +121,18 @@ module.exports = function(config) {
   // Plugins
   config.addPlugin(rssPlugin);
   config.addPlugin(syntaxHighlight);
+  config.addPlugin(eleventyUpgradeHelper);
+
+  // Ref: https://www.11ty.dev/docs/data-deep-merge/
+  // Ref: https://github.com/11ty/eleventy-upgrade-help/tree/v1.x#data-deep-merge
+  config.setDataDeepMerge(true);
+
+  // Ref: https://github.com/11ty/eleventy/issues/1390
+  // Ref: https://github.com/11ty/eleventy-upgrade-help/tree/v1.x#liquid-options
+  config.setLiquidOptions({
+    strictFilters: true,
+    dynamicPartials: true,
+  });
 
   // 404
   config.setBrowserSyncConfig({
