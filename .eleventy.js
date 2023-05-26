@@ -134,23 +134,11 @@ module.exports = function(config) {
     dynamicPartials: true,
   });
 
-  // 404
-  config.setBrowserSyncConfig({
-    callbacks: {
-      ready: function(err, browserSync) {
-        let content_404;
-
-        browserSync.addMiddleware("*", (req, res) => {
-          // Provides the 404 content without redirect.
-          if (!content_404) {
-            content_404 = fs.readFileSync('dist/404.html');
-          }
-          res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
-          res.write(content_404);
-          res.end();
-        });
-      }
-    }
+  // dev server
+  // Ref: https://www.11ty.dev/docs/dev-server/
+  config.setServerOptions({
+    showAllHosts: false,
+    showVersion: true,
   });
 
   return {
