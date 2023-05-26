@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="/3rd-party/oas-revealjs/dist/theme/black.css" id="theme" />
     <link rel="stylesheet" href="/3rd-party/oas-revealjs/plugin/highlight/zenburn.css" />
     <link rel="stylesheet" href="/3rd-party/oas-revealjs/css/layout.css" />
+    {% if additionalStyleSheets %}{% for styleSheetName in additionalStyleSheets %}
+    <link rel="stylesheet" href="/3rd-party/oas-revealjs/css/{{ styleSheetName }}" />
+    {% endfor %}{% endif %}
     <link rel="stylesheet" href="/3rd-party/oas-revealjs/plugin/customcontrols/style.css">
     <script defer src="/3rd-party/oas-revealjs/dist/fontawesome/all.min.js"></script>
 
