@@ -1,6 +1,7 @@
+const fs = require("fs");
+
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const fs = require("fs");
 
 // Import filters
 const dateFilter = require('./src/filters/date-filter.js');
@@ -120,23 +121,22 @@ module.exports = function(config) {
   config.addPlugin(rssPlugin);
   config.addPlugin(syntaxHighlight);
 
-  // 404
-  config.setBrowserSyncConfig({
-    callbacks: {
-      ready: function(err, browserSync) {
-        let content_404;
+  // Ref: https://www.11ty.dev/docs/data-deep-merge/
+  // Ref: https://github.com/11ty/eleventy-upgrade-help/tree/v1.x#data-deep-merge
+  config.setDataDeepMerge(true);
 
-        browserSync.addMiddleware("*", (req, res) => {
-          // Provides the 404 content without redirect.
-          if (!content_404) {
-            content_404 = fs.readFileSync('dist/404.html');
-          }
-          res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
-          res.write(content_404);
-          res.end();
-        });
-      }
-    }
+  // Ref: https://github.com/11ty/eleventy/issues/1390
+  // Ref: https://github.com/11ty/eleventy-upgrade-help/tree/v1.x#liquid-options
+  config.setLiquidOptions({
+    strictFilters: true,
+    dynamicPartials: true,
+  });
+
+  // dev server
+  // Ref: https://www.11ty.dev/docs/dev-server/
+  config.setServerOptions({
+    showAllHosts: false,
+    showVersion: true,
   });
 
   return {
