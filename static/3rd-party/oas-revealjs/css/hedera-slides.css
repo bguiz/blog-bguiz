@@ -1,0 +1,13 @@
+.area_title_text { font-size: 24pt; padding: 0 0.1em 0 0.1em; border-radius:15px; }
+.area_title_background { border-radius:15px; }
+.area_title_logo { border-radius:15px; padding: 0; }
+.area_title_logo > img {  height: 2em; vertical-align: middle; }
+.area_left { font-size: 20pt; }
+.area_right { font-size: 15pt; padding: 15px; color: black; }
+.area_right p { margin: 0;  line-height: 1; }
+.area_right p { margin: 0;  }
+.area_right_background { border-radius:15px; }
+.area_source { font-size: 12pt; line-height: 1.15; }
+.area_source ul { margin: 0; list-style-type: none; }
+.area_footer { font-weight: 300; font-size: 16pt }
+.horizontal_dotted_line {  border-bottom: 2px dotted grey; }
