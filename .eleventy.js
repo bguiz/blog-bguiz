@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require('fs');
 
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');

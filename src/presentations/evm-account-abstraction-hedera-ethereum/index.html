@@ -1,0 +1,2240 @@
+---
+title: "Account Abstraction on EVM-compatible networks: Hedera and Ethereum"
+layout: 'layouts/presentation-oas-revealjs.njk'
+date: '2023-09-13T18:30+08:00'
+description: "What is the current state of Account Abstraction, the ingredients needed for it, and its possible future."
+tags: [hedera, evm, account-abstraction]
+socialImage: https://hips.hedera.com/assets/hedera_logo.png
+additionalStyleSheets: ['hedera-slides.css']
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/zenburn.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/hedera-slides.css" />
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+# Account Abstraction
+## on EVM-compatible networks:
+### Hedera and Ethereum
+
+Brendan Graetz, 2023
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Hi all, welcome to this talk about account abstraction on EVM compatible networks.</li>
+<li>I&#39;ll be talking about 2 networks in particular, Ethereum, and Hedera.</li>
+<li>(introduce)</li>
+<li>Various web2 software engineering 2009-2019</li>
+<li><a href="https://dappsdev.org/">DApps Dev Club</a> 2018-2019</li>
+<li><a href="https://dev.rootstock.io/">Rootstock</a> 2019-2023</li>
+<li><a href="https://docs.hedera.com/">Hedera</a> 2023-present</li>
+<li>Read my infrequent writings - See slide footer</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## What we'll cover
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+
+- Back to basics
+- Hedera's take on the basics
+- What is account abstraction?
+- ECDSA and EdDSA based authorisation + Demo
+- Smart contract based authorisation + Demo
+- Enabling AA on an EVM-compatible network: Now + Future
+- Questions/ Wrap up
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Here are the various topics that we&#39;re gonna cover today</li>
+<li>We&#39;ll talk about the basic concepts of DLTs, specifically ones related to accounts on DLTs</li>
+<li>Followed by Hedera&#39;s take on these basic concepts</li>
+<li>We&#39;ll have a couple of demos, where transactions are authorised using cryptographic keys as well as through smart contract invocation flows</li>
+<li>Finally we&#39;ll cover the process of enabling account abstraction on EVM compatible networks; now and in the future</li>
+<li>Before we wrap up</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Before we start
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hashgraph" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- Hashgraph → Consensus algorithm
+- Hedera → The "blockchain" network
+</div>
+
+ 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`github.com/hashgraph`](https://github.com/hashgraph)
+- [`github.com/hedera-dev`](https://github.com/hedera-dev)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Before we start, let&#39;s quickly address the names - Hashgraph or Hedera?</li>
+<li>The concept started by the co-founders was something called hashgraph; which is essentially a DAG-based transaction ordering and finality confirmation consensus algorithm</li>
+<li>This hashgraph consensus algorithm had no application attached to it at the time, I remember way back in 2018, Mance gave a talk, at which he distributed a <code>swirlds.jar</code> file</li>
+<li>This file contained several POC applications demonstrating potential use cases for it. For example one of them was a database JDBC driver, and another one was a multiplayer snake game.</li>
+<li>Later on, came Hedera, which is the blockchain-like application using Hashgraph as its consensus mechanism, of course</li>
+<li>This is why, for example, Hedera&#39;s github org name is &quot;Hashgraph&quot;</li>
+<li>More recently, we&#39;ve also started a new github org, whose name is &quot;Hedera-dev&quot;</li>
+<li>This is where we put demo applications et cetera, including some of the ones that you&#39;ll see today</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Back to basics
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://ethereum.org/en/developers/docs/accounts/" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- What is a key?
+	- Elliptic curve cryptography
+	- ECDSA secp256k1
+- What is an account?
+	- private key → public key → address → EOA
+	- 1-to-1
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`ethereum.org/en/developers/docs/accounts`](https://ethereum.org/en/developers/docs/accounts/)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Let&#39;s start by talking about some really fundamental stuff; keys and accounts.</li>
+<li>If you&#39;re coming from the context of Bitcoin or Ethereum, a private key is a randomly generated large number, then you use an elliptic curve, this specific one, to derive a public key.</li>
+<li>This is basic asymmetric key cryptography in action.</li>
+<li>Next up, we have accounts. How do you get an account?</li>
+<li>Basically you use the private key to derive the public key,</li>
+<li>and from that you derive the address.</li>
+<li>Then the set that comprises of private key, public key, and address, become the externally owned account (or EOA);</li>
+<li>essentially these 3 as a single unit.</li>
+<li>With this process, because of the way that this works,
+there is always a direct 1-to-1 mapping between a private key and an account</li>
+<li>That private key always corresponds to that account; and that account always corresponds to that private key; there&#39;s no 2 ways about it.</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Hedera's take on the basics
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://docs.hedera.com/hedera/core-concepts/accounts" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- What is a key?
+	- Simple key: ECDSA secp256k1 key/ EdDSA Ed25519 key/ Smart Contract ID
+	- Complex key: KeyList/ ThresholdKey → multisig
+- What is an account?
+	- Account can be generated from a simple key
+	- Account can be generated from a complex key
+	- Account can change its key → existing key must agree
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`docs.hedera.com/hedera/core-concepts/accounts`](https://docs.hedera.com/hedera/core-concepts/accounts)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Let&#39;s take a look at Hedera&#39;s take on these basic concepts; as they are quite different</li>
+<li>There are simple keys, which can be a single ECDSA key, or a single EdDSA key,</li>
+<li>This is the same type of key as used on Bitcoin and Ethereum, and that is a different type of key - still Elliptic Curve Cryptography, just a different variety of it.</li>
+<li>The interesting thing here is that Hedera supports multiple type of cryptographic keys right off the bat.</li>
+<li>In addition to that, Hedera accounts may also have complex keys.</li>
+<li>These are lists of simple keys, and may include a specified threshold to meet.</li>
+<li>The interesting here, is that this means that Hedera allows you to create m-of-n multisig on its accounts.</li>
+<li>If you wanted to achieve the same thing with Ethereum accounts at the moment, you&#39;d need to use a smart contract, as the accounts/ transactions system does not support that.</li>
+<li>One more thing of note is that accounts can change their keys from their present key to a new key; all it needs to do so is to submit a transaction to update its key, and simply authorise that using its current key.</li>
+<li>All of these points of difference really are critical when it comes to removing that 1-to-1 mapping between keys and accounts, thereby making it possible to separate them.</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+ECDSA and EdDSA based authorisation + Demo
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-account" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- 1 account with 2 keys: EdDSA, ECDSA
+- 1-of-2 multisig → `ThresholdKey`
+- Concrete example → Demo!
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-account`](https://github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-account)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Now time for a demo which involves an account with 2 keys, and a threshold of 1.</li>
+<li>In other words a 1-of-2 multisig authorisation</li>
+<li>Scan the QR codec on this slide to see the code that&#39;s behind this demo</li>
+<li>Alright let&#39;s start the demo</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+# Demo
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-account" alt="" style="object-fit: scale-down">
+
+
+[`github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-account`](https://github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-account)
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+#### Code Walkthrough
+
+```javascript
+    // generate keys
+    const edKey = PrivateKey.generateED25519();
+    const ecKey = PrivateKey.generateECDSA();
+```
+
+```javascript
+    // create a `ThresholdKey` that represents a 1 of 2 multisig threshold
+    const multisigPublicKeys = [edKey.publicKey, ecKey.publicKey];
+    const multisigKeyList = new KeyList(multisigPublicKeys, 1);
+```
+
+```javascript
+    // Update account to use this `KeyList`, via an `AccountUpdateTransaction`.
+    // This replaces the single signature with a the 1 of 2 multisig
+    const makeMultisigTx = new AccountUpdateTransaction()
+        .setAccountId(multisigAccountId)
+        .setKey(multisigKeyList)
+        .freezeWith(client);
+    const makeMultisigTxSignedByOneKey = await makeMultisigTx.sign(edKey);
+    const makeMultisigTxSubmitted = await makeMultisigTxSignedByOneKey.execute(client);
+```
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+```javascript
+    // Sign a `TransferTransaction` using the ECDSA key only,
+    // then attempt to execute it
+    const transfer1of2EcTx = new TransferTransaction()
+        .addHbarTransfer(multisigAccountId, new Hbar(-34))
+        .addHbarTransfer(operatorId, new Hbar(34))
+        .freezeWith(client);
+    const transfer1of2EcTxSigned = await transfer1of2EcTx.sign(ecKey);
+    const transfer1of2EcTxSubmitted = await transfer1of2EcTxSigned.execute(client);
+```
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## AA EIPs
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+
+- EIP-2771
+- EIP-4337
+- EIP-2938
+- EIP-3074
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Shifting our focus back to Ethereum, there are several EIPs which aim to enable account abstraction</li>
+<li>I&#39;ll be the first to admit that I am not super well versed in this area, probably much less so than you are.</li>
+<li>But let&#39;s go over a few of the EIPs related to account abstraction, and use them as a starting point</li>
+<li>We&#39;re only going to gloss over each of these, given the time crunch that we have</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Account abstraction on Ethereum /1
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://eips.ethereum.org/EIPS/eip-2771" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- EIP-2771: Secure Protocol for Native Meta Transactions
+- A contract interface for receiving meta transactions through a trusted forwarder
+- Introduces the concept of meta-transactions that allow third parties to pay for a user's gas costs without making changes to the Ethereum protocol.
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`eips.ethereum.org/EIPS/eip-2771`](https://eips.ethereum.org/EIPS/eip-2771)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>First of we have EIP-2771.</li>
+<li>It proposes no changes to the underlying Ethereum protocol</li>
+<li>And proposes meta-transactions → The goal is to have one account pay for the gas of another account.</li>
+<li>This is something that Heder has supported from the get-go, and is baked right into the basic transaction model</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Account abstraction on Ethereum /2
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://eips.ethereum.org/EIPS/eip-4337" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- EIP-4337: Account Abstraction Using Alt Mempool
+- An account abstraction proposal which completely avoids consensus-layer protocol changes, instead relying on higher-layer infrastructure.
+-  Is the first step towards native smart contract wallet support in a decentralized way without requiring changes to the Ethereum protocol.
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`eips.ethereum.org/EIPS/eip-4337`](https://eips.ethereum.org/EIPS/eip-4337)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>EIP-4337 is probably the most well known one out of the various account abstraction EIPs.</li>
+<li>It also has a goal of avoiding protocol level changes in Ethereum</li>
+<li>And proposes a means to build what it calls a smart wallet</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Account abstraction on Ethereum /3
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://eips.ethereum.org/EIPS/eip-2938" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- EIP-2938: Account abstraction
+- An account abstraction proposal which completely avoids consensus-layer protocol changes, instead relying on higher-layer infrastructure.
+- Aims to update the Ethereum protocol by introducing a new transaction type, AA_TX_TYPE that includes three fields: nonce, target and data, where nonce is a transaction counter, target is the entry point contract address and data is EVM bytecode.
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`eips.ethereum.org/EIPS/eip-2938`](https://eips.ethereum.org/EIPS/eip-2938)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>EIP-2938 also has a goal of introducing a new transaction type to the Ethereum protocol, but without changing consensus rules</li>
+<li>This new transaction type is designed specifically for account abstraction type operations</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Account abstraction on Ethereum /4
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://eips.ethereum.org/EIPS/eip-3074" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- EIP-3074: AUTH and AUTHCALL opcodes
+- Allow externally owned accounts to delegate control to a contract.
+- aims to update Ethereum's externally-owned accounts by allowing them to delegate control to a smart contract. 
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`eips.ethereum.org/EIPS/eip-3074`](https://eips.ethereum.org/EIPS/eip-3074)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>EIP-3074. Out of the 4, this is the only one that proposes a change to the Ethereum protocol.</li>
+<li>Adds a couple of new opcodes which enable an EOA to authorise a smart contract to act on its behalf</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+What is account abstraction? /1
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://ethereum.org/en/roadmap/account-abstraction/" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- Core idea: Separate accounts from keys
+- 1-to-1 mapping
+- Why?
+	- EOA allows something else to act on its behalf
+	- Delegate transfer auth
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`ethereum.org/en/roadmap/account-abstraction`](https://ethereum.org/en/roadmap/account-abstraction/)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>The core idea behind EOAs as they are presently on Ethereum - is that they maintain a 1-to-1 mapping between an account and its keys</li>
+<li>This makes an account inseparable from its keys - both conceptually and in implementation.</li>
+<li>This makes it hard to do certain things where the account wishes to delegate or otherwise allow something else to act on its behalf - and for that to occur, there must be some separation.</li>
+<li>Perhaps one or more of those EIPs will succeed in doing so, and Ethereum will attain that goal of  account abstraction</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+What is account abstraction? /2
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://ethereum.org/en/roadmap/account-abstraction/" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- Hedera's account system and network protocol already:
+	- Allows one account to pay for transaction fees of another (~ EIP-2771)
+	- Has transactions that include additional fields (~ EIP-2938)
+	- Supports accounts delegating transaction authorisation to smart contracts (~ EIP-4337, EIP-3074)
+- So, does Hedera have account abstraction already?
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`ethereum.org/en/roadmap/account-abstraction`](https://ethereum.org/en/roadmap/account-abstraction/)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Now let&#39;s contrast these EIPs with Hedera&#39;s existing account system - how do they fit together?</li>
+<li>I&#39;ve already mentioned how Hedera accounts are separate from their keys earlier, but let&#39;s take a look at this through a different lens.</li>
+<li>EIP-2771 allows one account to pay for the transaction fees of another account.</li>
+<li>This is something Hedera already supports - its transaction model has a signer account and a submitter account as separate entries on each transaction. The signer account may not need to pay if the submitter account pays for the transaction fees on its behalf.</li>
+<li>EIP-2938 approximates to transactions having additional fields.</li>
+<li>Hedera has additional fields on its transactions that are needed to support signatures when the account has complex keys (and their resultant authorisation flows)</li>
+<li>Finally, EIP-4337 and EIP-3074 - both of these EIPs allow transaction authorisation to be transferred or delegated, by an account, to a smart contract in some manner.</li>
+<li>Hedera partially supports this right now, allowing accounts to define complex keys which include not only cryptographic keys, but also smart contract IDs.</li>
+<li>So then, here&#39;s the big question, based on all of that - does Hedera already have account abstraction?</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+What is account abstraction? /3
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://ethereum.org/en/roadmap/account-abstraction/" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- Not yet
+- Smart contract authorisation
+	- Only for system contracts
+	- (AKA precompiles)
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`ethereum.org/en/roadmap/account-abstraction`](https://ethereum.org/en/roadmap/account-abstraction/)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>I would say to that, the answer is: Not yet</li>
+<li>Pretty close, but still, not yet.</li>
+<li>Hedera has a concept that is quite similar to precompiles in Ethereum, called &quot;system contracts&quot;</li>
+<li>These system contracts behave like &quot;regular&quot; smart contracts in the sense that they have an address, and you can interface with them through an ABI, but they were never implemented using Solidity, and don&#39;t execute on the EVM. Instead they&#39;re implemented directly within the core nodes themselves.</li>
+<li>For those of you who have compiled software written in one programming language, and needed that to interface with a compiled software library that was written in a different programming language, you&#39;re likely to have used a foreign function interface, or FFI.</li>
+<li>When working with Hedera system contracts, you can think of their ABIs as being analogous to FFIs.</li>
+<li>Coming back to the main topic, at the moment, smart contract based authorisation is restricted to authorising system contract invocations only.</li>
+<li>We&#39;re not yet able to authorise function invocations on custom smart contracts deployed by any developer.</li>
+<li>Right now this seems like it is the last piece of the puzzle</li>
+<li>There&#39;s an adage that goes: We&#39;ve completed the first 90%, now it&#39;s time to do the last 90% ... I&#39;m sure more than a few of you have heard that before ;)</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Smart contract based authorisation
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://docs.hedera.com/hedera/sdks-and-apis/hedera-api/basic-types/key" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- Account with complex keys, constituent sub-keys may be
+	- ECDSA key
+	- EdDSA key
+	- Smart Contract ID!
+- System contract: Hedera Token Service
+- Key use case: Smart wallets
+- Function invocation comes via smart contract in key
+	- Used for authorising that same transaction
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`docs.hedera.com/hedera/sdks-and-apis/hedera-api/basic-types/key`](https://docs.hedera.com/hedera/sdks-and-apis/hedera-api/basic-types/key)
+- [`docs.hedera.com/hedera/core-concepts/keys-and-signatures`](https://docs.hedera.com/hedera/core-concepts/keys-and-signatures)
+- [`hips.hedera.com/hip/hip-206`](https://hips.hedera.com/hip/hip-206)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, let&#39;s do a demo to show you this smart contract based authorisation flow in action, where an account has a complex key which contains a smart contract ID</li>
+<li>In this demo the account will have a complex key which includes a cryptographic key, and a smart contract ID</li>
+<li>Hedera has several system contracts, but the one of note, and the one that we will be interacting with in this demo, is Hedera Token Service, which allows you to create and operate fungible and non-fungible tokens, similar to ERC20s and ERC721s, without actually writing or deploying any smart contracts.</li>
+<li>That&#39;s another topic in and of itself, but what&#39;s relevant in the context of this demo is that you can send tokens around by interacting with this system contract.</li>
+<li>As a side note, this is actually a pretty relevant use case for account abstraction, because authorising smart contracts to send tokens around on behalf of an account is a large part of what smart wallets need to do.</li>
+<li>And you see smart wallets being mentioned a lot in this context, as a key use case that is enabled through the introduction of account abstraction. In other words, without account abstraction, smart wallets aren&#39;t possible, or so goes the implication.</li>
+<li>So the Hedera Token Service system contract turns out to be pretty on-point target for this demo.</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+SC based authorisation + Demo
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-sc-account" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- 3 types of key components: EdDSA, ECDSA, Smart Contract ID
+- 1-of-2 multisig → `ThresholdKey`
+- Concrete example → Demo!
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- 
+[`github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-sc-account`](https://github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-sc-account)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>In this demo the account is set up as a 1-of-2 multisig</li>
+<li>Such that either the cryptographic key authorises the transaction, or the smart contract does.</li>
+<li>The cryptographic key needs to sign the transaction in order to provide its authorisation</li>
+<li>Alternatively, the transaction is unsigned when submitted, and the smart contract simply needs to be invoked, and in turn invoke the system contract, in order to provide its authorisation</li>
+<li>Demo time!</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+# Demo
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=https://github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-sc-account" alt="" style="object-fit: scale-down">
+
+
+[`github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-sc-account`](https://github.com/hedera-dev/hedera-code-snippets/blob/main/multisig-sc-account)
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+#### Code Walkthrough
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.17;
+import "./IHederaTokenService.sol";
+contract Account {
+    IHederaTokenService hederaTokenService;
+
+    constructor() {
+        hederaTokenService = IHederaTokenService(address(0x0167));
+    }
+
+    function performPrecompileOperation(
+        address token,
+        address sender,
+        address recipient,
+        int64 amount
+    ) external {
+        int64 responseCode = hederaTokenService.transferToken(
+            token, sender, recipient, amount);
+        // HederaResponseCodes.SUCCESS = 22
+        require(responseCode == 22, "HTS transfer error");
+    }
+}
+
+```
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+```javascript
+    // Obtain the ID of the deployed smart contract
+    const scId = scDeployTxRecord.receipt.contractId;
+    console.log('scId', scId.toString());
+```
+
+```javascript
+    // Generate a new ECDSA key
+    const ecKey = PrivateKey.generateECDSA();
+```
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+```javascript
+    // Create a `ThresholdKey` that represents a 1 of 2 multisig threshold
+    // where one of the keys is the smart contract ID, and the other is the ECDSA key
+    const multisigPublicKeys = [scId, ecKey.publicKey];
+    const multisigKeyList = new KeyList(multisigPublicKeys, 1);
+```
+
+```javascript
+    // Update account to use this `KeyList`, via an `AccountUpdateTransaction`.
+    // This replaces the single signature with a the 1 of 2 multisig
+    const makeMultisigTx = new AccountUpdateTransaction()
+        .setAccountId(multisigAccountId)
+        .setKey(multisigKeyList)
+        .freezeWith(client);
+    const makeMultisigTxSignedByAllKeys = await makeMultisigTx.sign(ecKey);
+    const makeMultisigTxSubmitted = await makeMultisigTxSignedByAllKeys.execute(client);
+```
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+```javascript
+    // Invoke `Account.performPrecompileOperation` function on the smart contract whose ID is
+    // of the `KeyList` of the multisig account
+    const scPerformPrecompileTx = new ContractExecuteTransaction()
+        .setContractId(scId)
+        .setGas(400_000)
+        .setFunction(
+            'performPrecompileOperation',
+            new ContractFunctionParameters()
+                .addAddress(toLongZeroEvmAddress(htsFtId))
+                .addAddress(multisigAccountEvmAddress.toString())
+                .addAddress(toLongZeroEvmAddress(operatorId))
+                .addInt64(23),
+        )
+        .freezeWith(client);
+    // NOTE that this transaction is intentionally **unsigned**.
+    // This is to verify that the smart contract is also part of `KeyList` of the multisig account
+    // does indeed fulfil its role in being able to authenticate the precompile transaction in lieu of a signature.
+    const scPerformPrecompileTxSubmitted = await scPerformPrecompileTx.execute(client);
+```
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Enabling AA
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+
+- Now and future
+- HIPs
+- 🔮 predictions
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Let&#39;s talk about enabling account abstraction</li>
+<li>Right now, and in the future</li>
+<li>Hedera Improvement Proposals</li>
+<li>and some crystal ball predictions</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Enabling AA on an EVM-compatible network /1
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://docs.hedera.com/hedera/core-concepts/keys-and-signatures" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- Now:
+	-  All transactions: m-of-n multisig with cryptographic keys
+	-  System contract transactions: m-of-n multisig with cryptographic keys + smart contract ID
+- Future:
+	- All transactions: m-of-n multisig with cryptographic keys + smart contract ID
+	- Account abstraction?
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [`docs.hedera.com/hedera/core-concepts/keys-and-signatures`](https://docs.hedera.com/hedera/core-concepts/keys-and-signatures)
+- [`docs.hedera.com/hedera/sdks-and-apis/hedera-api/basic-types/key`](https://docs.hedera.com/hedera/sdks-and-apis/hedera-api/basic-types/key)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>What do we have now on Hedera?</li>
+<li>Let&#39;s think about the various ingredients that one would need to enable account abstraction</li>
+<li>What Hedera currently has, is the ability to perform m-of-n multisig transactions natively, using cryptographic key signatures as authorisation</li>
+<li>Hedera presently also has the ability to perform m-of-n multisig transactions restricted to system contracts only, using both cryptographic key signatures <strong>and</strong> smart contract invocation flows as authorisation</li>
+<li>But that 2nd one has a restriction, which prevents what I&#39;d consider to be full-blown account abstraction from happening.</li>
+<li>The idea is that smart contract authorisation flows should not be restricted to system contracts only - rather they should be able to authorise transactions on any custom smart contract deployed by developers.</li>
+<li>So, let&#39;s say that that final restriction is indeed removed ... will Hedera then have account abstraction?</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Enabling AA on an EVM-compatible network /2
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-632" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+What's needed?
+
+- HIP-632
+	- New `hederaAccountService` system contract
+	- New function `isAuthorized(address, messageHash, signatureBlob)`
+- HIP-792
+	- New function `isAuthorizedCurrentTransaction()`
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [HIP-632: Hedera Account Service (HAS) System Contract](https://hips.hedera.com/hip/hip-632)
+- [HIP-792: Extend isAuthorized to process current transaction in HAS System Contract](https://github.com/bguiz/hedera-improvement-proposal/blob/feat/is-authorised-current-tx-in-has-precompile/HIP/hip-792.md)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>But before answering that question, let&#39;s quickly go over what would be necessary to remove that final hurdle on Hedera - so let&#39;s put a pin in it and come back to it in a bit.</li>
+<li>Here are a couple of HIPs - Hedera Improvement Proposals - which are the analogue of EIPs on Hedera.</li>
+<li>Links to these are provided at the bottom of these slides</li>
+<li>HIP-632 has already been accepted, so it is now a matter of completing the implementation</li>
+<li>This proposes a new system contract called Hedera Account Service, which exposes several account-related functions via its ABI</li>
+<li>Of note is a function named <code>isAuthorized</code>, into which you pass in a few fields (that you see here) as parameters;</li>
+<li>The way that you use  <code>isAuthorized</code> would be extremely similar to the <code>ecrecover</code> precompile that you would use on Ethereum. Similar to passing in <code>v</code>, <code>r</code>, &amp; <code>s</code> fields.</li>
+<li>This solves the problem to some extent, but it has some limitations, because the EVM does not expose the full transaction data to smart contracts, so you are limited in what you can read from the current transaction</li>
+<li>HIP-792 is another proposal to augment that same Hedera Account Service system contract, adding a new function <code>isAuthorizedCurrentTransaction</code> where the client does not need to pass those fields in</li>
+<li>instead, those fields are extracted from the current transaction, which you cannot do within smart contracts</li>
+<li>System contracts, on the other hand, are capable of doing precisely that</li>
+<li>This HIP has just been proposed, and is in draft status at the moment - so caveats apply, and expect things to  change radically as a result</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+Enabling AA on an EVM-compatible network /3
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl=https://hips.hedera.com/hip/hip-792" alt="" style="object-fit: scale-down">
+
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+- Account abstraction?
+- Yes
+- But different
+	- Protocol level changes vs already baked in
+	- Community consensus
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+- [HIP-632: Hedera Account Service (HAS) System Contract](https://hips.hedera.com/hip/hip-632)
+- [HIP-792: Extend isAuthorized to process current transaction in HAS System Contract](https://github.com/bguiz/hedera-improvement-proposal/blob/feat/is-authorised-current-tx-in-has-precompile/HIP/hip-792.md)
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Alright, now that we have covered those HIPs which would get over that final hurdle, we can get back to that question asked earlier: Does this mean that Hedera will have account abstraction? </li>
+<li>I would say that this is a journey that has been fully trodden by <strong>neither</strong> Ethereum <strong>nor</strong> Hedera yet.</li>
+<li>Therefore we basically don&#39;t know where it will end up in either network.</li>
+<li>Based on what is already present on each network, and the approaches that have been proposed and implemented in the various EIPs and HIPs thus far, I think it is safe to draw a couple of conclusions</li>
+<li>(1) That both Ethereum and Hedera are going to achieve account abstraction at some point of time in the future - which is great news!</li>
+<li>(2) That the way in which each network is going to achieve account abstraction is going to be quite different. The main thrust of the EIPs thus far has been to avoid protocol level changes as much a possible. Whereas with Hedera, some version of those same protocol level changes that these EIPs are avoiding have already been baked right into Hedera&#39;s accounts and transactions model, from the get-go ... even prior to any account abstraction considerations. So the community consensus on each network is likely to be quite different.</li>
+<li>So that was my crystal ball prediction, which is that account abstraction will be achieved, but is going to <strong>be</strong> and <strong>look</strong> quite different between these 2 networks.</li>
+<li>Let&#39;s check in again a year from now or so, and see how wrong I was in my predictions! ;)</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Wrap up
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+
+- Ingredients for account abstraction → Basics, take 2
+- Separating cryptographic keys from accounts → Easy(er)
+- Adding smart contract authorisation → Head(er)
+- What account abstraction ends up being → Likely to differ between networks
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>Let&#39;s wrap up with a recap</li>
+<li>For account abstraction, I think the basic ingredients need to be revisited.</li>
+<li>Especially the relationship between keys and accounts.</li>
+<li>That seems to be the central theme in account abstraction.</li>
+<li>Separating keys from accounts: This is an easy, or easier problem to solve</li>
+<li>Whereas adding smart contract based authorisation flows: This is a hard, or harder, problem to solve</li>
+<li>And finally, it is going to look quite different between the 2 networks</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 3%; height: 10%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 94%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+```text
+?   ?
+?   ?
+?   ?
+?????
+?   ?
+?????
+?   ?
+?   ?
+?   ?
+```
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>And that is a wrap.</li>
+<li>Questions?</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="area_title_background has-light-background" style="background-color: white; position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text has-light-background" style="background-color: white; position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+<!--- TODO title -->
+</div>
+
+
+
+</div>
+<div class="area_title_logo has-light-background" style="background-color: white; position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_right_background has-light-background" style="background-color: white; position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_right" style="position: absolute; left: 73%; top: 17%; height: 75%; width: 27%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<!--- TODO right -->
+</div>
+
+
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+<div class="block">
+
+<!--- TODO left -->
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div class="horizontal_dotted_line" style="position: absolute; left: 3%; top: 94%; height: 0%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+</div>
+<div class="area_source" style="padding: 0; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 70%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<div class="block">
+
+<!--- TODO source -->
+</div>
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+Brendan Graetz | [@bguiz](https://twitter.com/bguiz) | [bguiz.com](https://bguiz.com/)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><ul>
+<li>TODO speaker notes</li>
+</ul>
+</aside></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"none","transitionSpeed":"normal"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
