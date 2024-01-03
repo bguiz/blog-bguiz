@@ -94,6 +94,7 @@ plus the ability to reset passwords when you forget them.
 Some web3 applications have a "solution" for this:
 Let users continue using usernames and passwords,
 amounting to a faux account.
+
 In this case, the web3 application will manage the account (cryptographic keys included)
 on its own web2 server, which has custody of the *real* account.
 While this approach technically works,
@@ -198,7 +199,7 @@ Its abstract reads as follows:
 > “An account abstraction proposal which completely avoids the need for consensus-layer protocol changes.
 > Instead of adding new protocol features and changing the bottom-layer transaction type,
 > this proposal instead introduces a higher-layer pseudo-transaction object called a `UserOperation`.
-> Users send `UserOperation` objects into a separate mempool. 
+> Users send `UserOperation` objects into a separate mempool.
 > A special class of actor called bundlers package up a set of these objects
 > into a transaction making a `handleOps` call to a special contract,
 > and that transaction then gets included in a block.”
@@ -287,3 +288,8 @@ Thanks to [Joshia Seam](https://jseam.com/),
 [Danno Ferrin](https://www.linkedin.com/in/shemnon/), and
 [Doug von Kohorn](https://www.linkedin.com/in/dougvk/)
 for reviewing this post.
+
+----
+
+This article has been republished on the Hedera blog:
+[https://hedera.com/blog/account-abstraction-at-the-protocol-level](https://hedera.com/blog/account-abstraction-at-the-protocol-level)
