@@ -1,0 +1,2568 @@
+---
+title: Unmasking Developer Relations
+layout: 'layouts/presentation-oas-revealjs.njk'
+date: '2023-12-06T21:12+08:00'
+description: About Dev Rel
+tags: [devrel]
+socialImage: https://blog.bguiz.com/images/favicon.png
+additionalStyleSheets: ['bguiz-slides.css']
+---
+<div class="reveal">
+      <div class="slides"><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 25%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<div class="block">
+
+# Unmasking Dev Rel
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 50%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+
+
+
+## Brendan Graetz, 2023
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><p>Hi I’m Brendan. I’ve started at Hedera relatively recently.
+Before this I was also doing Dev Rel, for Rootstock, which was EVM on top of Bitcoin layer 1.
+If you’re from Singapore, you might know me from DApps Dev Club, which I ran in 2019.
+Read my infrequent writings - See slide footer</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## In this preso, we’ll cover:
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Dev Rel, the function
+- Dev Rel, the politics
+- Dev Rel, the role
+- Career paths
+- Is Dev Rel for you?
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Here’s what we’ll cover in this preso
+You’ve all read the event description, so no need to reiterate
+By the way, keep the questions coming in the chat … and in between each of these sections I’ll scan through them with a view to answer</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 25%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<div class="block">
+
+# The Function: Dev Rel
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 50%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+
+
+## What Dev Rel does
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><p>Alright, let’s begin - what is dev rel even? What does it actually do?
+There are <strong>a lot</strong> of things that it does, and I won’t have enough time to go through all of them.
+Instead I’m going to highlight a few different things which I feel are most important</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Developer Journey
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--dev-journey.jpeg" alt="" style="object-fit: fill; width: 540px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Sequence of stages
+- Funnels with conversion rates
+- Touchpoints: Content, code, activities
+- Friction points
+- Internal and External
+- DX research:
+	- UX research
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Let’s begin with the developer journey
+Essentially it is a mental model where we visualise a single person going from hearing about your tech for the first time
+… and then going through a series of stages, and eventually getting through to the end.
+… at the end, this person has built a product with real users and real value using your tech.
+When devs go through each of these stages, they will be confused, or stuck, or frustrated, et cetera in various places.
+These are friction points.
+When devs go through each of these stages, they will interact with various things - which we call touchpoints.
+So I’ve got a tiny diagram in the corner of this slide, let’s make that bigger</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Developer Journey /2
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+<img src="/images/presentations/unmasking-devrel--dev-journey.jpeg" alt="" style="object-fit: cover">
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Some of these touchpoints are internal - which you create or author yourself in the devrel team. The others are external - which you don’t really have much control over, but can influence indirectly
+But there’s no cheat sheet which tells you what all these touchpoints should be, and how to design them.
+Neither is there a cheat sheet which tells you what all the friction points are.
+So the dev rel team has to discover that, and a great way to do that is to do a form of UX research, called DX research.
+Where DX stands for “developer experience”.
+So back to the dev journey.
+Think of it as a series of funnels, where one is connected to the next
+The job of dev rel here is to increase the conversion rate of each of these funnels
+For those of you who have prior experience in sales  or marketing, you’ll be thinking, “Now this is my jam”
+But for those of you who have a developer or engineering background, these are gonna be new concepts for you. We’ll circle back to this later on in this preso, regarding career paths.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Core Components
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--core-components.jpeg" alt="" style="object-fit: fill; width: 480px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Developer Segmentation
+- Developer Personas
+- Developer Journey Map
+- Hello World Sequence(s)
+- Information Architecture
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>The dev journey is actually just one of many different types of strategy employed by a dev rel team.
+Here is a list of different core components of dev rel.
+Usually we start with segmentation, then create personas based on the segments, and then design a journey for each persona.
+And yes, that extremely detailed diagram that we saw on the previous slide
+… the dev rel team will create multiple ones of those, with each one tailored to each dev persona that they wish to target.
+There are several other things too, including hello world sequences, information architecture, product experience etc
+… but we won’t be able to get into that today.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Dev Marketing
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--dev-marketing-funnel-meme.jpeg" alt="" style="object-fit: fill; width: 580px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Notoriously hard audience to market to
+	- ad-blockers, spam filters
+- Provide value
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Devs are a very very difficult target audience, when it comes to marketing.
+It is quite hard to find devs that allow ads or marketing emails to get in front of their eyeballs.
+Their game is pretty strong.
+Some devs go as far as to create a personal VPN just to get rid of ads
+… so you’re up against the very best.
+That being said, it is not impossible.
+In my opinion, when marketing to devs, you simply cannot use easy options ...
+the ones that marketing typically employs on other audiences.
+By easy, I email generic things like email marketing campaigns, or buying online ads.
+Instead you have to skip those low value adding tactics,
+and jump straight into the high value adding stuff.
+In a nutshell, you have to provide value.
+The formula for this is: (1) Identify a pain point,
+(2) figure out how to use your tech to solve their problem,
+(3) and then describe how to do this in an article, video, code example, or something else.
+That’s what distinguishes, in my opinion, generic marketing from dev marketing.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Dev Marketing /2
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--dev-marketing-drake-meme.jpeg" alt="" style="object-fit: fill; width: 580px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+Channels
+
+- Social media
+- Chat/ fora
+- SEO
+- Content products
+- Community
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Of course when you provide value, you still have to get the word out about it,
+and for that you still need to use the various traditional communications channels
+generally used in marketing.
+That being said, when it comes to dev marketing, this is secondary.
+The primary focus still needs to be to
+demonstrate that your tech can solve their problem,
+and then show exactly how
+in order to convince them.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Dev Education
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--dev-education-web3-epiphany-meme.jpeg" alt="" style="object-fit: fill; width: 580px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+Channels
+
+- Articles
+- Videos
+- LMS/ Course
+- API docs
+- Code examples
+- Stackoverflow
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>So let’s say that you have done your dev marketing right,
+and you’ve acquired some new devs
+who are going to take some of their time out to figure out how to use your tech.
+At this stage, the goal is dev education.
+Remember, from your dev marketing, the dev is now thinking
+“oh OK, this tech that I have just heard about maaaaaaybe can solve my problem”
+emphasis on the “maybe”
+Now the job of dev rel is to provide all the necessary resources for them to be able to do so.
+The first 3 - a course on an LMS, articles, video - these are similar to education on any other topics.
+The latter 3 - API docs, code examples, stackoverflow, and others - these are specific and tailored to dev education.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Dev Education /2
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--dev-education-brain-activation-meme.jpeg" alt="" style="object-fit: fill; width: 380px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Activities
+- Office hours
+- Run workshops
+- Community calls
+- Q&A on interactive channels
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Apart from the resources or content with educational materials,
+there are also some activities that occur as part of dev education.
+This adds a more personal touch,
+and are higher effort because they need to be done synchronously.</p>
+<p>In addition, whichever channels are interactive,
+use them as an opportunity to answer questions.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Dev Success
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--dev-success-information-valve.jpeg" alt="" style="object-fit: fill; width: 450px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- DX research
+- Dev Journey → optimise
+- Dev Friction Points → identify
+- Information valve
+- Broadcast → L1
+- Feedback → L2
+- Bidirectional → L3
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>OK, so now you’ve gotten the dev’s interest in your tech,
+and you’ve even taught taught them how to use your tech.
+What comes next?
+At this point we want the dev to build something on top of your tech.
+Something that is beyond a hello world, and beyond a proof-of-concept -
+a real app with real users and real value.
+This is where dev success comes into play.
+When using new tech, a dev will inevitably get stuck, or get frustrated,
+because they could not make something work properly,
+or they took too much time to figure out how to make it work.
+Dev rel wants to know about these friction points, so that they can be eliminated where possible,
+or otherwise provide workarounds, alternate solutions, etc.
+By doing so, the interesting thing is that it has a positive feedback loop back into both dev marketing, and into dev education.
+In order to do this, there are a couple of interesting concepts that I’d like to talk about
+(1) The first is DX research. That’s developer experience research.
+This is a specialised form of UX research, where instead of general users, you are specifically looking at dev.
+Here dev rel will conduct interviews, focus groups, usability studies, etc.
+The goal is to understand friction points, and do so without guesswork -
+and instead actually extract insights from real developers using your tech.
+This is crucial, because you, in dev rel, are likely to be so familiar with your own tech,
+that you are effectively blinkered, to the point that you’ll be unable to see many of the problems - even the obvious ones.
+(2) The second is the information valve.
+At a basic level, dev rel broadcasts information - from in the company out to the community.
+If that is all dev rel does, the team is not very mature yet.
+The next level up is to get feedback from your developer community.
+DX research is one way to do this - but there are many other techniques that can be employed.
+If dev rel does both broadcast and feedback that is great, and the dev rel team is relatively mature.
+The next level up from this is to make the information valve,
+that is bidirectional, and connect it into a single feedback loop.
+This is all about designing information flows and optimising them.
+If dev rel does this, the dev rel team is rare, and I’d even say industry leading - because most do not get to this level.
+I’ll expand a bit more.
+In this scenario, dev rel essentially takes on the form of a proxy, sandwiched between the engineering team and devs in the community,
+and its role as a proxy is to facilitate that information loop by filtering, prioritising, amplifying et cetera.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Further reading
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--dev-rel-book-cover.png" alt="" style="object-fit: fill; width: 350px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Developer Relations by Caroline Lewko & James Parton
+- [devrel.agency/book](https://devrel.agency/book)
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>In this section, I have said a number of times “we won’t be able to get to that today”
+because there is a vast body of professional knowledge about dev rel.
+My intent was simply to pull out a few key bits as tasters.
+If all this has piqued your interest, I would strongly recommend that you get this book.
+You’ll get heaps more in both depth and breadth from this.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Further reading /2
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--state-of-dev-rel-2023-survey.jpeg" alt="" style="object-fit: fill; width: 750px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+
+- State of Dev Rel 2023 10th annual survey
+- [stateofdeveloperrelations.com/2023devrelreport](https://stateofdeveloperrelations.com/2023devrelreport) 
+- [twitter.com/bguiz/status/1716657922875572376](twitter.com/bguiz/status/1716657922875572376)
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>The same folks who brought you that book that I just recommended, they also run a dev rel consultancy.
+I’ve collaborated with them on a couple of projects, and they’re really good.
+Another thing that they do is an annual survey, called the state of dev rel.
+It is comprehensive, and this survey is to dev rel, as the stackoverflow annual survey is for devs in general.
+On the slide here I’ve got a link to the full report for this year.
+I have also got a link to a tweet thread where I’ve expanded on some insights and takeaways from this year&#39;s report.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 25%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<div class="block">
+
+## The Politics: Dev Rel
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 50%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+
+
+### How a Dev Rel team operates within an organisation
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><p>Now we’ll be switching tracks. Dev Rel is a function, and that function is executed by a team, and that team exists within a company.
+This next section will be about how the dev rel team fits into a company,
+and peel back the curtain to reveal some of the behind the scenes stuff.</p>
+<p>Before that, I’m going to check if there are any questions in the chat.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Organisation Structure
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+<img src="/images/presentations/unmasking-devrel--organisation-structure.jpeg" alt="" style="object-fit: scale-down">
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Let’s begin with an org chart.
+This is something I’m sure many of you have seen before.
+So in a typical tech company, the layout that you’ll get is that you have the executive team at the top,
+these are the C-level folks, and the VPs et cetera.
+Then each function reports into them, usually there is engineering, product, marketing, and sales.
+(There are a few others too, but I’ll leave them out for brevity)
+So in this context, where does Dev Rel fit?</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Organisation Structure
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+<img src="/images/presentations/unmasking-devrel--organisation-structure-with-dev-rel.jpeg" alt="" style="object-fit: scale-down">
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>… and the answer is that there is currently no consensus on this.
+In different tech companies, dev rel reports into different functions.
+Some to engineering, some to product, some to marketing, and some to sales.
+This is tricky, and actually winds up shaping the dev rel team.,
+in terms of focus, targets, and activities.
+This happens because each function knows their own field very well,
+but only has a cursory, or perhaps even superficial, idea of the other functions.
+Meanwhile, DevRel is really its own thing, and has to be multidisciplinary, often performing a bit of each of these different functions.
+That is why DevRel practitioners now advocate for being their own top level function, where the dev rel team reports directly to the executive team.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Team name, job titles
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--job-titles-spidermen-pointing-meme.jpeg" alt="" style="object-fit: fill; width: 450px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Developer Relations
+- Developer Advocacy
+- Developer Experience
+- Developer Evangelist
+
+
+
+
+<img src="/images/presentations/unmasking-devrel--job-titles-dev-rel-avocado-emoji.jpeg" alt="" style="object-fit: fill; width: 300px">
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Another source of confusion is what exactly the team is called,
+and what the job titles within it are.
+These are slightly different from each other … but hard to tell apart from the point of view of an external community member.
+In my past experience, I’ve been a developer advocate, developer evangelist, developer relations, and even developer experience.
+Hedera concurrently has both a developer relations team and a developer advocacy team.
+Even I get mixed up sometimes!
+So wherever I can get away with it, I’ll just use “Dev Rel” then the avocado emoji.
+That ought to clear things up!</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Product vs Platform
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--product-vs-platform-spongebob-meme.jpeg" alt="" style="object-fit: fill; width: 350px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Platform → Definite need
+- Product → Maybe need
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>If you’re in a tech company, does that tech company make products or platforms?
+This is quite important to ascertain, because it affects what kind of dev rel you’re going to do,
+and what constraints the dev rel team will be under.
+A product is where its users are end users.
+A platform is where its users are developers who are building products for end users.
+If the tech company focuses on building products, then there’s only a maybe need for dev rel.
+Whereas if the tech company focuses on building a platform, then there’s a definite need for dev rel
+… and this, the platform situation, is a much better environment for a dev rel team to operate within.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Events vs Content
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--events-vs-content-meme.jpeg" alt="" style="object-fit: fill; width: 360px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Very common misconception
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>One of the biggest misconceptions about dev rel is that their main focus is events.
+Speaking at meetups and conferences, organising hackathons, et cetera.
+Yes, dev rel does all of this … but it does a lot more than that.
+In fact events only form a small fraction of what dev rel really does.
+But events are also the most visible, the most prominent, so that skews the opinion significantly.
+Dev rel actually spends much more time creating tutorials, workshops, code examples, etc
+but since that happens behind the scenes, that often gets overlooked.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Educate Up
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--educate-up-charlie-pinboard-meme.jpeg" alt="" style="object-fit: fill; width: 520px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Exec team’s understanding
+- Educate up → Opportunities
+- Metrics → Exemplary
+- Achievements list
+
+<img src="/images/presentations/unmasking-devrel--organisation-structure-with-dev-rel.jpeg" alt="" style="object-fit: fill; width: 300px">
+
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>This is one of my personal bugbears.
+Within a company, usually only the dev rel team truly understands its own function.
+Throw back to the org chart shown earlier.
+The other teams usually have an incomplete understanding of the devrel practice area,
+the roles, the responsibilities, the activities, the contributions, and the value it brings.
+And this includes the exec team as well.
+As far as internal challenges go, this one is evergreen - there’s always a need to educate up.
+Always look for opportunities to do so.
+One really good way to do this is to set up metrics for the devrel team,
+be exemplary in how good the your metrics game is.
+Because when you’re educating up, you have more to prove.
+And dev rel has to always be educating up.
+Another really good way to do this is to maintain an achievements list,
+and log any significant accomplishments as the team makes them happen.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 25%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<div class="block">
+
+# The Role: Dev Rel
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 50%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+
+
+## What you do when you are in Dev Rel
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><p>Next we’re going to move on to what dev rel does again,
+but this time it is the boots on the ground edition.
+What you would do, as an individual member of a dev rel team.</p>
+<p>Before that, I’m going to check if there are any questions in the chat.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## A day in the life
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--day-in-the-life-homer-too-many-buttons-meme.jpeg" alt="" style="object-fit: cover">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Support
+- Meetings
+- Code examples
+- Prep for next workshop/ webinar
+- Strategy
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>One of the main takeaways about dev rel is that the role is quite multi-faceted,
+and you will be pulled in a number of different directions at the same time on a daily basis.
+When you first start a dev rel role, you’ll almost certainly fall into the classic beginners’ trap of spending all of your time on support.
+You have to avoid this by being able to identify when this happens.
+and then to plan your time allocation such that you split your time intentionally between 3 categories:
+(1) Support (2) Operations, and (3) Strategy. Determine, up front, what percentage of time you want to spend in each of this areas, and stick to that dogmatically.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Task planning
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--eisenhower-matrix.jpeg" alt="" style="object-fit: fill; width: 450px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Most planned → Most ad-hoc
+- Reprioritisation frequency → High
+- Scrum vs Kanban vs Checklists
+- Eisenhower matrix → Get good
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Another impact of dev rel being such a multi-faceted role is that time management becomes very crucial.
+Prepare for your planned tasks and priorities to get disrupted weekly, and sometimes even daily.
+At a company level, you might be asked to use scrum with sprint planning, or similar.
+That works really well for software engineering, because you can plan ahead of time, sometimes even months in advance.
+Dev rel does not work that way. I wish it did, but in reality it is much more chaotic,
+and you have no choice but to be reactive.
+So when planning, always include buffer for the inevitable unplanned action items.
+But there is a method to the madness, if you can find it. I have a couple of techniques that help.
+(1) The 1st one. When scrum and sprint planning starts to fall apart, identify the situation, and swap to kanban temporarily, as it allows the team to be more reactive.
+Also regardless of whether you are doing scrum or kanban or something else, I’ve found that the best way to keep track of everything is to simply keep checklists.
+I personally keep markdown checklists simple text files, and that’s my secret sauce to productivity.
+(2) The 2nd technique. Keeping track of what tasks you are doing is fine, and re-prioritising them is also fine.
+But problems start to creep in when you make poor decisions about the new priorities.
+It’s tricky, because you cannot go for the most important first. Neither can you go for the most urgent first.
+But there’s a simple chart called the Eisenhower matrix - just employ this every time you need to prioritise a set of tasks, to get the best outcomes.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Strategy
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--raci-matrix.jpeg" alt="" style="object-fit: cover">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- What to do → Known
+- How to do → Unknown
+- Many stakeholders → Balancing act
+- Internal decentralised influence → Politics
+- Checklists
+- Flow charts
+- RACI matrices
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Another impact of dev rel being such a multi-faceted role is that you have a lot of stakeholders.
+Are you sensing a pattern here?
+The work that dev rel does likely has indirect impacts on all of engineering, product, marketing, and sometimes even sales and legal.
+Since dev rel has so many diverse stakeholders, stakeholder management is paramount.
+You might know what you need to accomplish, but how you do those things is unknown … and this is where strategy comes into play.
+Dev rel needs to be good at roping in stakeholders from different functional areas within the company, to get them all on the same page.
+I think my favourite tool for this is the RACI matrix, which helps you to map out stakeholders very definitively, and check your blind spots.
+You may also want to use checklists and flowcharts to aid communication.
+And some of you might be thinking - isn’t this sort of stuff for management with MBAs etc.
+Yes you’re right, generally speaking. But in dev rel, even if you’re not a manager yourself, you’ll need to know and use this stuff.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Support
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--support-mickey-helps-pooh.jpeg" alt="" style="object-fit: fill; width: 300px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Help developers → Mission
+- Dedicated support → Non technical
+- 1-to-1 support → Repurpose for 1-to-many
+
+
+
+</div>
+</div></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Operations
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--operations-public-vs-internal-iceberg-meme.jpeg" alt="" style="object-fit: fill; width: 380px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Visible ← Least time
+- Conference/ meetup/ hackathon
+- Workshop/ webinar
+- Invisible ← Most time
+- Creating content
+- Dev experience design
+
+
+
+</div>
+</div></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 25%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<div class="block">
+
+# Career Paths: Dev Rel
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 50%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+
+
+## Who becomes Dev Rel
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><p>So we have covered dev rel from multiple different angles: The function, the politics, and the role.
+In this section, and the next one, we’ll switch tracks, and become more personal.
+Specifically we’ll cover career paths, in this section,
+and then how to figure out if dev rel is for you in the next section.</p>
+<p>But before that, I’m going to check the chat to see if there are any questions!</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Organisation structure (recap)
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+<img src="/images/presentations/unmasking-devrel--organisation-structure-with-dev-rel.jpeg" alt="" style="object-fit: cover">
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>I’m going to reference the same org chart from earlier,
+but this time come at it from a different angle.
+Each of the various functional areas that Dev Rel potentially reports into in an organisation,
+well a Dev Rel professional may very well start off with a background in one of those.
+But when they transition into Dev Rel, they’ve got to learn about the other aspects of Dev Rel.
+That is, these other functional areas.
+Because Dev Rel is cross functional, and is multidisciplinary.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## From programming
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--1-in-5-teens-will-experiment-with-web3-programming-meme.jpeg" alt="" style="object-fit: fill; width: 420px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Software engineer background
+- Pros
+- Already can code
+- Already understand target audience
+- Cons
+- Coding skills will atrophy
+- Hard to pick up
+	- events skills
+	- marketing skills
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Coming from a software engineering background, and transitioning into Dev Rel is probably the most common path.
+There are pros and cons.
+Creating code examples and other materials for developers is going to be quite easy for you, since you already know how to code.
+Also, the target audience basically is you, and you know yourself well. (Hopefully!)
+For example, when you need to put yourself in the shoes of a target segment or persona,
+you can do so much more easily, because you can draw from your own past experiences.
+What are the negatives?
+It is quite likely that you’ll go from writing code at a much more advanced level, to code that is much easier,
+so your ability in that skill will get weaker over time unless you continue to code outside of work.
+The other is that you will likely have to get good at a skill that you have not practiced much before,
+namely marketing, being at events, et cetera.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## From marketing
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--bats-dance-off-meme.jpeg" alt="" style="object-fit: fill; width: 320px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Marketing/ events/ community backgrounds
+- Pros
+	- Already have events, community management, marketing skills
+- Cons
+	- Need to learn to code
+	- Need to understand target audience
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Coming from a marketing background, and transitioning into Dev Rel, is probably the second most common path.
+In this I’m including those with backgrounds in running events and community management.
+The pros are that you already have those skills.
+But the negatives are basically the inverse of earlier -
+essentially you’ll need to put in more work to learn to code,
+and to understand the target audience.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Jack of all trades
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--jack-of-all-trades-cat-in-the-hat-balancing.jpeg" alt="" style="object-fit: fill; width: 380px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Juggle diverse skill sets
+- Juggle diverse stakeholders
+- “Jack of all trades, master of none”
+- Breadth vs depth
+
+<img src="/images/presentations/unmasking-devrel--jack-of-all-trades-breadth-vs-depth.jpeg" alt="" style="object-fit: fill; width: 400px">
+
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>One phrase I like to use a lot in describing dev rel is that you need to be a jack of all trades.
+Not just in the skills and activities, but also in the ability to deal with different parts of the organisation (internal stakeholders),
+and also dealing with the community (external stakeholders).
+So it is quite the juggling act!
+Now that phrase, “jack of all trades” also comes with a second part, “master of none”.
+And this is where the hard work comes in.
+Let’s say that you are a software engineer, you’ll have a lot of depth in your skills and ability in writing software.
+That’s modeled by the blue strip - depth.
+Let’s say that you then transition into dev rel, you’ll have a lot of breadth in your skills and ability, spanning writing software, marketing, product management, and even sales.
+That’s modeled by the yellow strip - breadth.
+But what you really want is to maintain depth in one area, while expanding your breadth to cover all the other areas.
+That’s the green strips - breadth and depth.
+This is easier said than done, and something to consider about Dev Rel as a career path.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 25%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<div class="block">
+
+# Figure out if Dev Rel is for you
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 50%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+
+
+## Would you? Could you?
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><p>OK, so now that we’ve covered career paths, hopefully that has piqued your interest.
+You can come from a number of different backgrounds, and still make it into dev rel
+… some paths are harder, and therefore take longer than others.
+Maybe you thought that you didn’t have the right background before,
+and now you think that you might after all.
+But, right now you are doing something else altogether professionally.
+How do you go from inspiration, to something concrete, and transition into dev rel?
+In this section, we’re going to cover just that.
+Firstly, you’ve gotta be sure that you’re not merely inspired, but that you’re also actually capable of a role in dev rel.
+And secondly, you’ve gotta be seen by some company looking for dev rel talent, as someone who is going to fit into their dev rel team.
+This section will cover a few techniques that’ll help you to cover both!</p>
+<p>Before we go into that, I’m going to check the chat to see if there are any questions.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Try before you buy
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--try-before-you-buy-khaleesi-avocado-meme.jpeg" alt="" style="object-fit: fill; width: 400px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- This role is hard
+- Test the waters
+- Hands on understanding
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>The main recommendation from me is that you should give it a go before you commit to a career transition.
+Because there are many challenges in the role, as we’ve talked about,
+and it is important that you experience at least some of them first hand.
+And I’m going to list a few techniques that I’d strongly encourage you to do, on this front.
+The payoff is that you could find that perfect role that balances a lot of different skills.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Code + write + video
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--code-write-video-patrick-star-genius-vs-reality-meme.jpeg" alt="" style="object-fit: fill; width: 420px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Most common, most time spent
+- Create a code example
+- Write an article stepping through it
+- Record a video demonstrating it
+- Publish & promote!
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Let’s start with the most common task, and perhaps the type of task that you’ll spend the most time on.
+Create a code example, create a written tutorial for your code example, and then record a demo video of your tutorial.
+Not to forget, that you should publish all these, on github, on a website, and on youtube, respectively.
+Then post about it on twitter or other social media.</p>
+<p>The obvious rationale behind this is about the work being done, and assessing your own ability to do these tasks.
+There is a less obvious rationale too: Did you enjoy the process of doing this? Or did you feel like it was a chore?
+When you hit publish, and then promoted it on social media, did that feel like the natural course of action? Or did you feel like maybe you should just keep it to yourself?</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Speak
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--speak-live-demo-success-baby-meme.jpeg" alt="" style="object-fit: fill; width: 380px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Start with meetups
+- Talk about your Dev Rel target area
+- Challenge #1: Public speaking ← Dev
+- Challenge #2: Technical demo ← Other
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>The most externally visible part of Dev Rel is when you speak at tech meetups or tech conferences.
+The cool part is that you don’t need to already be in dev rel to do that -
+because anyone can speak at events, as long as their topic is relevant to that particular event.
+So pick any piece of tech that you are excited about.
+Maybe it is a programming language, or a dev tool, or a library, or a framework.
+Create a presentation about it, one that includes a live demo,
+and then submit it to the organiser of a tech meetup, and hopefully you get picked to speak.
+If you’re in, then turn up and deliver your preso and demo.
+If you come from an engineering background the public speaking is likely to be the more challenging part of it,
+otherwise, the demo is likely to be the most challenging part of it.</p>
+<p>Again, the obvious rationale behind this about the work being done, and assessing your open ability to do these tasks.
+And the other rationale too, where you ask yourself: Did you enjoy the process of doing this? Or did you feel like it was a chore?
+When you get on stage and speak to an audience, did that feel OK? Or did you feel like maybe you should have just posted it online instead?</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Hackathon
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--hackathon-submit-pitch-deck-only-hackerman-meme.jpeg" alt="" style="object-fit: fill; width: 380px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Participate and submit ← Level 1
+- Analyse bounty design ← Level 2
+- Talk to Dev Rel about their roles ← Level 3
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Another externally visible part of Dev Rel is hackathons.
+If you’re on a Dev Rel team, you’ll likely be attending, judging, mentoring, sponsoring, and even organising hackathons.
+If you have not yet been to a hackathon, this is finally your excuse to do so.
+Participate by submitting a project at a hackathon - your aim here is not to win, but to get the full event experience.
+But then you also take it to the next level - take a look at the bounties, how they have been structured by the event organiser, and by the sponsors.
+Also, there are almost certainly going to be Dev Rel professionals at the hackathon - go talk to them and ask them what it is like doing what they do.
+Maybe tell them that you are interested in Dev Rel yourself, and see what advice they give you.</p>
+<p>Once again, ask yourself these questions: Did you enjoy the process of doing this? Or did you feel like it was a chore?
+When you speak to Dev Rel professionals, did you vibe with them? Did you feel like you could work in a team with one of them?</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Dev Rel team in your company
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+<div class="block">
+
+<img src="/images/presentations/unmasking-devrel--internal-dev-rel-team-double-hatting.jpeg" alt="" style="object-fit: fill; width: 420px">
+
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Already work in a tech company?
+- Formal/ informal dev rel team
+- Double hat
+- Temporary
+
+
+
+
+</div>
+</div>
+
+<aside class="notes"><p>So far it has been activities that anyone can do.
+This last one, however, only really is accessible if you happen to already work in a tech company,
+and that company happens to have a dev rel team.
+The task here is going to be described in much less detail, so that also means it is a bit more vague,
+because you’re going to have to tailor-make your approach based on individual circumstances in your company.
+But the basic idea is that you ask your manager to temporarily expand the scope of your roles and responsibilities.
+Specifically to include some activities that are performed by the Dev Rel team
+If you’re able to navigate that successfully, you’ll be able to continue on in your current role,
+but have a temporary additional workload where you get to try out Dev Rel,
+and assess if it is for you first hand, and even learn on the job.
+Kinda like an apprenticeship, one that you’ve carved out for yourself.</p>
+<p>Once again, ask yourself these questions: Did you enjoy the process of doing this? Or did you feel like it was a chore?
+When you executed Dev Rel tasks within your company, did you feel like you accomplished something? Did you feel like you could work within your company’s Dev Rel team?</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background slide_background_01_building has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 25%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<div class="block">
+
+# Wrap
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 50%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><p>We’ve just come to the end of the presentation.</p>
+<p>I’m going to wrap up next, but first I’ll check if there are any questions in the chat.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## In this preso, we have:
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Overview of Devrel
+- Function, role, and politics
+- Devrel and you
+- Explored possible career paths
+- Actions to figure out if Dev Rel is for you
+
+
+</div>
+</div>
+
+<aside class="notes"><p>Here is what we’ve covered today.
+The first part was about dev rel in general,
+and the second part was a bit more specific, aimed at potential or aspiring dev rel professionals.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## There is a lot more:
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+- Value proposition
+- Audience
+- Dev decision makers
+- Dev plus, dev first
+- Organisation alignment
+- Metrics
+- Phases/ levels
+
+
+</div>
+</div>
+
+<aside class="notes"><p>I wanna stress that what I’ve covered here is really quite little,
+and there’s a lot more to dev rel that I could talk about.
+The stuff listed on the screen being just a taster of what we have not covered.
+So… where can you find out more?</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_background" style="position: absolute; left: 0%; top: 0%; height: 14%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_title_text" style="position: absolute; left: 1%; top: 0%; height: 14%; width: 74%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="block">
+
+## Next
+</div>
+
+
+
+</div>
+<div class="area_title_logo" style="position: absolute; left: 75%; top: 1%; height: 13%; width: 24%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+<div class="area_left" style="position: absolute; left: 3%; top: 17%; height: 68%; width: 47%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+</div>
+<div class="area_right" style="position: absolute; left: 40%; top: 17%; height: 78%; width: 57%; display: flex; flex-direction: column; align-items: flex-end; justify-content: flex-end" align="right">
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 17%; height: 94%; width: 64%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start" align="left">
+
+
+
+
+
+READS
+- Developer Relations: [devrel.agency/book](https://devrel.agency/book)
+- On Developer Advocacy: [blog.bguiz.com/2022/on-developer-advocacy](https://blog.bguiz.com/2022/on-developer-advocacy)
+
+CONNECT
+- Twitter: [twitter.com/bguiz](https://twitter.com/bguiz)
+- LinkedIn:[linkedin.com/in/brendangraetz](https://linkedin.com/in/brendangraetz)
+
+
+</div>
+</div>
+
+<aside class="notes"><p>You can check out the dev rel book that I mentioned at the beginning of this preso.
+I’ve also got an article that I wrote about developer advocacy last year,
+and if this preso was interesting to you, I think you might enjoy that as well.</p>
+<p>Also, here are my twitter and LinkedIn, feel free to connect with me there.</p>
+</aside></script></section><section data-markdown=""><script type="text/template"><!-- .slide: class="drop" -->
+<grid absolute="true" drag="100 100" drop="0 0">
+<div class="slide_background slide_background_02_astronaut has-dark-background" style="background-color: purple; position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+<div class="area_title_text has-dark-background" style="background-color: transparent; position: absolute; left: 3%; top: 25%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<div class="block">
+
+# Thank You!
+</div>
+
+
+
+</div>
+<div class="area_content" style="position: absolute; left: 3%; top: 50%; height: 20%; width: 94%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+
+
+
+
+
+## Keep building!
+
+
+
+</div>
+<div class="area_footer" style="position: absolute; left: 0%; top: 94%; height: 6%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+🧍 Brendan Graetz 🌐 [blog.bguiz.com](https://blog.bguiz.com/) 🕊️ [@bguiz](https://twitter.com/bguiz) 🐙 [@bguiz](https://github.com/bguiz)
+</div>
+<div class="area_footer_logo" style="position: absolute; left: 1%; top: 95%; height: 5%; width: 10%; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left">
+
+</div>
+</div>
+
+<aside class="notes"><p>That’s a wrap!</p>
+</aside></script></section></div>
+    </div>

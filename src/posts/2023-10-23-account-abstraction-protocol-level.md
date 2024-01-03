@@ -94,11 +94,19 @@ plus the ability to reset passwords when you forget them.
 Some web3 applications have a "solution" for this:
 Let users continue using usernames and passwords,
 amounting to a faux account.
+<<<<<<< HEAD
 In this case, the web3 application will manage the account (cryptographic keys included)
 on its own web2 server, which has custody of the *real* account.
 While this approach technically works,
 it misses the whole point of web3 technology and philosophy.
 In this scenario, users may as well use a web2 application instead.
+=======
+In this case, the web3 application will manage the account (private keys included)
+on its own web2 server, which has custody of the *real* account.
+While this approach technically works,
+it misses the whole point of web3 technology and philosophy.
+In this scenario, that user may as well use a web2 application instead.
+>>>>>>> docs/preso-dev-rel-2023
 
 Remember: Not your keys, not your crypto.
 
