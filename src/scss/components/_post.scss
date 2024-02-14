@@ -118,6 +118,16 @@
       padding: get-size(700);
       font-size: get-size(500);
     }
+
+    .footnotes {
+      .footnote-item {
+        padding-bottom: 1em;
+
+        &::before {
+          content: '¶';
+        }
+      }
+    }
   }
 
   &__footer {
