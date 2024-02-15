@@ -13,6 +13,9 @@ const slugForStaticmanFilter = require('./src/filters/slug-for-staticman-filter.
 const staticmanCollectionFilter = require('./src/filters/staticman-collection-filter.js');
 const urlAbsoluteOrRelativeFilter = require('./src/filters/url-absolute-or-relative-filter.js');
 
+// Import utils
+const markdownItLib = require('./src/utils/markdownit.js')
+
 // Import transforms
 const htmlMinTransform = require('./src/transforms/html-min-transform.js');
 const parseTransform = require('./src/transforms/parse-transform.js');
@@ -21,6 +24,9 @@ const parseTransform = require('./src/transforms/parse-transform.js');
 const site = require('./src/_data/site.json');
 
 module.exports = function(config) {
+  // Libs
+  config.setLibrary('md', markdownItLib);
+
   // Filters
   config.addFilter('dateFilter', dateFilter);
   config.addFilter('markdownFilter', markdownFilter);
