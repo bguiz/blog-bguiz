@@ -41,7 +41,7 @@ therefore about 0.033 kg of methane counts as 1 kg of carbon dioxide equivalent 
 
 ![](/images/posts/redefine-climate-action-metrics--co2e-calculation-infographic.png)
 
-While this is still is the main unit of account that matters in scientifically calculating and forecasting the temperature of Earth,
+While this is still the main unit of account that matters in scientifically calculating and forecasting the temperature of Earth,
 it is *not* the most useful unit of account for *the actions* that we take to curb further temperature increases.
 The singular focus on quantity overlooks a critical factor: **Time**.
 
@@ -59,8 +59,21 @@ Immediate reductions are *exponentially* more valuable than the same quantity of
 This makes clear the case for us to rethink metrics for our GHG reduction actions.
 Thus, this article proposes a new unit of account which inherently reflects the urgency required:
 Kilograms of carbon dioxide equivalent per year -- **kg CO₂e / year**.
+This would be calculated by dividing the amount of GHG emissions reductions by time
+to calculate an estimated average value.
+
 While the use of this unit may seem novel at first, it gives us a fresh perspective of the goal,
 and yields valuable new ideas around how to attain it.
+
+The cumulative nature of GHG emissions mean that while the rate of the emissions reductions matter,
+how soon these reductions begin also matter.
+One way in which to incorporate these into calculations using the new metric
+is to define an *epoch* (a universal start time) [^21].
+For example, we could set the epoch to the year 2000.
+If one were to start an activity that removes **1000 kg CO₂e / year** in the year 2025,
+that should be considered *as effective as*
+starting an activity that removes **2000 kg CO₂e / year** in the year 2050.
+To reiterate: Early action is key to addressing climate change.
 
 The following sections illustrate how this new metric could be applied,
 and reshape the thinking and processes in various sectors that have high potential for impact on curbing greenhouse gas emissions.
@@ -77,10 +90,17 @@ and adding carbon capture and storage [^11] at the same oil refinery which takes
 If both can deliver the same amount of GHG reductions and cost the same,
 in our current thinking based on the **kg CO₂e** metric,
 the same amount of capital is likely to be allocated to both projects.
+
 However if we were to use the new metric instead, **$ / kg CO₂e / year**,
 the methane leaks option would be allocated much more capital compared to the carbon capture and storage option.
-This new allocation would have a much bigger impact on cumulative GHG emissions,
-and therefore is the better allocation; and illustrates precisely why we need to use the new metric.
+Additionally, if the project plugging methane leaks can be implemented this year,
+but the project adding carbon capture and storage can only be added in about 15 years;
+and we apply the *epoch* logic,
+the capital allocation would skew even further towards the methane leaks option.
+This new way of prioritising capital allocation would have
+a much bigger impact on **cumulative GHG emissions**.
+
+The new metric proves its inherent value, by demonstrating that it leads to better allocations.
 
 Climate positive investments tend to be good investments too, with the “Carbon Clean 200”,
 an index tracking “companies leading the way with solutions for the transition to clean energy”,
@@ -156,8 +176,12 @@ It is not too late to steer back on course [^18] by embracing new metrics that
 guide our efforts towards the actions that yield the most significant immediate benefits.
 When we put the right metrics in place, two key outcomes result:
 
-- Simply showing the metrics to people automatically changes their behaviour to improve those metrics.
-- The actions needed take to change those metrics are made much clearer.
+- Simply showing the metrics to people automatically changes their behaviour,
+  nudging them to improve those metrics.
+- The actions needed to change those metrics are made much clearer.
+
+While kg CO₂e is an appropriate unit for measuring **climate impact**,
+kg CO₂e / year is a more appropriate unit for measuring **climate action**.
 
 Here is our clarion call:
 If you develop strategies or lead organisations in key sectors -
@@ -171,12 +195,29 @@ Let us measure what really matters.
 
 —---
 
-Thanks to [Owanate Amachree](https://rw.linkedin.com/in/theowanateamachree) for reviewing this article.
+Thanks to
+[Owanate Amachree](https://rw.linkedin.com/in/theowanateamachree),
+[Graham Lally](https://groundlake.org/),
+[Berwyn Powell](https://pinopticon.net/),
+and [Gunnstein Lye](https://ieji.de/@glye)
+for reviewing this article.
 
-Banner image [^19].
+----
+
+This article assumes some prior knowledge about climate change.
+If you would like a primer,
+[**What is Climate Change**](https://www.un.org/en/climatechange/what-is-climate-change) has you covered.
+
+Alternatively, if you prefer video, check out
+[**Climate Change: The View From MinuteEarth**](https://www.youtube.com/watch?v=MEX2J_sAdGs).
+
+[![Climate Change: The View From MinuteEarth](https://i3.ytimg.com/vi/MEX2J_sAdGs/maxresdefault.jpg)](https://www.youtube.com/watch?v=MEX2J_sAdGs)
+
+----
 
 Footnotes, with additional commentary.
 
+Banner image [^19].
 
 [^1]: Friedman, L.
 (2016, February 29).
@@ -357,9 +398,25 @@ Pexels.
 [https://www.pexels.com/photo/the-prague-astronomical-clock-tower-4610741/](https://www.pexels.com/photo/the-prague-astronomical-clock-tower-4610741/)
 
 [^20]: United Nations Environment Program.
-(2021, November 9)
- *The six-sector solution to the climate crisis.*
- https://www.unep.org/news-and-stories/video/six-sector-solution-climate-crisis
+(2021, November 9).
+*The six-sector solution to the climate crisis.*
+[https://www.unep.org/news-and-stories/video/six-sector-solution-climate-crisis](https://www.unep.org/news-and-stories/video/six-sector-solution-climate-crisis)
 
     This includes a video for each of the sectors,
     and introduces the sector-based approach to GHG emissions reduction well.
+
+[^21]: Epoch101.
+(n.d.).
+*What is UNIX Time?*
+[https://www.epoch101.com/What-is-Unix-Time](https://www.epoch101.com/What-is-Unix-Time)
+
+    Many computer systems have standardised on 2023/01/01 as the *epoch*,
+    and store/ represent dates and times using a single number
+    (of seconds since this epoch).
+    This epoch works because of standardisation - if different computers need to communicate
+    dates and times to each other, as long as they use the same epoch,
+    the same numbers will represent the same dates and times on the different computers.
+
+    In a similar vein, an epoch chosen for climate change actions,
+    to be used in conjunction with the newly proposed metric,
+    should also be standardised across different projects quantifying their actions.
