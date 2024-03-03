@@ -16,7 +16,7 @@ In Ethereum, the account model is such that accounts operated by users
 start off as a private key (ECDSA secp256k1),
 which is used to generate a public key,
 and this in turn is used to generate an address.
-The *account* is thus inseparabale from its private key, public key, and address.
+The *account* is thus inseparable from its private key, public key, and address.
 Almost all other EVM-compatible networks have followed Ethereum,
 and EOAs work the same way across multiple networks.
 
@@ -94,19 +94,12 @@ plus the ability to reset passwords when you forget them.
 Some web3 applications have a "solution" for this:
 Let users continue using usernames and passwords,
 amounting to a faux account.
-<<<<<<< HEAD
+
 In this case, the web3 application will manage the account (cryptographic keys included)
 on its own web2 server, which has custody of the *real* account.
 While this approach technically works,
 it misses the whole point of web3 technology and philosophy.
 In this scenario, users may as well use a web2 application instead.
-=======
-In this case, the web3 application will manage the account (private keys included)
-on its own web2 server, which has custody of the *real* account.
-While this approach technically works,
-it misses the whole point of web3 technology and philosophy.
-In this scenario, that user may as well use a web2 application instead.
->>>>>>> docs/preso-dev-rel-2023
 
 Remember: Not your keys, not your crypto.
 
@@ -205,10 +198,10 @@ Its abstract reads as follows:
 
 > “An account abstraction proposal which completely avoids the need for consensus-layer protocol changes.
 > Instead of adding new protocol features and changing the bottom-layer transaction type,
-> this proposal instead introduces a higher-layer pseudo-transaction object called a `UserOperation`.
-> Users send `UserOperation` objects into a separate mempool. 
+> this proposal instead introduces a higher-layer pseudo-transaction object called a `UserOperation`.
+> Users send `UserOperation` objects into a separate mempool.
 > A special class of actor called bundlers package up a set of these objects
-> into a transaction making a `handleOps` call to a special contract,
+> into a transaction making a `handleOps` call to a special contract,
 > and that transaction then gets included in a block.”
 
 Essentially, Ethereum's accounts and transaction model,
@@ -295,3 +288,8 @@ Thanks to [Joshia Seam](https://jseam.com/),
 [Danno Ferrin](https://www.linkedin.com/in/shemnon/), and
 [Doug von Kohorn](https://www.linkedin.com/in/dougvk/)
 for reviewing this post.
+
+----
+
+This article has been republished on the Hedera blog:
+[https://hedera.com/blog/account-abstraction-at-the-protocol-level](https://hedera.com/blog/account-abstraction-at-the-protocol-level)
