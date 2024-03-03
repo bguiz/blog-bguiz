@@ -121,7 +121,11 @@
 
     .footnotes {
       .footnote-item {
-        padding-bottom: 1em;
+        padding-bottom: 1.25em;
+
+        & p {
+          padding-bottom: 1.0em;
+        }
 
         &::before {
           content: '¶';
