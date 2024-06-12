@@ -13,7 +13,7 @@ metaDesc: >
 Hedera often sparks debate about how it should be classified.
 Which type of distributed ledger technology (DLT):
 Is it a blockchain or not?
-The consensus mechanism grounds a DLTs' decentralization and
+The consensus mechanism grounds DLTs' decentralisation and
 immutability properties.
 These are core features in web3 philosophy.
 The data structures and algorithms used for consensus influence the
@@ -47,7 +47,7 @@ It also determines which block gets added **atomically**.
 The result of this process is a data structure resembling a
 [singly linked list](https://en.wikipedia.org/wiki/Linked_list#Singly_linked_list)
 of blocks.
-In these blocks, transactions are often organized in
+In these blocks, transactions are often organised in
 [Merkle trees](https://en.wikipedia.org/wiki/Merkle_tree).
 
 Conversely, in a directed acyclic graph (DAG) consensus model,
@@ -73,7 +73,7 @@ Consensus timestamp is based on their claimed submission timestamp,
 and the order witnessed by consensus nodes.
 These transactions are then grouped approximately every two seconds
 into **record files**.
-Transaction timestamps are used to serialize record files, in sequence.
+Transaction timestamps are used to serialise record files, in sequence.
 These record files are equivalent to blocks in a traditional blockchain.
 Each record file is a collection of transactions.
 Each one follows exactly one previous record file.
@@ -99,11 +99,11 @@ Grouping many transactions into a block allows networks to
 achieve consensus **less frequently**.
 They can do so while maintaining a higher transaction throughput.
 This represents a classic software engineering tradeoff:
-Optimize for
+Optimise for
 [higher throughput at the cost of increased latency](https://stackoverflow.com/a/39187441/194982).
 
 Hashgraph deals with individual transactions.
-Yet it minimizes the need for extensive data propagation.
+Yet it minimises the need for extensive data propagation.
 It does so by employing clever techniques
 (gossip about gossip and virtual voting).
 Nodes need to determine which transactions other nodes have witnessed.
@@ -183,13 +183,17 @@ or [this LinkedIn post](#TODO_link).
 Thanks to [Richard Bair](https://twitter.com/richardbair),
 [Jasper Potts](https://twitter.com/jasperpotts),
 [Nana Essilfie-Conduah](https://twitter.com/nconduah),
-and [Devin Saxon](https://twitter.com/dsax10)
+[Devin Saxon](https://twitter.com/dsax10),
+and Paul Bugeja
 for providing excellent feedback and suggestions for this article.
 
 [^hashgraph-transaction-events]: In the Hashgraph DAG,
 each node is actually an event.
 An event groups one or more transactions for performance optimization.
-Importantly, client applications propose individual transactions, not events.
+Importantly, individual transactions do not get assembled
+into multiple proposed events.
+Neither do these events (and transactions in them)
+need to compete to be added to the DAG.
 Therefore **events are not blocks**.
 
 [^hedera-hscs-block-in-rpc-and-solidity]: In HSCS,
