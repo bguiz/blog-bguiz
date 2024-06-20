@@ -6,13 +6,13 @@
   "authorEmail": "null@bguiz.com",
   "authorHandle": "@bguiz",
   "authorName": "Brendan Graetz",
-  "enableThirdPartyComments": false,
+  "enableThirdPartyComments": true,
   "maxPostsPerPage": 7,
   "paymentPointer": "",
   "faviconPath": "/images/favicon.png",
   "codeFundPropertyId": 679,
   "googleAnalyticsId": "UA-37884921-1",
   "quickSearchEnabled": true,
-  "staticmanCommentsEnabled": true,
+  "staticmanCommentsEnabled": false,
   "staticmanGithubFormPath": "bguiz/blog-bguiz/master/comments"
 }

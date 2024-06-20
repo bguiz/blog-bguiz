@@ -24,12 +24,6 @@
       <div class="[ post__body ] [ inner-wrapper ] [ leading-loose pad-top-900 {{ 'pad-bottom-900' if not site.enableThirdPartyComments }} text-500 ] [ sf-flow ] [ e-content ]">
         {{ content | safe }}
       </div>
-      {% if site.enableThirdPartyComments %}
-        <hr />
-        <aside class="[ post__body ] [ inner-wrapper ] [ pad-bottom-900 text-500 ]">
-          {% include "partials/global/third-party-comments.njk" %}
-        </aside>
-      {% endif %}
       {% if site.staticmanCommentsEnabled %}
         <hr />
         <aside class="staticman-comments [ post__body ] [ inner-wrapper ] [ pad-bottom-900 text-500 ]">
