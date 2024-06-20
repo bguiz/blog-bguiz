@@ -77,6 +77,12 @@
       "css": "email",
       "code": 59394,
       "src": "fontawesome"
+    },
+    {
+      "uid": "47a1f80457068fbeab69fdb83d7d0817",
+      "css": "youtube",
+      "code": 61802,
+      "src": "fontawesome"
     }
   ]
 }

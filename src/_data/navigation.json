@@ -34,6 +34,14 @@
       "break": true
     },
     {
+      "id": "youtube",
+      "text": "",
+      "url": "https://youtube.com/@bgraetz",
+      "external": true,
+      "desc": "Brendan Graetz on youtube",
+      "icon": "youtube"
+    },
+    {
       "id": "github",
       "text": "",
       "url": "https://github.com/bguiz",
@@ -64,14 +72,6 @@
       "external": true,
       "desc": "Brendan Graetz on stackoverflow",
       "icon": "stackoverflow"
-    },
-    {
-      "id": "reddit",
-      "text": "",
-      "url": "http://reddit.com/u/bguiz",
-      "external": true,
-      "desc": "Brendan Graetz on Reddit",
-      "icon": "reddit"
     }
   ]
 }
