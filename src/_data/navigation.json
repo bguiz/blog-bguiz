@@ -36,9 +36,9 @@
     {
       "id": "youtube",
       "text": "",
-      "url": "https://youtube.com/@bgraetz",
+      "url": "https://www.youtube.com/@doDevRel?sub_confirmation=1",
       "external": true,
-      "desc": "Brendan Graetz on youtube",
+      "desc": "Hands-on DevRel on youtube",
       "icon": "youtube"
     },
     {
@@ -52,7 +52,7 @@
     {
       "id": "twitter",
       "text": "",
-      "url": "https://twitter.com/bguiz",
+      "url": "https://x.com/intent/user?screen_name=bguiz",
       "external": true,
       "desc": "Brendan Graetz on Twitter",
       "icon": "twitter"
