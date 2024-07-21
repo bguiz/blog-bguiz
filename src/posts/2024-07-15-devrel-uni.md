@@ -127,9 +127,48 @@ Condensing all the learnings, here are my top three takeaways:
 2. **Async Over Sync for Events**: Emphasise webinars with recordings over in-person events. This nets you a much higher ROI. [^async-over-sync-for-hackathons]
 3. **A-B Test and Iterate**: Choose good metrics. Ensure you have mechanisms to measure them effectively.
 
+## Takeaways of others
+
+I'd like to link to the work of the others in this year's cohort of DevRel uni as well.
+I've added my own bullet points to highlight something new that I learnt,
+which I missed/ glossed over from the same sessions. (Hive-mind, FTW!)
+
+- [Mónica Talan](https://cryptoconexion.com/mi-viaje-en-el-cohort-5-de-devrel-university-un-cambio-de-juego-para-entender-carreras-web3/) (in Spanish) + their [summary in English](https://www.linkedin.com/posts/monicatalan_mi-viaje-en-el-cohort-5-de-devrel-university-activity-7220108670544592897-YMCY)
+  - Los miembros de mi cohort no solo estaban comprometidos con el aprendizaje, sino también con ayudar a otros dentro del cohort. Trajeron una variedad excepcional de habilidades a la mesa, lo que ayudó a elevar a todos, incluyéndome a mí.
+    - ➡️ Translation: My cohort members were not only learning themselves, but also helping others within the cohort. They brought an exceptional range of skills to the table, which helped to elevate everyone.
+- [Khushi Panwar](https://smilewithkhushi.hashnode.dev/six-weeks-at-devrel-uni-my-story-and-experience)
+  - This is a small community of DevRel enthusiasts who initiated very meaningful conversations, shared valuable insights and spread positivity.
+- [Aye Chan](https://medium.com/@ayechansant/6-lessons-from-6-professional-devrels-31f7fba2c0f4)
+  - From Patrick Collin's session: Give developers a reason to not hate your docs, by giving them a challenge. Something that pushes them to think and explore your tech. Imagine if video games had an instruction booklet for what buttons to press, instead of a tutorial section.
+  - From Austin Griffith's session: Give people money. If developers build with your tech and are rewarded, more will build with your tech.
+- [Saúl Garcia](https://x.com/saugardev/status/1806054454526955619)
+  - From Austin Griffith's session: One of the most valuable takeaways was his approach to building apps and tutorials quickly.
+- [Sofia Sukhinina](https://medium.com/@sofiasukhinina/my-journey-through-devrel-uni-cohort-5-4c5ad20ea7df)
+  - From Michiel Mulder's session: Good docs is a like a roadmap to your project. It tells you where you have been, and where you are going. It helps you avoid getting lost along the way.
+- [Peter Novel](https://docs.google.com/document/d/1ZaDJWtBqHh2fzcWVanGxTJ8OIhxaMCDU/edit?usp=sharing&ouid=115145485641320639389&rtpof=true&sd=true)
+  - Ultimately, a DevRel's success depends on their ability to empathise with developers and provide a great developer experience. This includes recognising the issues that developers encounter, predicting their needs, and providing the resources and support they require to succeed.
+- [Genesis Hernandez](https://docs.google.com/document/d/1Dvy6WiSOWN1QQVnmEy9lv2x1HKzFKy2ufCjVLi8hw1I/edit) + their [Tweet thread](https://x.com/geny_hern/status/1814428525400625447)
+  From Nader Dabit's session: It is crucial to maintain a steady and consistent approach to both personal and professional development.
+- [Fabian Weber](https://docs.google.com/document/d/1Z3jB3VinMeR7XYVku6OpZsE7LDEaRKkC4Y8MhHAvOak/edit)
+  - From Steph Orpilla's session: Three groups of DevRel focus: Community, content, and product. Things happening in product have to become content and go to the community. THings reflected in the community should become memes/ content and ideally influence the product if needed. These form a triangular relationship.
+- [Ania Shestakova](https://hackmd.io/@4ni4/DevRelUniRecap)
+  - Focus on what you love, but keep learning everyday. One of the reasons I'm working in tech is the community of smart people who are efficient.
+  - Also their article [Advice from Nader](https://hackmd.io/@4ni4/DevRelAdviceNader) is a must read
+- [Ovia Seshadri](https://x.com/ovia_seshadri/status/1792996330756874383)
+  - There is a planning and execution process, not only in the content and teaching but also in convincing the business of what you want to create.
+  - It is difficult to define a metric for a DevRel's work. Create awareness about this problem, and constantly work on tuning your metrics. DevRel should have visibility and support at the company's executive level.
+
+<!--
+- [Aditya Gupta](https://docs.google.com/presentation/u/0/d/1JId7faT5RJZivLVy6LBFLTqMima_gFEkCFrTmdKVSqc/edit)
+- [Steven Pham](https://medium.com/@steve0xp/recap-of-being-part-of-dev-rel-university-cohort-5-d715198429e1)
+-->
+
 ## Are you keen?
 
-Reading a summary about DevRel Uni cannot fully capture the true experience of being part of it. I strongly recommend [enrolling in the next batch of DevRel Uni](https://www.devreluni.com/). Whether you are starting your career in DevRel or seeking to sharpen your skills.
+Reading my summary of DevRel Uni, or those of others,
+cannot fully capture the true experience of being part of it.
+I strongly recommend [enrolling in the next batch of DevRel Uni](https://www.devreluni.com/).
+Whether you are starting your career in DevRel or seeking to sharpen your skills.
 
 Also, do [follow me on Twitter](https://x.com/intent/user?screen_name=bguiz) and [subscribe to my Hands-on DevRel channel](https://www.youtube.com/@doDevRel?sub_confirmation=1), where I will be posting a lot about DevRel.
 
