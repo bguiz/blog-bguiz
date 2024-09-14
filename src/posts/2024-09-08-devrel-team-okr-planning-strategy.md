@@ -11,16 +11,16 @@ Setting and achieving meaningful goals for a DevRel team is a complex challenge.
 It is an integral part of DevRel strategy, and must be done right.
 
 This article introduces you to the OKRA framework.
-This is a method for planning OKRs for your team.
-I have been using and iterating on the OKRA framework for about 5 years.
-We will cover this hands-on, spreadsheet-centric, approach to planning.
-It can be applied to any team that uses OKRs.
-It draws from specific examples that relate to DevRel teams.
-We will round off the article with some tips.
-This includes goal setting, and strategies to plan and execute them well.
+This is a method for planning *Objectives and Key Results* (OKRs) for your team.
+The additional “A” is for emphasis on *actions*.
+This framework is the result of about 5 years of iteration.
+It is a hands-on, spreadsheet-centric, approach to planning.
+It can be applied to any team that uses OKRs -
+and this article draws from specific examples that relate to DevRel teams.
+We will round off with goal setting tips, and strategies to plan and execute them well.
 
-Time to plan your DevRel team’s goals effectively!
-Let’s delve in, beginning with a step-by-step guide.
+Time to plan your team’s goals effectively!
+Let’s begin with a step-by-step guide.
 
 ## Goals
 
@@ -31,23 +31,26 @@ The heart of goal setting in OKRs is two-fold:
 
 That is really all there is to it - but it is far from simple to do those two things right.
 
-The OKRA framework builds on OKRs.
-It front-loads a lot of thinking about the actions required to attain those goals.
+The OKRA framework builds on [OKRs](https://en.wikipedia.org/wiki/Objectives_and_key_results).
+It front-loads thinking about the *actions* required to attain those goals.
 In my experience, the number one reason that OKRs fail is usually not a lack of productivity (as one might assume).
 Instead, they tend to fail when goals are planned improperly.
 Usually: Not considering how to accomplish them, or lacking enough detail.
-If you have thought to yourself, “Why are we even working on that?” … this is likely the underlying reason.
+If you have thought to yourself, “Why are we even working on that?”
+… this is likely the underlying reason.
+Goals need to be *SMART*.
 
 ### SMART
 
-The acronym is for: Specific, Measurable, Achievable, Relevant, Time-bound.
+The is an acronym for:
+[Specific, Measurable, Achievable, Relevant, Time-bound](https://en.wikipedia.org/wiki/SMART_criteria).
 A well defined goal should have all these traits.
 
-However, these traits are descriptions of an ideal.
-It is very hard to bake a cake by looking at a picture of one.
+These traits are merely *descriptions* of an ideal.
+However, it is very hard to bake a cake by looking at a picture of one.
 It is much easier to do so by reading a receipt.
 
-The OKRA framework is that very recipe for SMART goals.
+The OKRA framework is that very **recipe for SMART goals**.
 Imagine a table where:
 
 - The rows are your list of goals.
@@ -59,12 +62,14 @@ Imagine a table where:
   Re-iteratively.
   These are the recipe directions.
 
+TODO_IMAGE screenshot of the spreadsheet
+
 This comes in the form of a spreadsheet.
 Once you work through it, you will have a list of SMART goals for your DevRel team.
 
 ### Getting Started
 
-- Access the [OKRA template](#TODO_LINK) spreadsheet.
+- Access the [OKRA template](https://docs.google.com/spreadsheets/d/11VwVip2Of7_zbziL8J0uDtog-cfcznG6MUmd5qgnnJc/edit?gid=0#gid=0) spreadsheet.
 - Make your own copy of the template.
 - Now you’re ready to start customising it for your DevRel team!
 
@@ -74,7 +79,7 @@ The columns in the spreadsheet are grouped into six groups:
 
 - Group 1: **Goals**
     - Objectives
-    - Key Results
+    - Key Results (KRs)
     - Type
 - Group 2: **Metrics**
     - Start Value
@@ -102,10 +107,13 @@ For example, after completing “Group 3: Actions”, revisit “Group 1: Goals�
 
 The details about how to fill in each column and group are provided in the spreadsheet itself.
 
-You can also watch my [demo](https://www.youtube.com/watch?v=6UBAHgSmi2U&list=PLjyCRcs63y83VNtUOZ42Z3kCerHhOMKDu&index=1&pp=iAQB) based on a hypothetical DevRel team.
+You can also watch my [demo](https://www.youtube.com/watch?v=6UBAHgSmi2U&list=PLjyCRcs63y83VNtUOZ42Z3kCerHhOMKDu&index=1) based on a hypothetical DevRel team.
 It shows the process of completing this spreadsheet, with commentary.
 
-[![Intro to OKRs - OKRA for DevRel teams - DevRel Strategy](https://i.ytimg.com/vi/6UBAHgSmi2U/maxresdefault.jpg)](https://www.youtube.com/watch?v=6UBAHgSmi2U&list=PLjyCRcs63y83VNtUOZ42Z3kCerHhOMKDu&index=1&pp=iAQB)
+[![Intro to OKRs - OKRA for DevRel teams - DevRel Strategy](https://i.ytimg.com/vi/6UBAHgSmi2U/maxresdefault.jpg)](https://www.youtube.com/watch?v=6UBAHgSmi2U&list=PLjyCRcs63y83VNtUOZ42Z3kCerHhOMKDu&index=1)
+
+
+For reference, this is [the completed example](https://docs.google.com/spreadsheets/d/1UjiQ8ce1Fper6jY7e8VUKaeBjT8sbXwnvYZykjVTuTE/edit?gid=0#gid=0) from my video.
 
 ## Tips
 
@@ -152,39 +160,47 @@ Instead it exclusively focuses on goals which measure the outcomes of a team.
 This is great in theory.
 However, in practice, I have found that this works far better at the upper management level.
 This works less well in a team that includes individual contributors.
+
 This is why there is a “type” column in which each KR is either a lead or a lag.
 Consider having a mix of leads to lags.
-It is best to have this mix proportional to the mix of managers to individual contributors.
-If there are too many of one type or the other, reconsider the design or selection of your KRs.
+It is best to have this mix *proportional* to the mix of managers to individual contributors.
+If there are too many of one type or the other, reconsider the selection, or design, of your KRs.
 
 **Revisit TODO items**:
 
 During the planning stage, we need to fill in for each of the attributes of a KR.
-However, in the initial plan it is almost impossible to know the granular detail needed in OKRA.
+However, in the initial plan it is almost impossible to know the granular details needed by OKRA.
 It is fine to make assumptions or educated guesses.
 Perhaps better, even.
+
+How to do this without losing momentum or getting too side-tracked?
+Simply add TODO as markers to come back to.
 Sometimes placeholders are necessary.
-How to do this without losing momentum or getting too side-tracked? Simply add TODO as markers to come back to.
-After the initial plan is completed, it is critical to revisit these TODO items.
+
+After the initial plan is completed, it is critical to *revisit* these TODO items.
 The assumptions must be validated.
 The educated guesses must be replaced with the actual values.
 The placeholders must be followed up on.
-If there is a proof-of-concept needed, begin a spike on it - before the start of the OKR cycle that you are planning for.
+If there is a proof-of-concept needed, begin a spike on it -
+before the start of the planning cycle.
 
 ### Resourcing
 
 **Pick appropriate time periods**:
 
-The default for this is to simply use the same time period for all KRs in the spreadsheet.
-For example, for quarterly OKR planning, all KRs match the upcoming quarter.
+By default, we tend to use the same time period across all KRs in the spreadsheet.
+For example, for quarterly OKR planning, all KRs match the upcoming quarter's dates.
 This may seem sensible, but is a common trap that results in poorly designed goals.
-When completing the final group - which includes start date and end date - always revisit the start value and end value.
-Also to consider who will be resourcing the actions (primarily responsible).
+When completing the final group - which includes *start date* and *end date* -
+always revisit the *start value* and *end value*.
+
+Also consider who will be resourcing the actions (primarily responsible).
 Ask whether it is feasible to accomplish this goal in this time period with these resources.
 If not, either extend the time period, or decrease the change in the values.
-(There is also a third option, which is to increase resourcing.
+
+Note that there is also a third option, which is to increase resourcing.
 But this option is typically unavailable.
-Unless you have a new hire, or you are able to convince other teams to allocate your team their resources.)
+Exceptions: When you have a new hire, or you are able to convince other teams to allocate your team their resources.
 
 **The two types of actions**:
 
@@ -193,6 +209,7 @@ By definition, it is very hard to impossible to work on these concurrently.
 This is because the preparation is usually a prerequisite to the rest of the KR being executed.
 Sometimes, the preparatory actions themselves need significant time or resourcing.
 You may estimate that it will take as much time as the metric actions.
+
 If this is the case, you will need to consider removing that KR altogether.
 Or replacing that KR with a version of it that only focuses on the preparatory actions.
 Perhaps with a view towards tackling the metric actions in the next OKR cycle.
@@ -207,7 +224,9 @@ It serves to reduce the decision workload during the initial plan.
 
 After the initial round of planning is complete.
 The team should discuss which individuals should be involved in each KR.
-Use RACI: Responsible/ accountable/ consulted/ informed.
+Use [RACI](https://en.wikipedia.org/wiki/Responsibility_assignment_matrix):
+Responsible/ accountable/ consulted/ informed.
+
 Some individual members may be allocated to specific DevRel sub-function areas.
 When this is the case, this will be straightforward.
 Sometimes, this is an opportunity to consider allocating differently too.
@@ -217,24 +236,26 @@ For example, in a Developer Education KR, the Developer Success members may be j
 
 **Top-down vs bottom-up**:
 
-Top-down planning in the context of OKRs is where the organisation as a whole plans for its objectives.
+Top-down planning in this context is where the organisation as a whole plans its OKRs.
 Which cascades down to its top-level functional areas.
 Which finally cascades down to the individual teams.
 This tends to work well in the general sense, but not too well for DevRel teams.
 For the top-down approach to work well, top level management needs to understand what individual contributors do.
 For say, a software engineer individual contributor, this works out well.
+
 However, for a DevRel individual contributor, this usually is not the case.
 DevRel is a relatively newer, relatively more niche function within technology companies.
 Thus, top-level management rarely understands it well.
 
 **Consider where DevRel sits within the organisation**:
 
-To complicate things further, the DevRel function is atypically multi-faceted.
+To complicate things further, the DevRel function is *atypically multi-faceted*.
 Even at an individual contributor level.
 It is quite common for DevRel to sit underneath another top-level function.
 For example, under product or marketing.
 When this happens, the other facets of DevRel tend to be deprioritised.
-For example, marketing facets get deprioritised when under product.
+For example, marketing facets may get deprioritised when DevRel sits under product.
+
 To solve this, it is better for DevRel to plan its OKRs bottom-up.
 Subsequently, connect it to the top-down plan from the organisation, meeting somewhere in the middle.
 
@@ -244,9 +265,10 @@ DevRel’s OKRs are slotted into the wider organisation’s OKRs, as with any ot
 Multiple KRs get “rolled up” into a single objective of the hierarchical level above it.
 Anticipate this, and refactor the team’s OKRs accordingly.
 For example, during the initial planning stage, you may have KRs grouped into objectives.
+
 These objectives may be based on DevRel sub-function areas.
 If you peek at the OKRs one level up, you may find that there is no natural alignment.
-If so, change the grouping of the DevRel team’s KRs into objectives to make alignments possible.
+If so, shuffle the grouping of the DevRel team’s KRs into objectives such that alignments are possible.
 
 **Team buy-in**:
 
@@ -262,15 +284,16 @@ The team should consider all the following:
 
 In my experience, the most effective approach is to involved them from the get go
 
-- (1) First hold a kick-off meeting.
+- (1) Hold a retrospective meeting. What went well, and what did not, in the previous planning cycle? What does the team think it should start doing, and stop doing, in the next cycle?
+- (2) Hold a kick-off meeting.
   Explain the exercise - either for the first time, or a recap.
   Conduct a brainstorm.
-- (2) Make a copy of the spreadsheet from the template, and share edit access with the team.
-- (3) Task each team member to come up with between 3 to 5 KRs, asynchronously.
+- (3) Make a copy of the spreadsheet from the template, and share edit access with the team.
+- (4) Task each team member to come up with between 3 to 5 KRs, asynchronously.
   The team may already have assigned DevRel sub-function areas.
   For example, Developer Marketing, Developer Education, Developer Success.
   If so, each member should focus on their dedicated areas.
-- (4) Hold a finalisation meeting.
+- (5) Hold a finalisation meeting.
   The team discusses the pros and cons of each KR and decides what to keep, change, or delete.
   Importantly, all KRs must have no ambiguity (especially TODOs).
 
@@ -280,9 +303,18 @@ That is a wrap!
 
 If you are part of a DevRel team, please do try out the OKRA framework in your next iteration of goal setting as a team.
 
-Get a copy of the [OKRA template](#TODO_LINK).
+Get a copy of the [OKRA template](https://docs.google.com/spreadsheets/d/11VwVip2Of7_zbziL8J0uDtog-cfcznG6MUmd5qgnnJc/edit?gid=0#gid=0);
+or take a look at [the completed example](https://docs.google.com/spreadsheets/d/1UjiQ8ce1Fper6jY7e8VUKaeBjT8sbXwnvYZykjVTuTE/edit?gid=0#gid=0).
 
 I would love to hear how it worked out for you/ your team (both good and bad)!
 Drop your comments on this article itself.
 Or reply to the [tweet about this article](#TODO_LINK).
-Or leave a comment on the [youtube videos accompanying this article](#TODO_LINK).
+Or leave a comment on the [youtube videos accompanying this article](https://www.youtube.com/watch?v=6UBAHgSmi2U&list=PLjyCRcs63y83VNtUOZ42Z3kCerHhOMKDu&index=1).
+
+## Thanks
+
+Thanks to
+[Owanate Amachree](https://rw.linkedin.com/in/theowanateamachree),
+[Bianca Buzea](https://biancabuzea.com/), and
+[Joshia Seam](https://jseam.com/)
+for reviewing this article.
