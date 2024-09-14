@@ -1,10 +1,10 @@
 ---
-title: 'Goals Planning with OKRs - DevRel Strategy'
+title: 'Goals Planning for your DevRel Team using OKRs'
 date: '2024-09-08T08:03:00+08:00'
 tags: [devrel]
 socialImage: /images/posts/devrel-team-okr-planning-strategy--banner.png
 metaDesc: >
-  DevRel team goal setting strategy with Objectives and Key Results
+  A DevRel team goal setting strategy with Objectives and Key Results
 ---
 
 Setting and achieving meaningful goals for a DevRel team is a complex challenge.
@@ -78,28 +78,28 @@ Once you work through it, you will have a list of SMART goals for your DevRel te
 The columns in the spreadsheet are grouped into six groups:
 
 - Group 1: **Goals**
-    - Objectives
-    - Key Results (KRs)
-    - Type
+    - *Objectives*: The goals
+    - *Key Results (KRs)*: Metrics for the goals
+    - *Type*: Lead or lag
 - Group 2: **Metrics**
-    - Start Value
-    - End Value
-    - Units
+    - *Start Value*: Value of the metric at the beginning of the cycle.
+    - *End Value*: Target value of the metric at the end of the cycle.
+    - *Units*: The thing that gets counted.
 - Group 3: **Actions**
-    - Preparatory Actions
-    - Metric Actions
+    - *Preparatory Actions*: Prerequisite tasks that do not necessarily improve the metric.
+    - *Metric Actions*: Tasks, which when performed, should improve the metric. (Not applicable to lag metrics).
 - Group 4: **Definitions**
-    - Measurement
-    - Notes
+    - *Measurement*: Define the method for counting/ measuring the metrics, and where it will be recorded.
+    - *Notes*: Additional details about the KR.
 - Group 5: **Resourcing**
-    - Responsible
-    - Accountable
-    - Consulted
-    - Informed
+    - *Responsible*: Responsible for the correct completion of the KR.
+    - *Accountable*: Answerable for the correct and thorough completion of the KR.
+    - *Consulted*: Opinions are sought about the KR, typically subject-matter experts.
+    - *Informed*: Kept up-to-date on progress.
 - Group 6: **Timeline**
-    - Start Date
-    - End Date
-    - Status
+    - *Start Date*: When the KR begins.
+    - *End Date*: When the KR should be completed by.
+    - *Status*: On track, behind schedule, et cetera.
 
 These groups should be addressed in batches.
 After completing each group, revisit and iterate on values in the previous groups.
@@ -113,7 +113,7 @@ It shows the process of completing this spreadsheet, with commentary.
 [![Intro to OKRs - OKRA for DevRel teams - DevRel Strategy](https://i.ytimg.com/vi/6UBAHgSmi2U/maxresdefault.jpg)](https://www.youtube.com/watch?v=6UBAHgSmi2U&list=PLjyCRcs63y83VNtUOZ42Z3kCerHhOMKDu&index=1)
 
 
-For reference, this is [the completed example](https://docs.google.com/spreadsheets/d/1UjiQ8ce1Fper6jY7e8VUKaeBjT8sbXwnvYZykjVTuTE/edit?gid=0#gid=0) from my video.
+For reference, this is [the example completed in the video](https://docs.google.com/spreadsheets/d/1UjiQ8ce1Fper6jY7e8VUKaeBjT8sbXwnvYZykjVTuTE/edit?gid=0#gid=0).
 
 ## Tips
 
