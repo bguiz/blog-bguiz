@@ -2,7 +2,7 @@
 title: 'Goals Planning with OKRs - DevRel Strategy'
 date: '2024-09-08T08:03:00+08:00'
 tags: [devrel]
-socialImage: /images/posts/devreluni-2024--banner.jpeg
+socialImage: /images/posts/devrel-team-okr-planning-strategy--banner.png
 metaDesc: >
   DevRel team goal setting strategy with Objectives and Key Results
 ---
@@ -62,7 +62,7 @@ Imagine a table where:
   Re-iteratively.
   These are the recipe directions.
 
-TODO_IMAGE screenshot of the spreadsheet
+![OKRA spreadsheet - completed example for a hypothetical DevRel team](/images/posts/devrel-team-okr-planning-strategy--completed-okra-spreadsheet.png)
 
 This comes in the form of a spreadsheet.
 Once you work through it, you will have a list of SMART goals for your DevRel team.
