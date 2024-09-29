@@ -4,4 +4,4 @@
   ignore = "node ./util/netlify-ignore-build.js"
 
 [build.environment]
-  NODE_VERSION = "18.15.0"
+  NODE_VERSION = "20.11.0"

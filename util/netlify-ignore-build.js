@@ -1,2 +1,2 @@
 process.exitCode =
-  process.env.BRANCH.includes('staticman') ? 0 : 1;
+  process.env?.BRANCH?.includes('staticman') ? 0 : -987;
