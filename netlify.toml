@@ -1,5 +1,5 @@
 [build]
-  command = "npm run production"
+  command = "CI= npm run production"
   publish = "dist"
   ignore = "node ./util/netlify-ignore-build.js"
 
