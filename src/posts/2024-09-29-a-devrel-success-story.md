@@ -25,7 +25,7 @@ the lessons learnt apply beyond.
 They demonstrate the critical elements of enabling *Developer Success*,
 a fundamental function of any effective DevRel program.
 
-## The Nadir
+## The Nadir: EthDenver 2023
 
 EthDenver 2023 was Hedera's first venture into a major Ethereum hackathon.
 Despite offering bounties worth tens of thousands of dollars,
@@ -43,7 +43,7 @@ but it was clear that change was necessary.
 
 Here is what we did.
 
-## The Trenches
+## The Trenches: Preparation
 
 In retrospect, the misalignment was clear:
 Our tech platform was not resonating with the EVM developer audience.
@@ -70,7 +70,7 @@ In parallel, we developed a new series of "Hello World" tasks,
 documented workarounds for the final 1% of EVM incompatibilities,
 and created cheats sheets to streamline the hackathon experience.
 
-## The Zenith
+## The Zenith: EthDenver 2024
 
 After 10 months of tremendous effort and close collaboration across teams,
 Quantifying the is subjective, but some of the key outcomes were quantifiable:
@@ -259,14 +259,18 @@ Thanks to [Dana Fujikawa](https://www.linkedin.com/in/dana-fujikawa-6868751/)
 for his top quality work on the developer friction audit,
 from which I learnt much about how to do one.
 
-Thanks to [Nana Essilfie-Conduah](https://www.linkedin.com/in/nconduah),
-[Simi Hunjan](https://www.linkedin.com/in/shunjan),
+Thanks to [Nana Essilfie-Conduah](https://www.linkedin.com/in/nconduah/),
+[Simi Hunjan](https://www.linkedin.com/in/shunjan/),
 and their teams for enabling such a tight collaboration between
 Engineering, Product, and DevRel -
 It is not easy to squeeze additional items into full roadmap,
 so I really appreciate how they accommodated that on such a tight timeline.
 
+Thanks to [Abi Castro](https://www.linkedin.com/in/abixcastro/)
+for creating developer segments and personas,
+as well as role-playing them when preparing for developer experience research.
+
 Thanks to [Spencer Yang](https://www.linkedin.com/in/spencer89/),
-[Owanate Amachree](https://rw.linkedin.com/in/theowanateamachree), and
-[Abi Castro](https://www.linkedin.com/in/abixcastro/)
+[Owanate Amachree](https://rw.linkedin.com/in/theowanateamachree/), and
+[Michiel Mulders](http://linkedin.com/in/michielmulders/)
 for their feedback and suggestions on this article.
