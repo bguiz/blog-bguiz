@@ -249,6 +249,9 @@ they *choose to*,
 and they *complete* their projects
 ... *that* is **Developer Success**.
 
+[Tweet 🧵 #1](https://x.com/bguiz/status/1839525264172409193),
+[Tweet 🧵 #2](https://x.com/bguiz/status/1844680558741516495)
+
 ----
 
 Thanks to [Matt Woodward](https://www.linkedin.com/in/woodwardmatt/)

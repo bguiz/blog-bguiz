@@ -162,7 +162,7 @@ which I missed/ glossed over from the same sessions.
   - A documentation search feature is essential for a developer’s learning journey while using a docs.
 - [Insha Ramin](https://inshaweb.hashnode.dev/inside-devrel-uni-six-weeks-of-learning-and-growth)
   - From Patrick Collins' session: Coming from a web2 background ... The next day, I explored blockchain fundamentals on Cyfrin Updraft and made my first transaction. One thing led to another, and after a week, I completed a Solidity course.
-- [Steven Pham](https://docs.google.com/document/d/1GERV5JhMsFUi-UnfRnfJY_JnchAYVIphHZlyfukmj6I/edit)
+- [steve0xp](https://docs.google.com/document/d/1GERV5JhMsFUi-UnfRnfJY_JnchAYVIphHZlyfukmj6I/edit)
   - Quick starts are among the first things that a dev looks at, and where you make or break your developer experience (DX). Ensure that devs can achieve something with your tech in 5 minutes.
 
 ## Are you keen?
