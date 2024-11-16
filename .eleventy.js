@@ -2,6 +2,8 @@ const fs = require('fs');
 
 const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const webcPlugin = require('@11ty/eleventy-plugin-webc');
+const { EleventyRenderPlugin: renderPlugin } = require('@11ty/eleventy');
 
 // Import filters
 const dateFilter = require('./src/filters/date-filter.js');
@@ -26,6 +28,11 @@ const site = require('./src/_data/site.json');
 module.exports = function(config) {
   // Libs
   config.setLibrary('md', markdownItLib);
+
+  // Set WebC as the template engine for markdown files
+  config.setTemplateFormats(['md', 'webc']);
+  config.setDataDeepMerge(true);
+  config.setMarkdownTemplateEngine('webc');
 
   // Filters
   config.addFilter('dateFilter', dateFilter);
@@ -126,6 +133,10 @@ module.exports = function(config) {
   // Plugins
   config.addPlugin(rssPlugin);
   config.addPlugin(syntaxHighlight);
+  config.addPlugin(webcPlugin, {
+    components: './_includes/webc/*.webc',
+  });
+  config.addPlugin(renderPlugin);
 
   // Ref: https://www.11ty.dev/docs/data-deep-merge/
   // Ref: https://github.com/11ty/eleventy-upgrade-help/tree/v1.x#data-deep-merge

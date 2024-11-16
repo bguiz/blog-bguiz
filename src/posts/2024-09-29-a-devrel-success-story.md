@@ -11,6 +11,13 @@ metaDesc: >
   on your tech platform.
 ---
 
+{% renderTemplate "webc" %}
+<bg-webc-test></bg-webc-test>
+{% endrenderTemplate %}
+
+
+<bg-webc-test></bg-webc-test>
+
 Enabling **Developer Success** is not just a priority for tech platforms -
 it is the difference between **adoption** and **irrelevance**.
 Yet, this is notoriously difficult.

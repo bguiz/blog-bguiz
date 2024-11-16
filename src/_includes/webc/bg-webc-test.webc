@@ -1,0 +1,6 @@
+<span>I'm span 1 in a WebC</span>
+<span>I'm span 2 in a WebC</span>
+
+<script>
+  console.log('I'm a console.log in a WebC');
+</script>
