@@ -31,7 +31,7 @@ This context is important for understanding the developer journey.
 
 When developers interact with your platform, they will encounter it in different places. They will experience it in different ways. These are developer touchpoints.
 
-For example, they might search for “How to ${SOME_TASK} using ${SOME_TECHNOLOGY}” on Google. From there, they might click through one of the search results to a Q&A on Stackoverflow. Both of these are external touchpoints. They might instead go to another search result to an example Github repo. Or click through to your documentation site. These next two are internal touchpoints.
+For example, they might search for “How to ${SOME_TASK} using ${SOME_TECHNOLOGY}” on Google. From there, they might click through one of the search results to a Q&A on Stackoverflow. (Both Google and Stackoverflow are examples of external touchpoints.) They might click through to another search result to an example Github repo. Or click through to your documentation site. (Both your Github repo and your documentation site are examples of internal touchpoints.)
 
 The developer may find the answer they were looking for among one of these touchpoints. If they have found it, they are likely to move to the next step/ touchpoint. If not, more often than not, they will bail.
 
@@ -45,9 +45,9 @@ Notice that this sequence of actions is not a linear sequence. Rather, it is one
 
 ## Friction Points
 
-The developer journey is not something that you, the DevRel team, can design. It is not fully within the locus of your control. You can only exert direct influence over the internal touchpoints. External touchpoints are usually only indirectly influenceable, or sometimes not influenceable at all. 
+The developer journey is not something that you, the DevRel team, can design. It is not fully within the locus of your control. You can only exert direct influence over the internal touchpoints. External touchpoints are usually only indirectly influenceable, or sometimes not influenceable at all. The route individual developers take through these touchpoints is also only indirectly influenceable.
 
-What DevRel can do to improve the developer journey has much to do with friction points. When a developer encounters a particular touchpoint in their journey, what happens next? Do they tend to get frustrated? Do they get stuck there? If so, why? These are friction points. The goal for DevRel is to identify them. And of course, once identified, to minimise or remove them. The article on Developer Experience in this series will go into much more detail on this.
+What DevRel can do to improve the developer journey has much to do with *friction points*. When a developer encounters a particular touchpoint in their journey, what happens next? Do they tend to get frustrated? Do they get stuck there? If so, why? These are friction points. The goal for DevRel is to identify them. Of course, once identified, minimise or remove them. The article on Developer Experience in this series will go into much more detail on this.
 
 The fewer friction points there are, the more efficient the developer journey will be. Recall the concept of the “leaky funnel” described earlier. Too many friction points are analogous to a leaky funnel. Recall from earlier: "If they have found it, they are likely to move to the next step/ touchpoint." Therefore DevRel’s mission is to minimise or remove friction points. We want to turn every “if” into an “of course” where possible.
 
@@ -61,7 +61,7 @@ DevRel can improve the developer journey in another critical way. This has to do
 
 Image source: [Developer Relations](https://www.devrel.agency/book), Chapter 2, Lewko & Parton
 
-The DevRel team should map out multiple developer journeys. One per targeted developer persona. (Note that developer personas should be discovered or selected prior.) The touchpoints in these developer journeys will likely have significant overlap. However, do note that different developers can experience the same touchpoint differently. Thus the friction points they encounter may be different.
+The DevRel team should map out multiple developer journeys. One per targeted *developer persona*. (Note that developer personas should be discovered or selected prior.) The touchpoints in these developer journeys will likely have significant overlap. However, do note that different developers can experience the same touchpoint differently. Thus the friction points they encounter may be different.
 
 ## Metrics and Return on Investment
 
@@ -70,7 +70,7 @@ Mapping out developer journeys with your platform has many benefits. One of the 
 - The frequency of encountering friction points
 - The conversion rate of each touchpoint
 
-Simply knowing the values for metrics like these is not particularly useful. They become interesting when we use them to identify which areas need improvement. Then, implement the needed changes. Finally, measure them again. By comparing the before and after values for these metrics, you can quantify the return on investment (ROI). In other words, how much did the developer journey improve? How much resources were needed to effect that improvement?
+Simply knowing the values for metrics like these is not particularly useful. They become interesting when we (1) use them to identify which areas need improvement. Then, (2) implement the needed changes. Finally, (3) measure them again. By comparing the before and after values for these metrics, you can *quantify* the return on investment (ROI). In other words, how much did the developer journey improve? How much resources were needed to effect that improvement?
 
 Be sure to incorporate these metrics into goals planning for the DevRel team.
 
@@ -88,6 +88,6 @@ Properly designed developer journeys are extremely valuable to a DevRel team. Th
 
 ## Thanks
 
-Thanks to [Michiel Mulders](https://de.linkedin.com/in/michielmulders), [Bianca Buzea](https://biancabuzea.com/about/), and [Tessa Kriessel](https://www.tessakriesel.com/) for helping formulate and develop the key ideas of this article. 
+Thanks to [Bianca Buzea](https://biancabuzea.com/about/), [Tessa Kriessel](https://www.tessakriesel.com/), and [Michiel Mulders](https://de.linkedin.com/in/michielmulders) for helping formulate and develop the key ideas of this article. 
 
 Thanks to [Harry Papacharissiou](https://au.linkedin.com/in/harry-papacharissiou), [Owanate Amachree](https://rw.linkedin.com/in/theowanateamachree/), and [Ömer Talip Akalın](https://nl.linkedin.com/in/otaliptus) for their reviews and feedback on this article.
