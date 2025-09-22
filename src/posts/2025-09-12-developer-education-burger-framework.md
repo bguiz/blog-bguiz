@@ -2,20 +2,11 @@
 title: 'The Tutorial Burger, a Framework for Developer Tutorials'
 date: '2025-09-12T17:20:00+08:00'
 tags: [devrel, education, tutorial]
-socialImage: /images/posts/developer-education-burger-framework--banner.jpeg
+socialImage: /images/posts/tutorial-burger-a1.webp
 metaDesc: >
   Learn why developer education is the cornerstone of Developer Relations.
   Discover the burger framework for scalable onboarding, content iteration, and long-term developer success.
 ---
-
-{{image}}
-Burger  equals tutorial
-set the visual metaphor early, making abstract concepts memorable.
-Readers will immediately visualize the framework as they move through the article.
-The image should be vector-style, minimal, not playful cartoonish.
-lean to a sleek tech aesthetic.  
-- Alt text: Developer education burger framework infographic showing layered DevRel content strategy with tutorials, docs, guides, and assets
-{{/image}}
 
 ## Introduction
 
@@ -41,6 +32,8 @@ This article explores:
 - Mix and match - what works, and what doesn’t
 - Iteration and selectivity
 - Developer education roadmap
+
+![](/images/posts/tutorial-burger-a1.webp)
     
 Note that a written article alone is not a tutorial.
 That is a common misconception.
@@ -52,12 +45,8 @@ A good tutorial for developers consists of much more!
 Developer education is a vital function that DevRel teams perform.
 A thriving community means little if onboarding is confusing or tutorials are vague.
 
-{{image}}
-A simple bar or line graph comparing developer retention rates when tutorials are effective vs when they are poor.  
-Adds empirical weight to the argument.
-Visual proof reinforces credibility with data-driven DevRel professionals.  
-Alt text: Graph showing higher developer retention rates with clear onboarding versus poor documentation
-{{/image}}
+
+![](/images/posts/tutorial-burger-b1.webp)
 
 Why it matters:
 
@@ -76,14 +65,8 @@ Think of a burger.
 It is layered.
 It is structured - just like great educational material should be.
 
-{{image}}
-A clean, branded infographic of a burger stack with each layer labeled (patty, bun, condiments, top bun, box), mapped to education resources (e.g patty = code repo).  
-Helps readers retain the layered structure metaphor.
-Intended for those skimming text, visual reinforcement enhances recall and comprehension Readers will immediately visualize the framework as they move through the article.
-The image should be vector-style, minimal, not playful cartoonish.
-lean to a sleek tech aesthetic.  
-Alt text: Developer education burger framework infographic showing layered DevRel content strategy with tutorials, docs, guides, and assets
-{{/image}}
+
+![](/images/posts/tutorial-burger-c1.webp)
 
 Layers of the burger:
 
@@ -149,14 +132,7 @@ How to choose the right burger stack for each asset?
 Not every piece of education deserves full polish.
 Selectivity optimises the use of DevRel resources.
 
-{{image}}
-A flowchart illustrating decision points.
-when to assign full stack vs lightweight stack (e.g., “Is it a flagship feature? → Yes = Full Burger Stack”).  
-Provides actionable clarity.
-Developers love decision-trees because they shorten thinking time and clarify ambiguity.
-In the style of Excalidraw. 
-Alt text: Flowchart showing when to use the full burger stack versus lightweight content for developer education.
-{{/image}}
+![](/images/posts/tutorial-burger-e1.webp)
 
 Use the full burger for:
 
@@ -201,13 +177,7 @@ This is my suggested order:
   For higher priority tutorials, combine with DevRel in public.
   This way, they hear about it before the tutorial is even complete.
 
-{{image}}
-A circular agile loop diagram with arrows cycling through: Patty → Bun → Condiments → Top Bun → Box → back to Patty.  
-Reinforces the principle that developer education is a **living process**.
-Circular visuals communicate iteration better than text alone.
-In the style of Excalidraw. 
-Alt text: Circular diagram illustrating iterative developer education process across tutorials, quickstarts, guides, and content updates  
-{{/image}}
+![](/images/posts/tutorial-burger-f1.webp)
 
 ## 6. Building a long-term developer education strategy
 
@@ -223,12 +193,7 @@ Thus, for each tutorial, ask yourself the following questions:
 - What is the effort proportional to its priority and visibility?
   (Strategy)
 
-{{image}}
-A cartoon/ scribble outline of a head (in a thinking pose) with thought bubbles coming out for “Utility?” “Impact?” “Strategy?” 
-Reinforces the questions to be asked.
-In the style of Excalidraw. 
-Alt text: Circular diagram illustrating iterative developer education process across tutorials, quickstarts, guides, and content updates  
-{{/image}}
+![](/images/posts/tutorial-burger-g1.webp)
 
 When a tech platform has a great set of tutorials, it creates compounding value.
 
