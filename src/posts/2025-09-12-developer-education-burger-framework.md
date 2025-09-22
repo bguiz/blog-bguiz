@@ -105,7 +105,7 @@ No thank you!
 
 Let's apply this to tech tutorials, and we can see what to do, and what to avoid.
 
-{{image}}
+<!-- image -->
 For each row in the table: A mini clean, branded infographic of a burger stack with a different subset of layers.
 No need for labels, since it is so small.
 Helps readers reinforce the metaphor.
@@ -113,7 +113,7 @@ The goal is to help them visualise different combos that make sense and do not.
 The images should be vector-style, minimal, not playful cartoonish.
 lean to a sleek tech aesthetic.  
 Alt text: (copy from the text of each table row)
-{{/image}}
+<!-- /image -->
 
 |   |   |   |
 |---|---|---|
