@@ -10,20 +10,20 @@ metaDesc: >
 
 ## Introduction
 
-In Developer Relations (DevRel), education is critical.
+In Developer Relations (DevRel), **education is critical**.
 It is the foundation for developers to adopt your tech platform.
 
 Marketing builds awareness, and community fosters belonging.
-But developer education (DevEd) drives usage, mastery, and advocacy.
+And developer education drives usage, mastery, and advocacy.
 
-What is the first encounter, for most developers, with your tech?
+What is the first encounter with your tech, for most developers?
 It likely won't be a conference talk or a hackathon workshop.
-Instead it will likely be the tutorials.
+Instead, most likely, it will be **tutorials**
 The things you find when googling "how to do X using Y".
-These materials define the speed of adoption and how developers perceive your brand.
+These materials define the **speed of adoption**, and even how developers perceive your brand.
 
 Missing or low quality education creates friction, confusion, and churn.
-On the other hand, strong education does the opposite.
+On the other hand, **strong education** does the opposite.
 It builds trust, accelerates time-to-value, and fosters long-term confidence.
 
 This article explores:
@@ -31,33 +31,32 @@ This article explores:
 - The burger framework for developer tutorials
 - Mix and match - what works, and what doesn’t
 - Iteration and selectivity
-- Developer education roadmap
+- A roadmap for Developer education
 
 ![Developer education burger framework infographic showing a layered burger as equivalent to a tutorial](/images/posts/tutorial-burger-a1.webp)
     
-Note that a written article alone is not a tutorial.
-That is a common misconception.
+Note that a written article alone is **not** a tutorial.
+That is a **common misconception**.
 A good tutorial for developers consists of much more!
 (We will get to this in the burger framework.)
 
 ## 1. Why developer education powers DevRel
 
-Developer education is a vital function that DevRel teams perform.
+Developer education is a **vital function** that DevRel teams perform.
 A thriving community means little if onboarding is confusing or tutorials are vague.
-
 
 ![](/images/posts/tutorial-burger-b1.webp "Graph showing higher developer retention rates with clear onboarding versus poor documentation")
 
 Why it matters:
 
-- Education drives retention.
+- **Education drives retention**.
   The sooner developers reach their first success, the more likely they stay.
   To do that, they need to be able to find the tutorials they are looking for.
-- Clarity builds confidence.
-  Consistent, organised material signals that developers are supported.
-- Foundational.
+  When developers try them out, they must work.
+- **Clarity, confidence**.
+  Consistent and organised material signals that developers are supported.
+- **Foundational**.
   Developer education is the base upon which many other DevRel initiatives build on.
-    
 
 ## 2. The Burger Framework for developer education
 
@@ -66,7 +65,7 @@ It is layered.
 It is structured - just like great educational material should be.
 
 
-![](/images/posts/tutorial-burger-c1.webp "Developer education burger framework infographic showing layered DevRel content strategy with tutorials, docs, guides, and assets")
+![](/images/posts/tutorial-burger-c1.webp "Developer education burger framework infographic; showing the layers of content in a tutorial")
 
 Layers of the burger:
 
@@ -77,7 +76,7 @@ Layers of the burger:
     - Guides the developer on how to use/ understand the code repo.
     - Example: A page, published on the documentation site, which includes multiple steps and explanations.
 - Sauce: Friction reduction, which are developer experience enhancements.
-    - Ensures that the developer does not get stuck/ frustrated.
+    - Ensures that the developer does not get stuck or frustrated.
     - Example: Discovery, bug fixes + feature additions to the code repo, and updates to the written article.
       These are geared to make it faster or easier for a developer to complete the tutorial.
 - Top Bun: The video demo, which are polished assets.
@@ -88,12 +87,12 @@ For visual and auditory learners.
 - Box: The social media posts, which provide packaging and marketing.
     - Ensures the right developers actually see this tutorial.
     - Example: Twitter posts, LinkedIn posts, et cetera, which link to the code repo, written article, or video demo as their CTAs.
-      Alternatively, could take the form of youtube shorts/ tiktoks which have those CTAs.
+      Alternatively, could even take the form of Youtube shorts which have the same CTAs.
 
 Developer education should be layered logically, and intentionally designed.
 
 (Note, for those who have worked with me in the past: I previously referred to this as the tutorial stack.
-The burger framework builds on that concept.)
+The burger framework is based on, and builds on, that concept.)
 
 ## 3. Mix and match - what works, and what doesn’t
 
@@ -103,27 +102,41 @@ It's not a burger, but it's still something good enough!
 What about just the top bun in a box?
 No thank you!
 
-Let's apply this to tech tutorials, and we can see what to do, and what to avoid.
+Let's apply this to developer tutorials,
+and we can see which combinations work, and which ones to avoid.
 
 |   |   |   |
 |---|---|---|
 |Combination|Outcome|Takeaway|
-|![Patty only](/images/posts/tutorial-burger-d1.webp)|❌ Too raw|Only code, but no guidance.|
-|![Bottom bun only](/images/posts/tutorial-burger-d2.webp)|❌ Too raw|Only article, but cannot get started quickly.|
-|![Patty + bottom bun](/images/posts/tutorial-burger-d3.webp)|❌ Still weak|If a developer finds this, it works; but that's unlikely.|
-|![Patty + bottom bun + box](/images/posts/tutorial-burger-d4.webp)|✅ Viable|Solid minimum. Works as a starting point.|
-|![Patty + bottom bun + sauce + box](/images/posts/tutorial-burger-d5.webp)|✅✅ Strong|Reduces churn with intentional care for DX.|
-|![Patty + bottom bun + top bun + box](/images/posts/tutorial-burger-d6.webp)|❌ Misguided|Polished videos without good DX miss the point.|
-|![Full burger](/images/posts/tutorial-burger-d7.webp)|✅✅✅ Excellent|Highest effort, and highest quality experience for developer.|
+|![Patty only](/images/posts/tutorial-burger-d1.webp)|❌<br />Too raw|Only the code, but no guidance.|
+|![Bottom bun only](/images/posts/tutorial-burger-d2.webp)|❌<br />Too raw|Only the article, but cannot get started quickly.|
+|![Patty + bottom bun](/images/posts/tutorial-burger-d3.webp)|❌<br />Still weak|If a developer finds this, it works; but that's unlikely.|
+|![Patty + bottom bun + box](/images/posts/tutorial-burger-d4.webp)|✅<br />Viable|Solid minimum. Works as a starting point.|
+|![Patty + bottom bun + sauce + box](/images/posts/tutorial-burger-d5.webp)|✅✅<br />Strong|Reduces churn with intentional care for DX.|
+|![Patty + bottom bun + top bun + box](/images/posts/tutorial-burger-d6.webp)|❌<br />Misguided|Polished videos without good DX. This misses the point.|
+|![Full burger](/images/posts/tutorial-burger-d7.webp)|✅✅✅<br />Excellent|Highest effort, and highest quality experience for thedeveloper.|
 
-How to choose the right burger stack for each asset?
+We must avoid the ones marked with crosses (❌) above.
+That leaves a few combinations marked with ticks (✅).
+How to **choose** the right burger stack for each asset?
 
 ## 4. When to use the full burger
 
 Not every piece of education deserves full polish.
-Selectivity optimises the use of DevRel resources.
+Be selective, and optimise the use of DevRel resources.
 
 ![](/images/posts/tutorial-burger-e1.png "Flowchart showing when to use the full burger stack versus lightweight content for developer education.")
+
+When keeping lightweight, I recommend the **open sandwich**.
+It's the minimum that makes sense.
+Anything less, and the impact is too low, may as well skip it.
+For these tutorials, the bare minimum is: A code repo, written articles, and social media posts.
+
+For higher priorities, I recommend the **full burger**.
+This is the same as the bare minumum, plus adds DX improvements and a video recording.
+You likely won't have the resources to do this for all of your tutorials, so choose wisely.
+In this case wisely means being selective, plus being consistent about the rationale.
+Recommended rationale:
 
 Use the full burger for:
 
@@ -136,14 +149,6 @@ Keep lightweight for:
 - Niche or specific topics
 - Experimental topics
 
-When keeping lightweight, I recommend the open sandwich.
-It's the minimum that makes sense.
-Anything less, and the impact is too low, may as well skip it.
-
-For higher priorities, I recommend the full burger.
-You likely won't have the resources to do this for all of your tutorials, so choose wisely.
-In this case wisely means being selective, plus being consistent about the rationale.
-
 This allows the team to scale.
 The trick is to intentionally spread between quantity and quality.
 
@@ -151,19 +156,20 @@ The trick is to intentionally spread between quantity and quality.
 
 You won't be able to build the entire tutorial all at once.
 Instead build it layer by layer.
-This is my suggested order:
+When creating a tutorial with the full burger stack, this is my suggested order:
 
 - Patty (code repo): This is the first, and most important, thing in any tutorial.
   Get it right, and iterate till you feel like this is near-perfect before proceeding.
 - Bottom bun (written article): This could even be as minimal as listing the steps in the README of the repo.
   Use that as a starting point, sure.
-  Ideally, you should have this in the documentation portal (AKA the docs).
-- Condiments (developer experience): Run DX audits to spot friction points.
+  Ideally, you should place the written article in the documentation portal (AKA *the docs*).
+- Sauce (developer experience): Run DX audits to spot friction points.
   For starters, you can do micro DX audits of yourself using the repo.
   This will suffice in most cases.
-  However, for high visibility/ priority tutorials, consider asking colleagues, and even community members.
+  However, for high visibility/ priority tutorials, consider asking colleagues, and even community members,
+  to be research participants.
 - Top bun (video demo): This is the most time and resource intensive aspect of tutorial creation.
-  You may combine this with self DX audits (see above) to get two-for-one.
+  Pro-tip: You may combine this with self DX audits (see above) to get two-for-one.
 - Box (social media): Ensure that your developer community knows about the new tutorial.
   For higher priority tutorials, combine with DevRel in public.
   This way, they hear about it before the tutorial is even complete.
@@ -178,8 +184,8 @@ Thus, for each tutorial, ask yourself the following questions:
 
 - Are we reducing the time to first aha?
   (Utility)
-- Does this resource increase developer confidence?
-  Developer success rate?
+- Would it increase developer confidence?
+  How about developer success rate?
   (Impact)
 - What is the effort proportional to its priority and visibility?
   (Strategy)
@@ -188,8 +194,8 @@ Thus, for each tutorial, ask yourself the following questions:
 
 When a tech platform has a great set of tutorials, it creates compounding value.
 
-- Directly, for its developer community: More satisfaction.
-- Indirectly, for the DevRel team: Easier onboarding, less support, more scale.
+- Directly, for its developer community: More satisfaction and higher success rate when building.
+- Indirectly, for the DevRel team: Easier onboarding, less support, and more scale.
     
 ## Tutorials are the foundation of DevRel
 
@@ -199,7 +205,7 @@ Using the burger framework helps DevRel teams achieve this for the tech platform
 
 If you are sold on this framework, and want to implement it, I suggest this next step:
 
-- Audit your developer education materials.
+- Audit your current developer education materials.
 - Which of them are tutorials, but are missing components?
 - Which of them should be open sandwiches, and which ones should be full burgers?
     
