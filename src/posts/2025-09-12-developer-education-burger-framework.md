@@ -33,7 +33,7 @@ This article explores:
 - Iteration and selectivity
 - Developer education roadmap
 
-![](/images/posts/tutorial-burger-a1.webp)
+![](/images/posts/tutorial-burger-a1.webp "Developer education burger framework infographic showing layered DevRel content strategy with tutorials, docs, guides, and assets")
     
 Note that a written article alone is not a tutorial.
 That is a common misconception.
@@ -46,7 +46,7 @@ Developer education is a vital function that DevRel teams perform.
 A thriving community means little if onboarding is confusing or tutorials are vague.
 
 
-![](/images/posts/tutorial-burger-b1.webp)
+![](/images/posts/tutorial-burger-b1.webp "Graph showing higher developer retention rates with clear onboarding versus poor documentation")
 
 Why it matters:
 
@@ -66,7 +66,7 @@ It is layered.
 It is structured - just like great educational material should be.
 
 
-![](/images/posts/tutorial-burger-c1.webp)
+![](/images/posts/tutorial-burger-c1.webp "Developer education burger framework infographic showing layered DevRel content strategy with tutorials, docs, guides, and assets")
 
 Layers of the burger:
 
@@ -121,7 +121,7 @@ Alt text: (copy from the text of each table row)
 |Patty alone|❌ Too raw|Core docs without setup support frustrate devs.|
 |Patty + bottom bun|❌ Still weak|Quick start lacks surrounding guidance.|
 |Patty + bottom bun + box|✅ Viable|Solid minimum. Works as a starting point.|
-|Patty + bottom bun + sauces|✅ Strong|Reduces churn with an intentional DX.|
+|Patty + bottom bun + sauce + box|✅ Strong|Reduces churn with an intentional DX.|
 |Patty + bottom bun + top bun|❌ Misguided|Polished videos without good DX miss the point.|
 |Full burger|⭐ Excellent|Highest effort, and highest quality education possible.|
 
@@ -132,7 +132,21 @@ How to choose the right burger stack for each asset?
 Not every piece of education deserves full polish.
 Selectivity optimises the use of DevRel resources.
 
-![](/images/posts/tutorial-burger-e1.webp)
+![](/images/posts/tutorial-burger-e1.webp "Flowchart showing when to use the full burger stack versus lightweight content for developer education.")
+
+<!-- mermaidjs
+flowchart TD
+    A[Tutorial Effort] --> C
+    C{is high priority<br/>or high traffic?}
+    C -->|no| E
+    E[fa:fa-battery-quarter <br/>patty + <br/>bottom bun + <br/>box]
+    C -->|yes| D
+    D{is hello world or <br/>getting started?}
+    D -->|yes| F
+    F[fa:fa-battery-half <br/>patty + <br/>bottom bun + <br/>sauce + <br/>box]
+    D -->|no| G
+    G[fa:fa-battery-full <br/>full burger]
+/mermaidjs -->
 
 Use the full burger for:
 
@@ -177,7 +191,11 @@ This is my suggested order:
   For higher priority tutorials, combine with DevRel in public.
   This way, they hear about it before the tutorial is even complete.
 
-![](/images/posts/tutorial-burger-f1.webp)
+![](/images/posts/tutorial-burger-f1.webp "Alt text: Circular diagram illustrating iterative developer education process across tutorials, quickstarts, guides, and content updates")
+
+<!-- mermaidjs
+
+/mermaidjs -->
 
 ## 6. Building a long-term developer education strategy
 
@@ -193,7 +211,7 @@ Thus, for each tutorial, ask yourself the following questions:
 - What is the effort proportional to its priority and visibility?
   (Strategy)
 
-![](/images/posts/tutorial-burger-g1.webp)
+![](/images/posts/tutorial-burger-g1.webp "Thinking about the utility, impact, and strategy of developer tutorials.")
 
 When a tech platform has a great set of tutorials, it creates compounding value.
 
