@@ -33,7 +33,7 @@ This article explores:
 - Iteration and selectivity
 - Developer education roadmap
 
-![](/images/posts/tutorial-burger-a1.webp "Developer education burger framework infographic showing layered DevRel content strategy with tutorials, docs, guides, and assets")
+![Developer education burger framework infographic showing a layered burger as equivalent to a tutorial](/images/posts/tutorial-burger-a1.webp)
     
 Note that a written article alone is not a tutorial.
 That is a common misconception.
@@ -105,25 +105,16 @@ No thank you!
 
 Let's apply this to tech tutorials, and we can see what to do, and what to avoid.
 
-<!-- image -->
-For each row in the table: A mini clean, branded infographic of a burger stack with a different subset of layers.
-No need for labels, since it is so small.
-Helps readers reinforce the metaphor.
-The goal is to help them visualise different combos that make sense and do not.
-The images should be vector-style, minimal, not playful cartoonish.
-lean to a sleek tech aesthetic.  
-Alt text: (copy from the text of each table row)
-<!-- /image -->
-
 |   |   |   |
 |---|---|---|
 |Combination|Outcome|Takeaway|
-|Patty alone|❌ Too raw|Core docs without setup support frustrate devs.|
-|Patty + bottom bun|❌ Still weak|Quick start lacks surrounding guidance.|
-|Patty + bottom bun + box|✅ Viable|Solid minimum. Works as a starting point.|
-|Patty + bottom bun + sauce + box|✅ Strong|Reduces churn with an intentional DX.|
-|Patty + bottom bun + top bun|❌ Misguided|Polished videos without good DX miss the point.|
-|Full burger|⭐ Excellent|Highest effort, and highest quality education possible.|
+|![Patty only](/images/posts/tutorial-burger-d1.webp)|❌ Too raw|Only code, but no guidance.|
+|![Bottom bun only](/images/posts/tutorial-burger-d2.webp)|❌ Too raw|Only article, but cannot get started quickly.|
+|![Patty + bottom bun](/images/posts/tutorial-burger-d3.webp)|❌ Still weak|If a developer finds this, it works; but that's unlikely.|
+|![Patty + bottom bun + box](/images/posts/tutorial-burger-d4.webp)|✅ Viable|Solid minimum. Works as a starting point.|
+|![Patty + bottom bun + sauce + box](/images/posts/tutorial-burger-d5.webp)|✅✅ Strong|Reduces churn with intentional care for DX.|
+|![Patty + bottom bun + top bun + box](/images/posts/tutorial-burger-d6.webp)|❌ Misguided|Polished videos without good DX miss the point.|
+|![Full burger](/images/posts/tutorial-burger-d7.webp)|✅✅✅ Excellent|Highest effort, and highest quality experience for developer.|
 
 How to choose the right burger stack for each asset?
 
@@ -132,21 +123,7 @@ How to choose the right burger stack for each asset?
 Not every piece of education deserves full polish.
 Selectivity optimises the use of DevRel resources.
 
-![](/images/posts/tutorial-burger-e1.webp "Flowchart showing when to use the full burger stack versus lightweight content for developer education.")
-
-<!-- mermaidjs
-flowchart TD
-    A[Tutorial Effort] --> C
-    C{is high priority<br/>or high traffic?}
-    C -->|no| E
-    E[fa:fa-battery-quarter <br/>patty + <br/>bottom bun + <br/>box]
-    C -->|yes| D
-    D{is hello world or <br/>getting started?}
-    D -->|yes| F
-    F[fa:fa-battery-half <br/>patty + <br/>bottom bun + <br/>sauce + <br/>box]
-    D -->|no| G
-    G[fa:fa-battery-full <br/>full burger]
-/mermaidjs -->
+![](/images/posts/tutorial-burger-e1.png "Flowchart showing when to use the full burger stack versus lightweight content for developer education.")
 
 Use the full burger for:
 
@@ -191,11 +168,7 @@ This is my suggested order:
   For higher priority tutorials, combine with DevRel in public.
   This way, they hear about it before the tutorial is even complete.
 
-![](/images/posts/tutorial-burger-f1.webp "Alt text: Circular diagram illustrating iterative developer education process across tutorials, quickstarts, guides, and content updates")
-
-<!-- mermaidjs
-
-/mermaidjs -->
+![](/images/posts/tutorial-burger-f1.png "Circular diagram illustrating iterative developer education process across tutorials, quickstarts, guides, and content updates")
 
 ## 6. Building a long-term developer education strategy
 
